@@ -41,7 +41,7 @@ export default defineComponent({
 
 <style lang="scss">
 .v-app {
-  padding-top: 2rem;
+  padding-top: 4rem;
   > header {
     position: fixed;
     top: 0;
