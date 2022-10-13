@@ -15,6 +15,6 @@ app.use(router)
 app.mount('#app')
 
 async function initData() {
-  stateStore().apiData = await (await window.fetch('http://localhost:8000/get/itemList')).json()
+  stateStore().apiData = await (await window.fetch('https://jeansdinge.sdrvl.ch/get/itemList')).json()
 }
 initData().then()
