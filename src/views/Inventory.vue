@@ -18,8 +18,6 @@ import ListContainer from "@/components/ListContainer.vue"
 
 export default defineComponent({
   components: {ListContainer},
-
-
 })</script>
 
 <style lang="scss">

@@ -1,23 +1,26 @@
 <template>
   <div
-      @click="toggleOpenStatus()"
       class="v-list-item"
+      :class="{
+        'is-open': isOpen,
+      }"
   >
     <div
         class="v-list-item__header"
+        @click="toggleOpenStatus()"
     >
       <div
-          class="v-list-item__coll"
+          class="v-list-item__coll jd-with-gutter"
       >
         {{ dataTag.id }}
       </div>
       <div
-          class="v-list-item__coll"
+          class="v-list-item__coll jd-with-gutter"
       >
         {{ dataTag.title }}
       </div>
       <div
-          class="v-list-item__coll"
+          class="v-list-item__coll jd-with-gutter"
       >
         <tag
             v-for="tagName of dataTag.tags"
@@ -32,7 +35,7 @@
           v-if="isOpen"
       >
         <div
-            class="v-list-item__body__left"
+            class="v-list-item__body__left jd-with-gutter"
         >
           <img
               v-for="img of dataTag.img"
@@ -41,7 +44,7 @@
           />
         </div>
         <div
-            class="v-list-item__body__right"
+            class="v-list-item__body__right jd-with-gutter"
         >
           <div>{{dataTag.text}}</div>
 
@@ -126,6 +129,11 @@ export default defineComponent({
   z-index: 1;
   position: relative;
 
+  .is-open & {
+    margin-bottom: 1rem;
+    border-bottom: none;
+  }
+
   > .v-list-item__coll {
     width: calc(100% / 3);
   }
@@ -134,6 +142,8 @@ export default defineComponent({
 .v-list-item__body {
   display: flex;
   flex-wrap: nowrap;
+  border-bottom: solid 1px;
+  padding-bottom: 2rem;
 }
 
 .v-list-item__body__left {
