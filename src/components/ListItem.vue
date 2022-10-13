@@ -26,33 +26,39 @@
       </div>
     </div>
 
-    <div
-        class="v-list-item__body"
-        v-if="isOpen"
-    >
+    <transition name="item__body">
       <div
-          class="v-list-item__body__left"
+          class="v-list-item__body"
+          v-if="isOpen"
       >
-        <img src="" alt=""/>
-      </div>
-      <div
-          class="v-list-item__body__right"
-      >
-        <div>{{dataTag.text}}</div>
+        <div
+            class="v-list-item__body__left"
+        >
+          <img
+              v-for="img of dataTag.img"
+              :src="img.mediaUrl"
+              alt=""
+          />
+        </div>
+        <div
+            class="v-list-item__body__right"
+        >
+          <div>{{dataTag.text}}</div>
 
-        <ul>
-          <li><strong>Date:</strong     > {{dataTag.infoDate}}</li>
-          <li><strong>Object:</strong   > {{dataTag.infoObject}}</li>
-          <li><strong>Dimension:</strong> {{dataTag.infoDimensions}}</li>
-          <li><strong>Loan:</strong     > {{dataTag.infoLoan}}</li>
-          <li><strong>Location:</strong > {{dataTag.infoLocation}}</li>
-          <li><strong>Made:</strong     > {{dataTag.infoMade_in}}</li>
-          <li><strong>Material:</strong > {{dataTag.infoMaterial}}</li>
-          <li><strong>Price:</strong    > {{dataTag.infoPrice}}</li>
-        </ul>
-      </div>
+          <ul>
+            <li><strong>Date:</strong     > {{dataTag.infoDate}}</li>
+            <li><strong>Object:</strong   > {{dataTag.infoObject}}</li>
+            <li><strong>Dimension:</strong> {{dataTag.infoDimensions}}</li>
+            <li><strong>Loan:</strong     > {{dataTag.infoLoan}}</li>
+            <li><strong>Location:</strong > {{dataTag.infoLocation}}</li>
+            <li><strong>Made:</strong     > {{dataTag.infoMade_in}}</li>
+            <li><strong>Material:</strong > {{dataTag.infoMaterial}}</li>
+            <li><strong>Price:</strong    > {{dataTag.infoPrice}}</li>
+          </ul>
+        </div>
 
-    </div>
+      </div>
+    </transition>
 
   </div>
 </template>
@@ -106,6 +112,7 @@ export default defineComponent({
 <style lang="scss">
 .v-list-item {
   width: 100%;
+  user-select: none;
 }
 
 .v-list-item__header {
@@ -115,6 +122,9 @@ export default defineComponent({
   border-bottom: solid 1px;
   align-items: center;
   cursor: pointer;
+  background: white;
+  z-index: 1;
+  position: relative;
 
   > .v-list-item__coll {
     width: calc(100% / 3);
@@ -132,13 +142,32 @@ export default defineComponent({
   img {
     display: block;
     width: 100%;
-    height: 30rem;
-    background-color: var(--jd-color--main);
+    height: auto;
+    //background-color: var(--jd-color--main);
   }
 }
 
 .v-list-item__body__right {
   width: calc(100% / 3);
+}
+
+.item__body-enter-active {
+  transition: all .5s ease-out;
+  //max-height: 50rem;
+  //overflow: hidden;
+}
+
+.item__body-leave-active {
+  transition: all 0s ease-out;
+  //max-height: 50rem;
+  //overflow: hidden;
+}
+
+.item__body-enter-from,
+.item__body-leave-to {
+  transform: translate(0, -2rem);
+  opacity: 0;
+  //max-height: 0;
 }
 
 </style>

@@ -15,5 +15,10 @@ export namespace Api {
     infoPrice:      string
     infoDimensions: string
     infoLoan:       string
+    img:            {[key: string]: IImage}
+  }
+
+  export interface IImage {
+    mediaUrl: string
   }
 }

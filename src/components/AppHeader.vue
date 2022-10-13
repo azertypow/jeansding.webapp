@@ -2,9 +2,9 @@
   <div class="v-app-header">
 
     <div class="v-app-header__title v-app-header__title">
-      <router-link to="/" class="v-app-header__title__left">Inventory</router-link>
-      <div class="v-app-header__title__center">Jeansding</div>
-      <router-link to="/media" class="v-app-header__title__right">Media</router-link>
+      <router-link to="/"       class="v-app-header__title__left jd-font-xxl">Inventory</router-link>
+      <div                      class="v-app-header__title__center jd-font-xxl">Jeansding</div>
+      <router-link to="/media"  class="v-app-header__title__right jd-font-xxl">Media</router-link>
       <div class="v-app-header__ui"></div>
     </div>
 
