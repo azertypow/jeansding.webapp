@@ -6,7 +6,19 @@
       <app-header></app-header>
     </header>
 
-    <RouterView />
+    <div class="v-app__body">
+      <div
+          class="v-app__body__left"
+      >
+        <list-container></list-container>
+      </div>
+
+      <div
+          class="v-app__body__right"
+      >
+        <RouterView />
+      </div>
+    </div>
 
     <footer>
       <app-footer></app-footer>
@@ -18,9 +30,10 @@
 import {defineComponent} from "vue"
 import AppHeader from "@/components/AppHeader.vue"
 import AppFooter from "@/components/AppFooter.vue"
+import ListContainer from "@/components/ListContainer.vue"
 
 export default defineComponent({
-  components: {AppFooter, AppHeader},
+  components: {ListContainer, AppFooter, AppHeader, },
 
   computed: {},
 
@@ -44,5 +57,18 @@ export default defineComponent({
     width: 100%;
     z-index: 10;
   }
+}
+
+.v-app__body {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.v-app__body__left {
+  width: 75%;
+}
+
+.v-app__body__right {
+  width: 25%;
 }
 </style>
