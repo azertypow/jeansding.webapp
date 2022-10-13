@@ -1,0 +1,43 @@
+:root {
+  --jd-palette--blue-dark:        #020166;
+  --jd-palette--blue-light:       #025bfa;
+  --jd-palette--blue-extra-light: #97b6d8;
+  --jd-palette--blue-grey:        #a3afc2;
+
+
+  --jd-color--main:       var(--jd-palette--blue-dark);
+  --jd-color--secondary:  var(--jd-palette--blue-light);
+  --jd-color--ternary:    var(--jd-palette--blue-extra-light);
+  --jd-color--white:      white;
+  --jd-color--dark:       black;
+  --jd-color--dark-light: var(--jd-palette--blue-grey);
+
+  &.is-media {
+    --jd-color--main:       var(--jd-palette--blue-light);
+    --jd-color--secondary:  var(--jd-palette--blue-dark);
+    --jd-color--ternary:    var(--jd-palette--blue-extra-light);
+    --jd-color--white:      white;
+    --jd-color--dark:       black;
+    --jd-color--dark-light: var(--jd-palette--blue-grey);
+  }
+}
+
+*,
+*::before,
+*::after {
+  transition: color 0.5s, background-color 0.5s;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--jd-color--main);
+  background: var(--jd-color--white);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1rem;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: .8rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
