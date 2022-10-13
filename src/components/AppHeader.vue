@@ -26,7 +26,7 @@ export default defineComponent({
 
 <style lang="scss">
 .v-app-header {
-  --v-app-header--title-height: 2em;
+  --v-app-header--title-height: 5em;
   --v-app-header--title-width: 16em;
   --v-app-header--ui-size: 4rem;
   background: var(--jd-color--white);
@@ -48,6 +48,7 @@ export default defineComponent({
   right: 100%;
   top: 50%;
   transform: translate(0, -50%);
+  color: var(--jd-palette--blue-dark);
 }
 
 .v-app-header__title__right {
@@ -55,7 +56,7 @@ export default defineComponent({
   left: 100%;
   top: 50%;
   transform: translate(0, -50%);
-  color: var(--jd-color--secondary);
+  color: var(--jd-palette--blue-light);
 }
 
 .v-app-header__title__center {
