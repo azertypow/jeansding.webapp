@@ -1,6 +1,6 @@
 <template>
   <div class="v-media">
-
+    <p>content right</p>
   </div>
 </template>
 

@@ -21,3 +21,50 @@
   font-size: 1.8rem;
   line-height: 2rem;
 }
+
+.jd-font-title {
+  font-size: .8rem;
+  line-height: 1rem;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+h3 {
+  @extend .jd-font-title;
+}
+
+.jd-font-subtitle {
+  font-size: .8rem;
+  line-height: 1rem;
+  margin-top: 1rem;
+  text-decoration: underline;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+h4 {
+  @extend .jd-font-subtitle;
+}
+
+
+.jd-font-small-title {
+  font-size: .8rem;
+  line-height: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-indent: 1rem;
+}
+
+h5 {
+  @extend .jd-font-small-title;
+
+  h3 + & {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-indent: 0;
+  }
+}

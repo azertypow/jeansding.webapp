@@ -1,14 +1,10 @@
 <template>
   <div class="v-inventory">
-    <div
-        class="v-inventory__left"
-    >
+    <h4>text</h4>
+    <h3>FeansDinge in the move</h3>
+    <h5>Katharina Hohmann</h5>
 
-    </div>
-    <div
-        class="v-inventory__right"
-    >
-    </div>
+
   </div>
 </template>
 
