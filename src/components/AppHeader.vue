@@ -6,7 +6,7 @@
       <div                      class="v-app-header__title__center jd-font-xxl">Jeansdinge</div>
       <router-link to="/media"  class="v-app-header__title__right jd-font-xxl">Media</router-link>
       <div class="v-app-header__ui">
-        <img alt="icon"  src="../assets/icon.jpg" class="v-app-header__ui__icon">
+        <jeansdinge-smiley></jeansdinge-smiley>
       </div>
     </div>
 
@@ -15,8 +15,10 @@
 
 <script lang="ts">
 import {defineComponent} from "vue"
+import JeansdingeSmiley from "@/components/icons/JeansdingeSmiley.vue"
 
 export default defineComponent({
+  components: {JeansdingeSmiley},
   data() {
     return {
     }
@@ -94,20 +96,6 @@ export default defineComponent({
             calc(var(--v-app-header--title-width) - var(--v-app-header--ui-size) ),
             -50%,
     );
-  }
-}
-
-.v-app-header__ui__icon {
-  display: block;
-  width: 100%;
-  height: auto;
-  padding: .5rem;
-  box-sizing: border-box;
-  transition: transform 500ms ease-in-out;
-  transform: rotateZ(-20deg);
-
-  .is-media & {
-    transform: rotateZ(20deg);
   }
 }
 

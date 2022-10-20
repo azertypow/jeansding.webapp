@@ -23,7 +23,17 @@ export default defineComponent({
 
   computed: {
     itemList(): Api.ItemList {
-      return this.globalState.apiData
+      if(this.globalState.activatedFilterTag.length === 0) return this.globalState.apiData
+      return this.globalState.apiData.filter(value => {
+
+        let containMinOneTagOfFilteredTags = false
+
+        this.globalState.activatedFilterTag.forEach(tagFiltered => {
+          if(value.tags.includes(tagFiltered)) containMinOneTagOfFilteredTags = true
+        })
+
+        return containMinOneTagOfFilteredTags
+      })
     }
   },
 

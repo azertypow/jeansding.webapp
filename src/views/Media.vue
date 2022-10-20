@@ -13,7 +13,7 @@ export default defineComponent({
     sortedArticle() {
       /**
        * todo: trier par importance
-       * moins l'articles a de relation avec les objet, plus il a une valuer élevé.
+       * moins l'articles a de relation avec les objet, plus il a une valeur élevé.
        * un article lié a un seul objet plus fort en importance
        * qu'un article lié a 2 objets
        * */

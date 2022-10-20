@@ -1,15 +1,23 @@
 <template>
   <button
       class="v-tag"
+      @click="stateStore.activatedFilterTag.push(name)"
   >{{name}}</button>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue"
+import {stateStore} from "@/stores/stateStore"
 
 export default defineComponent({
   props: {
     name: String,
+  },
+
+  data() {
+    return {
+      stateStore: stateStore()
+    }
   },
 
 })</script>
