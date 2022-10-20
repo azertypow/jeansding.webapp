@@ -180,8 +180,8 @@ export default defineComponent({
   display: block;
   position: absolute;
   top: 0;
-  left: 5em;
-  width: calc( 100% / 3 / 2);
+  left: 4rem;
+  width: calc( 100% / 3 - 3rem);
   height: auto;
   z-index: 10;
   pointer-events: none;
