@@ -4,7 +4,7 @@
   --jd-palette--blue-extra-light: #97b6d8;
   --jd-palette--blue-grey:        #a3afc2;
 
-
+  --jd-color--varriable:  var(--jd-palette--blue-dark);
   --jd-color--main:       var(--jd-palette--blue-dark);
   --jd-color--secondary:  var(--jd-palette--blue-light);
   --jd-color--ternary:    var(--jd-palette--blue-extra-light);
@@ -13,12 +13,7 @@
   --jd-color--dark-light: var(--jd-palette--blue-grey);
 
   &.is-media {
-    --jd-color--main:       var(--jd-palette--blue-light);
-    --jd-color--secondary:  var(--jd-palette--blue-dark);
-    --jd-color--ternary:    var(--jd-palette--blue-extra-light);
-    --jd-color--white:      white;
-    --jd-color--dark:       black;
-    --jd-color--dark-light: var(--jd-palette--blue-grey);
+    --jd-color--varriable: var(--jd-palette--blue-light);
   }
 }
 

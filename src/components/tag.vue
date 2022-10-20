@@ -24,7 +24,7 @@ export default defineComponent({
   color: inherit;
 
   &:hover {
-    border-left: solid var(--jd-color--main);
+    border-left: solid currentColor;
     background-color: #ebebeb;
   }
 }

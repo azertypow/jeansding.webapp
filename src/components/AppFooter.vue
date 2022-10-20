@@ -26,7 +26,7 @@ export default defineComponent({
 .v-app-footer {
   height: 3rem;
   color: var(--jd-color--white);
-  background-color: var(--jd-color--main);
+  background-color: var(--jd-color--varriable);
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
