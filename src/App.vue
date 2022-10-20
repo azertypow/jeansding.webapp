@@ -75,8 +75,10 @@ export default defineComponent({
 }
 
 .v-app__body__right {
+  color: var(--jd-color--secondary);
   width: 25%;
   padding-left: .5rem;
+  padding-right: .5rem;
 
   .is-media & {
     width: 75%;

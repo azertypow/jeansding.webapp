@@ -1,9 +1,23 @@
 <template>
   <div class="v-inventory">
-    <h4>text</h4>
-    <h3>FeansDinge in the move</h3>
-    <h5>Katharina Hohmann</h5>
 
+    <div>
+      <h4>text</h4>
+      <h3>FeansDinge in the move</h3>
+      <h5>Katharina Hohmann</h5>
+
+      <p
+       >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias aut eos, id impedit in ipsa itaque
+        laboriosam magnam magni maxime mollitia necessitatibus nobis non placeat quaerat, quisquam tenetur vitae?
+        <br><span>…</span>
+      </p>
+    </div>
+
+    <div
+      v-for="article of Array(5)"
+    >
+      <article-container></article-container>
+    </div>
 
   </div>
 </template>
@@ -11,9 +25,10 @@
 <script lang="ts">
 import {defineComponent} from "vue"
 import ListContainer from "@/components/ListContainer.vue"
+import ArticleContainer from "@/components/ArticleContainer.vue"
 
 export default defineComponent({
-  components: {ListContainer},
+  components: {ArticleContainer, ListContainer},
 })</script>
 
 <style lang="scss">
