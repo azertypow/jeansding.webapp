@@ -106,9 +106,9 @@ export default defineComponent({
           : this.globalState.currentOpenObject = this.dataTag
 
       window.setTimeout(() => {
-        document.querySelector('html')?.scrollTo({
+        document.querySelector('.v-app__body__left')?.scrollTo({
           behavior: 'smooth',
-          top: this.$el.offsetTop - 50,
+          top: this.$el.offsetTop - 80,
         })
       }, 150)
     },
