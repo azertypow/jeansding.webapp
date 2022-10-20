@@ -186,6 +186,10 @@ export default defineComponent({
   height: auto;
   z-index: 10;
   pointer-events: none;
+
+  .is-media & {
+    width: calc( 100% - 4rem);
+  }
 }
 
 .v-list-item__body {
