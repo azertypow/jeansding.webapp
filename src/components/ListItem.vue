@@ -161,8 +161,18 @@ export default defineComponent({
   }
 
   > .v-list-item__coll {
+    box-sizing: border-box;
     width: calc(100% / 3);
     white-space: nowrap;
+  }
+
+  .is-media & > .v-list-item__coll {
+    width: calc(100%);
+
+    &:first-child {
+      width: 3rem;
+      flex-shrink: 0;
+    }
   }
 }
 

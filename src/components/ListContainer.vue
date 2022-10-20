@@ -31,5 +31,6 @@ export default defineComponent({
 
 <style lang="scss">
 .v-list-container {
+  overflow: hidden;
 }
 </style>
