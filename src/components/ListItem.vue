@@ -5,9 +5,21 @@
         'is-open': isOpen,
       }"
   >
+    <template
+        v-if="imagePreviousIsOpen"
+    >
+      <img
+          v-for="img of dataTag.img"
+          alt="item image previous"
+          :src="img.mediaUrl"
+          class="v-list-item__img-previous"
+      >
+    </template>
     <div
         class="v-list-item__header"
         @click="toggleOpenStatus()"
+        @mouseenter="showImagePrevious()"
+        @mouseleave="hiddeImagePrevious()"
     >
       <div
           class="v-list-item__coll jd-with-gutter"
@@ -78,7 +90,8 @@ export default defineComponent({
 
   data() {
     return {
-      globalState: stateStore()
+      globalState: stateStore(),
+      imagePreviousIsOpen: false,
     }
   },
 
@@ -94,6 +107,14 @@ export default defineComponent({
           top: this.$el.offsetTop - 50,
         })
       }, 150)
+    },
+
+    showImagePrevious() {
+      this.imagePreviousIsOpen = true;
+    },
+
+    hiddeImagePrevious() {
+      this.imagePreviousIsOpen = false;
     },
   },
 
@@ -116,6 +137,7 @@ export default defineComponent({
 .v-list-item {
   width: 100%;
   user-select: none;
+  position: relative;
 }
 
 .v-list-item__header {
@@ -137,6 +159,17 @@ export default defineComponent({
   > .v-list-item__coll {
     width: calc(100% / 3);
   }
+}
+
+.v-list-item__img-previous {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 5em;
+  width: calc( 100% / 3 / 2);
+  height: auto;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .v-list-item__body {
