@@ -77,6 +77,16 @@ export default defineComponent({
   height: 100%;
   overflow: scroll;
 
+  &::-webkit-scrollbar {
+    background: var(--jd-color--white);
+    width: .5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--jd-color--main);
+    border-radius: 1rem;
+  }
+
   .is-media & {
     width: 25%;
   }
@@ -94,6 +104,16 @@ export default defineComponent({
 
   .is-media & {
     width: 75%;
+  }
+
+  &::-webkit-scrollbar {
+    background: var(--jd-color--white);
+    width: .5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--jd-color--secondary);
+    border-radius: 1rem;
   }
 }
 </style>
