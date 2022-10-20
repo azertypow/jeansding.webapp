@@ -66,6 +66,11 @@ export default defineComponent({
 
 .v-app__body__left {
   width: 75%;
+  transition: width 500ms ease-in-out;
+
+  .is-media & {
+    width: 25%;
+  }
 }
 
 .v-app__body__right {

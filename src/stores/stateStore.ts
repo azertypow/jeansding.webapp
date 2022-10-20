@@ -6,6 +6,7 @@ export const stateStore = defineStore('stateStore', {
   state: () => ({
     currentOpenObject: null as Api.IItem | null,
     apiData: {} as Api.ItemList,
+    activatedFilterTag: [] as string[],
   }),
 
   getters: {

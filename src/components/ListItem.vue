@@ -31,14 +31,18 @@
       >
         {{ dataTag.title }}
       </div>
-      <div
-          class="v-list-item__coll jd-with-gutter"
-      >
-        <tag
-            v-for="tagName of dataTag.tags"
-            :name="tagName"
-        ></tag>
-      </div>
+
+      <transition name="slide-fade">
+        <div
+            class="v-list-item__coll jd-with-gutter"
+            v-if="$route.path === '/'"
+        >
+          <tag
+              v-for="tagName of dataTag.tags"
+              :name="tagName"
+          ></tag>
+        </div>
+      </transition>
     </div>
 
     <transition name="item__body">
@@ -158,6 +162,7 @@ export default defineComponent({
 
   > .v-list-item__coll {
     width: calc(100% / 3);
+    white-space: nowrap;
   }
 }
 
