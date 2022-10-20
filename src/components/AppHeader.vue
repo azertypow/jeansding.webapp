@@ -5,7 +5,9 @@
       <router-link to="/"       class="v-app-header__title__left jd-font-xxl">Inventory</router-link>
       <div                      class="v-app-header__title__center jd-font-xxl">Jeansdinge</div>
       <router-link to="/media"  class="v-app-header__title__right jd-font-xxl">Media</router-link>
-      <div class="v-app-header__ui"></div>
+      <div class="v-app-header__ui">
+        <img alt="icon"  src="../assets/icon.jpg" class="v-app-header__ui__icon">
+      </div>
     </div>
 
   </div>
@@ -68,7 +70,6 @@ export default defineComponent({
 .v-app-header__ui {
   width:  var(--v-app-header--ui-size);
   height: var(--v-app-header--ui-size);
-  background-color: var(--jd-color--main);
   border-radius: 100%;
   position: absolute;
   top: 50%;
@@ -95,4 +96,19 @@ export default defineComponent({
     );
   }
 }
+
+.v-app-header__ui__icon {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: .5rem;
+  box-sizing: border-box;
+  transition: transform 500ms ease-in-out;
+  transform: rotateZ(-20deg);
+
+  .is-media & {
+    transform: rotateZ(20deg);
+  }
+}
+
 </style>
