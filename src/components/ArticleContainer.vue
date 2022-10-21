@@ -2,7 +2,7 @@
   <div class="v-article-container">
     <h3>Title</h3>
     <h5>Subtitle</h5>
-    <img src="/" alt="article cover" class="v-article-container__img">
+    <img src="#" alt="article cover" class="v-article-container__img">
   </div>
 </template>
 

@@ -11,7 +11,10 @@ import {stateStore} from "@/stores/stateStore"
 
 export default defineComponent({
   props: {
-    name: String,
+    name: {
+      type: String,
+      required: true,
+    },
   },
 
   data() {
