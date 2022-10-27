@@ -16,6 +16,24 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Denim';
+  font-weight: 500;
+  src:
+          url('./DP_order_136359/WEB/Denim-Medium.woff2'),
+          url('./DP_order_136359/WEB/Denim-Medium.woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Denim';
+  font-weight: 500;
+  src:
+          url('./DP_order_136359/WEB/Denim-MediumItalic.woff2'),
+          url('./DP_order_136359/WEB/Denim-MediumItalic.woff');
+  font-style: italic;
+}
+
 
 .jd-font-xxl {
   font-size: 1.8rem;

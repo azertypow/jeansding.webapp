@@ -22,12 +22,12 @@
         @mouseleave="hiddeImagePrevious()"
     >
       <div
-          class="v-list-item__coll jd-with-gutter"
+          class="v-list-item--id v-list-item__coll jd-with-gutter"
       >
         {{ dataTag.id }}
       </div>
       <div
-          class="v-list-item__coll jd-with-gutter"
+          class="v-list-item--title v-list-item__coll jd-with-gutter"
       >
         {{ dataTag.title }}
       </div>
@@ -231,6 +231,11 @@ export default defineComponent({
   transform: translate(0, -2rem);
   opacity: 0;
   //max-height: 0;
+}
+
+.v-list-item--id,
+.v-list-item--title {
+  font-weight: 500;
 }
 
 </style>

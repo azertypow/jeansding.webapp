@@ -33,6 +33,8 @@ export default defineComponent({
   padding: .5rem;
   background-color: var(--jd-color--white);
   color: inherit;
+  font-size: .8rem;
+  line-height: 1rem;
 
   &:hover {
     border-left: solid currentColor;
