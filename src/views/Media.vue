@@ -1,14 +1,16 @@
 <template>
   <div class="v-media">
     <p>content right</p>
+    <vimeo-player></vimeo-player>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue"
+import VimeoPlayer from "@/components/VimeoPlayer.vue"
 
 export default defineComponent({
-
+  components: {VimeoPlayer},
   computed: {
     sortedArticle() {
       /**
