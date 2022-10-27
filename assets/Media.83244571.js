@@ -1,0 +1,1 @@
+import{d as e,_ as t,o,c as s,a as n}from"./index.70a07d1f.js";const c=e({computed:{sortedArticle(){}}});const _={class:"v-media"},a=n("p",null,"content right",-1),d=[a];function r(i,p,l,u,f,m){return o(),s("div",_,d)}const v=t(c,[["render",r]]);export{v as default};
