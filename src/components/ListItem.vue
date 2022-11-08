@@ -158,7 +158,6 @@ export default defineComponent({
 
   .is-open & {
     margin-bottom: 1rem;
-    border-bottom: none;
   }
 
   > .v-list-item__coll {

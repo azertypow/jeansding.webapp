@@ -37,7 +37,6 @@ export default defineComponent({
   line-height: 1rem;
 
   &:hover {
-    border-left: solid currentColor;
     background-color: #ebebeb;
   }
 }
