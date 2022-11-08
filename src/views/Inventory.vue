@@ -1,38 +1,44 @@
 <template>
   <div class="v-inventory">
 
-    <div>
+    <div
+        v-if="globalState.apiProjects.symposium"
+    >
       <h4>text</h4>
-      <h3>FeansDinge in the move</h3>
-      <h5>Katharina Hohmann</h5>
+      <h3>{{ globalState.apiProjects.symposium.description_title }}</h3>
+      <h5>{{ globalState.apiProjects.symposium.description_author }}</h5>
 
-      <p
-       >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias aut eos, id impedit in ipsa itaque
-        laboriosam magnam magni maxime mollitia necessitatibus nobis non placeat quaerat, quisquam tenetur vitae?
-        <br><span>…</span>
-      </p>
+      <div
+          v-html="cleanedIntroSymposiumForAside"
+      ></div>
     </div>
 
-    <h4>Symposium</h4>
-    <div
-      v-for="article of Array(5)"
+    <template
+        v-if="globalState.apiProjects.symposium"
     >
-      <article-container></article-container>
-    </div>
+      <h4>Symposium</h4>
+      <div
+        v-for="article of globalState.apiProjects.symposium.children"
+      >
+        <article-container
+            :article-data="article"
+        ></article-container>
+      </div>
+    </template>
 
-    <h4>Artist video</h4>
-    <div
-        v-for="article of Array(5)"
-    >
-      <article-container></article-container>
-    </div>
+<!--    <h4>Artist video</h4>-->
+<!--    <div-->
+<!--        v-for="article of Array(5)"-->
+<!--    >-->
+<!--      <article-container></article-container>-->
+<!--    </div>-->
 
-    <h4>Denim pop book</h4>
-    <div
-        v-for="article of Array(5)"
-    >
-      <article-container></article-container>
-    </div>
+<!--    <h4>Denim pop book</h4>-->
+<!--    <div-->
+<!--        v-for="article of Array(5)"-->
+<!--    >-->
+<!--      <article-container></article-container>-->
+<!--    </div>-->
 
   </div>
 </template>
@@ -41,9 +47,30 @@
 import {defineComponent} from "vue"
 import ListContainer from "@/components/ListContainer.vue"
 import ArticleContainer from "@/components/ArticleContainer.vue"
+import {stateStore} from "@/stores/stateStore"
+import {cleanIntroHTML} from "@/Utils/cleanIntroHTML"
 
 export default defineComponent({
   components: {ArticleContainer, ListContainer},
+
+  data() {
+    return {
+      globalState: stateStore(),
+    }
+  },
+
+  computed: {
+    cleanedIntroSymposiumForAside(): string {
+
+      const firstBlockHtml = Object.values(this.globalState.apiProjects
+          .symposium
+          .text)[0]
+      || '<p>continu to read</p>'
+
+      return  cleanIntroHTML(firstBlockHtml) + '<p>…</p>'
+    }
+  },
+
 })</script>
 
 <style lang="scss">

@@ -18,7 +18,29 @@ export namespace Api {
     img:            {[key: string]: IImage}
   }
 
+  export interface IProjects {
+    "symposium": {
+      "description_title":    string
+      "description_subtitle": string
+      "description_author":   string
+      "text":                 {[key: string]: string}
+      "children":             {[key: string]: IArticle}
+    }
+    "artist-videos": ""
+    "articles":      ""
+    "projects":      ""
+  }
+
   export interface IImage {
     mediaUrl: string
+  }
+
+  export interface IArticle {
+    title: string,
+    "vimeoLink": string,
+    "author": string,
+    "category": string,
+    "description": string,
+    "article_content": {[key: string]: string}
   }
 }
