@@ -41,7 +41,7 @@ export default defineComponent({
 
 <style lang="scss">
 .v-app {
-  padding-top: 4rem;
+  padding-top: 5rem;
   height: 100%;
   box-sizing: border-box;
 
@@ -69,6 +69,7 @@ export default defineComponent({
 }
 
 .v-app__body__left {
+  padding-left: 1rem;
   padding-right: .5rem;
   width: 75%;
   transition: width 500ms ease-in-out;
@@ -95,12 +96,11 @@ export default defineComponent({
 .v-app__body__right {
   color: var(--jd-color--secondary);
   width: 25%;
-  padding-left: .5rem;
-  padding-right: 1rem;
   box-sizing: border-box;
   padding-bottom:  4rem;
   height: 100%;
   overflow: scroll;
+  transition: width 500ms ease-in-out;
 
   .is-media & {
     width: 75%;

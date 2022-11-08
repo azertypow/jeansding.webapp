@@ -18,6 +18,23 @@ a {
 
 }
 
+button {
+  color: inherit;
+  border: solid 1px var(--jd-color--secondary);
+  background: transparent;
+  border-radius: 3em;
+  display: inline-block;
+  padding: 0 .5rem;
+  font-size: inherit;
+  line-height: inherit;
+  cursor: pointer;
+
+  &.is-active {
+    color: white;
+    background: var(--jd-color--secondary);
+  }
+}
+
 // vuetransition
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;

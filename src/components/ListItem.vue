@@ -109,7 +109,7 @@ export default defineComponent({
       window.setTimeout(() => {
         document.querySelector('.v-app__body__left')?.scrollTo({
           behavior: 'smooth',
-          top: this.$el.offsetTop - 80,
+          top: this.$el.offsetTop - 100,
         })
       }, 150)
     },
@@ -155,6 +155,7 @@ export default defineComponent({
   background: white;
   z-index: 1;
   position: relative;
+
 
   .is-open & {
     margin-bottom: 1rem;
