@@ -4,9 +4,9 @@
         class="v-media__header"
     >
       <button
-          v-for="(value, key) in globalState.apiProjects"
-          :class="{'is-active': key === 'symposium'}"
-      >{{key}}</button>
+          v-for="value in globalState.apiProjects"
+          :class="{'is-active': value.title === 'symposium'}"
+      >{{value.title}}</button>
     </header>
 
     <main

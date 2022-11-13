@@ -20,15 +20,22 @@ export namespace Api {
 
   export interface IProjects {
     "symposium": {
+      "title":                string
       "description_title":    string
       "description_subtitle": string
       "description_author":   string
       "text":                 {[key: string]: string}
       "children":             {[key: string]: IArticle}
     }
-    "artist-videos": ""
-    "articles":      ""
-    "projects":      ""
+    "artist-videos": {
+      "title":                string
+    }
+    "articles":      {
+      "title":                string
+    }
+    "projects":      {
+      "title":                string
+    }
   }
 
   export interface IImage {
