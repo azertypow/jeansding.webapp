@@ -10,6 +10,9 @@
           class="jd-button"
       >{{value.title}}</router-link>
     </header>
+
+    <h1>{{projectSection}}/{{articleUid}}</h1>
+
   </div>
 </template>
 
@@ -26,6 +29,15 @@ export default defineComponent({
   }},
 
   computed: {
+
+    projectSection(): string {
+      return this.$route.params.projectSection as string
+    },
+
+    articleUid(): string {
+      return this.$route.params.articleUid as string
+    },
+
     currentSectionUID():
         "symposium" |
         "artist-videos" |
@@ -43,5 +55,20 @@ export default defineComponent({
 
 <style lang="scss">
 .v-article {
+
+  .v-article__header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-left: .5rem;
+    padding-rigt: .5rem;
+
+    > button, .jd-button {
+      margin-left: .5rem;
+      margin-right: .5rem;
+    }
+  }
+
 }
 </style>

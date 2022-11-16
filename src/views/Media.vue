@@ -90,38 +90,38 @@ export default defineComponent({
 
 <style lang="scss">
 .v-media {
-}
 
-.v-media__header {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  box-sizing: border-box;
-  padding-left: .5rem;
-  padding-rigt: .5rem;
+  .v-media__header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-left: .5rem;
+    padding-rigt: .5rem;
 
-  > button, .jd-button {
-    margin-left:  .5rem;
-    margin-right: .5rem;
+    > button, .jd-button {
+      margin-left: .5rem;
+      margin-right: .5rem;
+    }
   }
-}
 
-.v-media__intro {
-  box-sizing: border-box;
-  padding-left: .5rem;
-  padding-right: .5rem;
-}
+  .v-media__intro {
+    box-sizing: border-box;
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
 
-.v-media__item {
-  display: flex;
-  flex-wrap: wrap;
-}
+  .v-media__item {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-.v-media__item__grid {
-  width: calc(100% / 4);
-  box-sizing: border-box;
-  padding-left: .5rem;
-  padding-right: .5rem;
+  .v-media__item__grid {
+    width: calc(100% / 4);
+    box-sizing: border-box;
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
 }
 
 </style>
