@@ -21,6 +21,11 @@ const router = createRouter({
           name: ':projectSection',
           component: () => import('../views/Media.vue'),
         },
+        {
+          path: '/projects/:projectSection/:articleUid',
+          name: ':projectSection/:articleUid',
+          component: () => import('../views/Article.vue'),
+        },
       ],
 
     }

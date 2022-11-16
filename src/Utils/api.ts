@@ -40,6 +40,7 @@ export namespace Api {
   }
 
   export interface IArticle {
+    parentUid: string,
     uid: string
     title: string,
     subtitle: string,
