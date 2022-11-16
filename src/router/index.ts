@@ -13,10 +13,15 @@ const router = createRouter({
     {
       path: '/projects',
       name: 'projects',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/Media.vue')
+      redirect: '/projects/symposium',
+
+      children: [
+        {
+          path: '/projects/:projectSection',
+          name: ':projectSection',
+          component: () => import('../views/Media.vue'),
+        },
+      ],
 
     }
   ]
@@ -24,7 +29,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
 
-  document.querySelector('html')!.className = `is-${to.name?.toString() || 'null'}`
+  document.querySelector('html')!.className = to.name === 'inventory' ? 'is-inventory' : 'is-projects'
 
   stateStore().currentOpenObject = null
 

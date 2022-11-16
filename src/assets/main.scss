@@ -18,7 +18,8 @@ a {
 
 }
 
-button {
+button,
+.jd-button {
   color: inherit;
   border: solid 1px var(--jd-color--secondary);
   background: transparent;
@@ -28,6 +29,7 @@ button {
   font-size: inherit;
   line-height: inherit;
   cursor: pointer;
+  font-family: 'Denim', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
   &.is-active {
     color: white;

@@ -3,10 +3,12 @@
     <header
         class="v-media__header"
     >
-      <button
+      <router-link
           v-for="value in globalState.apiProjects"
-          :class="{'is-active': value.title === 'symposium'}"
-      >{{value.title}}</button>
+          :class="{'is-active': value.title.toLowerCase() === $route.params.projectSection}"
+          :to="value.title.toLowerCase()"
+          class="jd-button"
+      >{{value.title}}</router-link>
     </header>
 
     <main
@@ -83,7 +85,7 @@ export default defineComponent({
   padding-left: .5rem;
   padding-rigt: .5rem;
 
-  > button {
+  > button, .jd-button {
     margin-left:  .5rem;
     margin-right: .5rem;
   }
