@@ -6,7 +6,7 @@ export namespace Api {
     title:          string
     id:             string
     text:           string
-    categories:     string[]
+    category:     string[]
     infoObject:     string
     infoMaterial:   string[]
     infoDate:       string
@@ -40,6 +40,7 @@ export namespace Api {
   }
 
   export interface IArticle {
+    uid: string
     title: string,
     subtitle: string,
     "vimeoLink": string,

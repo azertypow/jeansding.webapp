@@ -1,5 +1,8 @@
 <template>
-  <div class="v-article-container">
+  <router-link
+      class="v-article-container"
+      :to="'/projects/' + articleData.uid"
+  >
     <h3>{{articleData.title}}</h3>
     <h5>{{articleData.author}}</h5>
     <img
@@ -11,7 +14,7 @@
         class="v-article-container__intro"
         v-html="cleanedIntro"
     ></div>
-  </div>
+  </router-link>
 </template>
 
 <script lang="ts">
