@@ -1,1 +1,0 @@
-import{d as e,_ as t,o as n,c as o}from"./index.f2348f74.js";const r=e({props:{name:String,msg:{type:String,required:!0}}});const s={class:"v-article"};function c(_,a,i,p,l,d){return n(),o("div",s," hello ")}const f=t(r,[["render",c]]);export{f as default};
