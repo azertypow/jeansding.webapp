@@ -12,7 +12,7 @@
     </header>
 
     <main
-        v-if=""
+        v-if="globalState.apiProjects[currentSectionUID]"
     >
       <div
           class="v-media__intro"
