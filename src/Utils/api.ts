@@ -44,6 +44,7 @@ export namespace Api {
 
   export interface IArticle {
     title: string,
+    subtitle: string,
     "vimeoLink": string,
     "author": string,
     "category": string,
