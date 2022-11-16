@@ -6,7 +6,7 @@
       <router-link
           v-for="(value, key) in globalState.apiProjects"
           :class="{'is-active': key === currentSectionUID}"
-          :to="key"
+          :to="'/projects/' + key"
           class="jd-button"
       >{{value.title}}</router-link>
     </header>
