@@ -6,7 +6,7 @@ export namespace Api {
     title:          string
     id:             string
     text:           string
-    tags:           string[]
+    categories:     string[]
     infoObject:     string
     infoMaterial:   string[]
     infoDate:       string
@@ -19,38 +19,20 @@ export namespace Api {
   }
 
   export interface IProjects {
-    "symposium": {
-      "title":                string
-      "description_title":    string
-      "description_subtitle": string
-      "description_author":   string
-      "text":                 {[key: string]: string}
-      "children":             {[key: string]: IArticle}
-    }
-    "artist-videos": {
-      "title":                string
-      "description_title":    string
-      "description_subtitle": string
-      "description_author":   string
-      "text":                 {[key: string]: string}
-      "children":             {[key: string]: IArticle}
-    }
-    "articles":      {
-      "title":                string
-      "description_title":    string
-      "description_subtitle": string
-      "description_author":   string
-      "text":                 {[key: string]: string}
-      "children":             {[key: string]: IArticle}
-    }
-    "projects": {
-      "title":                string
-      "description_title":    string
-      "description_subtitle": string
-      "description_author":   string
-      "text":                 {[key: string]: string}
-      "children":             {[key: string]: IArticle}
-    }
+    "symposium": IProjectsSubpage
+
+    "artist-videos":  IProjectsSubpage
+    "articles":       IProjectsSubpage
+    "projects":       IProjectsSubpage
+  }
+
+  export interface IProjectsSubpage {
+    "title":                string
+    "description_title":    string
+    "description_subtitle": string
+    "description_author":   string
+    "text":                 {[key: string]: string}
+    "children":             {[key: string]: IArticle}
   }
 
   export interface IImage {

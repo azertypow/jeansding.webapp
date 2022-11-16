@@ -5,23 +5,23 @@
     >
       <router-link
           v-for="(value, key) in globalState.apiProjects"
-          :class="{'is-active': key === $route.params.projectSection}"
+          :class="{'is-active': key === currentSectionUID}"
           :to="key"
           class="jd-button"
       >{{value.title}}</router-link>
     </header>
 
     <main
-        v-if="globalState.apiProjects[$route.params.projectSection]"
+        v-if=""
     >
       <div
           class="v-media__intro"
       >
-        <h3>{{ globalState.apiProjects[$route.params.projectSection].description_title }}</h3>
-        <h5>{{ globalState.apiProjects[$route.params.projectSection].description_author }}</h5>
+        <h3>{{ globalState.apiProjects[currentSectionUID].description_title }}</h3>
+        <h5>{{ globalState.apiProjects[currentSectionUID].description_author }}</h5>
 
         <div
-            v-for="block of globalState.apiProjects[$route.params.projectSection].text"
+            v-for="block of globalState.apiProjects[currentSectionUID].text"
         >
           <div v-html="block" ></div>
         </div>
@@ -32,7 +32,7 @@
       >
         <div
             class="v-media__item__grid"
-            v-for="item of globalState.apiProjects[$route.params.projectSection].children"
+            v-for="item of globalState.apiProjects[currentSectionUID].children"
         >
           <article-container
               style="border-bottom: none"
@@ -48,27 +48,42 @@
 import {defineComponent} from "vue"
 import {stateStore} from "@/stores/stateStore"
 import ArticleContainer from "@/components/ArticleContainer.vue"
+import type {Api} from "@/Utils/api"
 
 export default defineComponent({
   components: {ArticleContainer},
 
   data(){return {
 
-
-
     globalState: stateStore(),
 
   }},
 
   computed: {
-    sortedArticle() {
-      /**
-       * todo: trier par importance
-       * moins l'articles a de relation avec les objet, plus il a une valeur élevé.
-       * un article lié a un seul objet plus fort en importance
-       * qu'un article lié a 2 objets
-       * */
-    }
+    currentSectionUID():
+        "symposium" |
+        "artist-videos" |
+        "articles" |
+        "projects" {
+      return this.$route.params.projectSection as string as
+          "symposium" |
+          "artist-videos" |
+          "articles" |
+          "projects"
+    },
+
+    currentProjectsSection(): Api.IProjectsSubpage | null {
+      return this.globalState.apiProjects[this.currentSectionUID]
+    },
+
+    // sortedArticle() {
+    //   /**
+    //    * todo: trier par importance
+    //    * moins l'articles a de relation avec les objet, plus il a une valeur élevé.
+    //    * un article lié a un seul objet plus fort en importance
+    //    * qu'un article lié a 2 objets
+    //    * */
+    // }
   },
 
 })</script>

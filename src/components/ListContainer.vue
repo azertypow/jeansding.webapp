@@ -29,7 +29,7 @@ export default defineComponent({
         let containMinOneTagOfFilteredTags = false
 
         this.globalState.activatedFilterTag.forEach(tagFiltered => {
-          if(value.tags.includes(tagFiltered)) containMinOneTagOfFilteredTags = true
+          if(value.categories.includes(tagFiltered)) containMinOneTagOfFilteredTags = true
         })
 
         return containMinOneTagOfFilteredTags

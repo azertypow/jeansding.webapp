@@ -38,7 +38,7 @@
             v-if="$route.path === '/'"
         >
           <tag
-              v-for="tagName of dataTag.tags"
+              v-for="tagName of dataTag.categories"
               :name="tagName"
           ></tag>
         </div>
