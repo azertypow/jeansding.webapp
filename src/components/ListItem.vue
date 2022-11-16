@@ -212,6 +212,15 @@ export default defineComponent({
 
 .v-list-item__body__right {
   width: calc(100% / 3);
+
+  > ul {
+    padding: 0;
+
+    li {
+      display: block;
+      padding: 0;
+    }
+  }
 }
 
 .item__body-enter-active {
