@@ -167,7 +167,7 @@ export default defineComponent({
     white-space: nowrap;
   }
 
-  .is-media & > .v-list-item__coll {
+  .is-projects & > .v-list-item__coll {
     width: calc(100%);
 
     &:first-child {
@@ -187,7 +187,7 @@ export default defineComponent({
   z-index: 10;
   pointer-events: none;
 
-  .is-media & {
+  .is-projects & {
     width: calc( 100% - 4rem);
   }
 }

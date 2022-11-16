@@ -88,7 +88,7 @@ export default defineComponent({
     border-radius: 1rem;
   }
 
-  .is-media & {
+  .is-projects & {
     width: 25%;
   }
 }
@@ -102,7 +102,7 @@ export default defineComponent({
   overflow: scroll;
   transition: width 500ms ease-in-out;
 
-  .is-media & {
+  .is-projects & {
     width: 75%;
   }
 

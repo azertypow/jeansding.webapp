@@ -26,7 +26,7 @@ svg {
   transition: transform 500ms ease-in-out;
   transform: rotateZ(-20deg);
 
-  .is-media & {
+  .is-projects & {
     transform: rotateZ(20deg);
   }
 }
