@@ -4,24 +4,24 @@
         class="v-media__header"
     >
       <router-link
-          v-for="value in globalState.apiProjects"
-          :class="{'is-active': value.title.toLowerCase() === $route.params.projectSection}"
-          :to="value.title.toLowerCase()"
+          v-for="(value, key) in globalState.apiProjects"
+          :class="{'is-active': key === $route.params.projectSection}"
+          :to="key"
           class="jd-button"
       >{{value.title}}</router-link>
     </header>
 
     <main
-        v-if="globalState.apiProjects.symposium"
+        v-if="globalState.apiProjects[$route.params.projectSection]"
     >
       <div
           class="v-media__intro"
       >
-        <h3>{{ globalState.apiProjects.symposium.description_title }}</h3>
-        <h5>{{ globalState.apiProjects.symposium.description_author }}</h5>
+        <h3>{{ globalState.apiProjects[$route.params.projectSection].description_title }}</h3>
+        <h5>{{ globalState.apiProjects[$route.params.projectSection].description_author }}</h5>
 
         <div
-            v-for="block of globalState.apiProjects.symposium.text"
+            v-for="block of globalState.apiProjects[$route.params.projectSection].text"
         >
           <div v-html="block" ></div>
         </div>
@@ -32,7 +32,7 @@
       >
         <div
             class="v-media__item__grid"
-            v-for="item of globalState.apiProjects.symposium.children"
+            v-for="item of globalState.apiProjects[$route.params.projectSection].children"
         >
           <article-container
               style="border-bottom: none"
