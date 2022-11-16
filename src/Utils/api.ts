@@ -29,12 +29,27 @@ export namespace Api {
     }
     "artist-videos": {
       "title":                string
+      "description_title":    string
+      "description_subtitle": string
+      "description_author":   string
+      "text":                 {[key: string]: string}
+      "children":             {[key: string]: IArticle}
     }
     "articles":      {
       "title":                string
+      "description_title":    string
+      "description_subtitle": string
+      "description_author":   string
+      "text":                 {[key: string]: string}
+      "children":             {[key: string]: IArticle}
     }
-    "projects":      {
+    "projects": {
       "title":                string
+      "description_title":    string
+      "description_subtitle": string
+      "description_author":   string
+      "text":                 {[key: string]: string}
+      "children":             {[key: string]: IArticle}
     }
   }
 
