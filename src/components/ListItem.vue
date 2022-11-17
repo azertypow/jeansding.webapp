@@ -35,7 +35,7 @@
       <transition name="slide-fade">
         <div
             class="v-list-item__coll jd-with-gutter"
-            v-if="$route.path === '/'"
+            v-show="$route.path === '/'"
         >
           <tag
               v-for="tagName of dataTag.category"
