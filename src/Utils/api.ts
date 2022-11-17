@@ -1,5 +1,5 @@
 export namespace Api {
-  export type ItemList = IItem[]
+  export type ItemList = {[key: string]: IItem}
 
   export interface IItem {
     slug:           string

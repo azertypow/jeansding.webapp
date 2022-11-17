@@ -15,8 +15,8 @@ export const stateStore = defineStore('stateStore', {
   },
 
   actions: {
-    // increment() {
-    //   this.count++
-    // },
+    pushTag(value: string) {
+      this.activatedFilterTag.push(value)
+    },
   },
 })

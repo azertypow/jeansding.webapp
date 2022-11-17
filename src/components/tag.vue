@@ -1,7 +1,7 @@
 <template>
   <button
       class="v-tag"
-      @click="stateStore.activatedFilterTag.push(name)"
+      @click="pushTag"
   >{{name}}</button>
 </template>
 
@@ -20,6 +20,12 @@ export default defineComponent({
   data() {
     return {
       stateStore: stateStore()
+    }
+  },
+
+  methods: {
+    pushTag() {
+      this.stateStore.pushTag(this.name)
     }
   },
 

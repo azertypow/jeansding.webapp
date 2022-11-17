@@ -1,5 +1,9 @@
 <template>
   <div class="v-list-container">
+    <div
+        class="v-list-container__tag-filter"
+    >activated tags: <span v-for="tag of activatedFilterTag">{{tag}},</span>
+    </div>
     <list-item
         v-for="item of itemList"
         :dataTag="item"
@@ -22,9 +26,9 @@ export default defineComponent({
   },
 
   computed: {
-    itemList(): Api.ItemList {
-      if(this.globalState.activatedFilterTag.length === 0) return this.globalState.apiData
-      return this.globalState.apiData.filter(value => {
+    itemList(): Api.IItem[] {
+      if(this.globalState.activatedFilterTag.length === 0) return Object.values( this.globalState.apiData )
+      return Object.values(this.globalState.apiData).filter(value => {
 
         let containMinOneTagOfFilteredTags = false
 
@@ -34,7 +38,11 @@ export default defineComponent({
 
         return containMinOneTagOfFilteredTags
       })
-    }
+    },
+
+    activatedFilterTag(): string[] {
+      return this.globalState.activatedFilterTag
+    },
   },
 
 })</script>
