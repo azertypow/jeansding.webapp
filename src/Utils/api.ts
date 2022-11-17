@@ -19,11 +19,11 @@ export namespace Api {
   }
 
   export interface IProjects {
-    "symposium": IProjectsSubpage
-
+    "symposium":      IProjectsSubpage
     "artist-videos":  IProjectsSubpage
     "articles":       IProjectsSubpage
     "projects":       IProjectsSubpage
+    [key: string]:    IProjectsSubpage
   }
 
   export interface IProjectsSubpage {
