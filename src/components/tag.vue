@@ -41,6 +41,7 @@ export default defineComponent({
   color: inherit;
   font-size: .8rem;
   line-height: 1rem;
+  text-transform: capitalize;
 
   &:hover {
     background-color: #ebebeb;
