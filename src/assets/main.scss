@@ -20,6 +20,7 @@ a {
 
 button,
 .jd-button {
+  user-select: none;
   color: inherit;
   border: solid 1px var(--jd-color--secondary);
   background: transparent;

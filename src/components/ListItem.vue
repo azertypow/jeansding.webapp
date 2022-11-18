@@ -1,5 +1,6 @@
 <template>
   <div
+      v-show="isVisible"
       class="v-list-item"
       :class="{
         'is-open': isOpen,
@@ -133,7 +134,12 @@ export default defineComponent({
   computed: {
     isOpen(): boolean {
       return this.dataTag.slug === this.globalState.currentOpenObject?.slug
-    }
+    },
+
+    isVisible(): boolean {
+      if(this.globalState.activatedFilterTag.length < 1) return true
+      return this.globalState.activatedFilterTag.every(category=> this.dataTag.category.includes(category))
+    },
   },
 
 })</script>

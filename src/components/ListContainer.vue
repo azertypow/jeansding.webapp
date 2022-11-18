@@ -1,13 +1,7 @@
 <template>
   <div class="v-list-container">
-    <div
-        class="v-list-container__tag-filter"
-    >activated tags: <span
-        class="jd-button"
-        v-for="tag of activatedFilterTag"
-        @click="removeTag(tag)"
-    >{{tag}} ✗</span>
-    </div>
+
+    <search-bar></search-bar>
 
     <div
         class="v-list-container__coll-header"
@@ -18,7 +12,7 @@
     </div>
 
     <list-item
-        v-for="item of itemList"
+        v-for="item of globalState.apiData"
         :dataTag="item"
     ></list-item>
   </div>
@@ -29,36 +23,30 @@ import {defineComponent} from "vue"
 import {stateStore} from "@/stores/stateStore"
 import type {Api} from "@/Utils/api"
 import ListItem from "@/components/ListItem.vue"
+import SearchBar from "@/components/SearchBar.vue";
 
 export default defineComponent({
-  components: {ListItem},
+  components: {SearchBar, ListItem},
   data() {
     return {
-      globalState: stateStore()
-    }
-  },
-
-  methods: {
-    removeTag(tag: string) {
-      console.log(tag)
-      this.globalState.removeTag(tag)
+      globalState: stateStore(),
     }
   },
 
   computed: {
-    itemList(): Api.IItem[] {
-      if(this.globalState.activatedFilterTag.length === 0) return Object.values( this.globalState.apiData )
-      return Object.values(this.globalState.apiData).filter(value => {
-
-        let containMinOneTagOfFilteredTags = false
-
-        this.globalState.activatedFilterTag.forEach(tagFiltered => {
-          if(value.category.includes(tagFiltered)) containMinOneTagOfFilteredTags = true
-        })
-
-        return containMinOneTagOfFilteredTags
-      })
-    },
+    // itemList(): Api.IItem[] {
+    //   if(this.globalState.activatedFilterTag.length === 0) return Object.values( this.globalState.apiData )
+    //   return Object.values(this.globalState.apiData).filter(value => {
+    //
+    //     let containMinOneTagOfFilteredTags = false
+    //
+    //     this.globalState.activatedFilterTag.forEach(tagFiltered => {
+    //       if(value.category.includes(tagFiltered)) containMinOneTagOfFilteredTags = true
+    //     })
+    //
+    //     return containMinOneTagOfFilteredTags
+    //   })
+    // },
 
     activatedFilterTag(): string[] {
       return this.globalState.activatedFilterTag
