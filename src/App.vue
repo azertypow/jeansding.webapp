@@ -66,6 +66,7 @@ export default defineComponent({
   display: flex;
   flex-wrap: nowrap;
   height: 100%;
+  padding-right: .5rem;
 }
 
 .v-app__body__left {

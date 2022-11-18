@@ -18,5 +18,14 @@ export const stateStore = defineStore('stateStore', {
     pushTag(value: string) {
       this.activatedFilterTag.push(value)
     },
+    removeTag(value: string) {
+      const indexOfMatchedTag = this.activatedFilterTag.findIndex((arrayValue) => {
+        return arrayValue === value
+      })
+
+      console.log(indexOfMatchedTag)
+
+      this.activatedFilterTag.splice(indexOfMatchedTag, indexOfMatchedTag + 1)
+    },
   },
 })

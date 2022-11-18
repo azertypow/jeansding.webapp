@@ -2,7 +2,11 @@
   <div class="v-list-container">
     <div
         class="v-list-container__tag-filter"
-    >activated tags: <span v-for="tag of activatedFilterTag">{{tag}},</span>
+    >activated tags: <span
+        class="jd-button"
+        v-for="tag of activatedFilterTag"
+        @click="removeTag(tag)"
+    >{{tag}} ✗</span>
     </div>
     <list-item
         v-for="item of itemList"
@@ -22,6 +26,13 @@ export default defineComponent({
   data() {
     return {
       globalState: stateStore()
+    }
+  },
+
+  methods: {
+    removeTag(tag: string) {
+      console.log(tag)
+      this.globalState.removeTag(tag)
     }
   },
 
