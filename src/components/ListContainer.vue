@@ -8,6 +8,15 @@
         @click="removeTag(tag)"
     >{{tag}} ✗</span>
     </div>
+
+    <div
+        class="v-list-container__coll-header"
+    >
+      <div>NUMBER</div>
+      <div>ITEM</div>
+      <div>CATEGORIES</div>
+    </div>
+
     <list-item
         v-for="item of itemList"
         :dataTag="item"
@@ -61,5 +70,14 @@ export default defineComponent({
 <style lang="scss">
 .v-list-container {
   overflow: hidden;
+
+  .v-list-container__coll-header {
+    display: flex;
+
+    > * {
+      padding: 0 1rem;
+      width: calc(100% / 3);
+    }
+  }
 }
 </style>
