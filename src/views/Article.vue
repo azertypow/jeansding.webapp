@@ -78,7 +78,7 @@ export default defineComponent({
 
       if(! this.currentArticle) return null
 
-      const vimeoUrl = 'https://vimeo.com/api/oembed.json?url=' + encodeURI(this.currentArticle.vimeoLink)
+      const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&portrait=0&color=025BFA&url=' + encodeURI(this.currentArticle.vimeoLink)
 
       this.video = (await (await window.fetch(vimeoUrl)).json() as IVimeoOembed).html
     }
