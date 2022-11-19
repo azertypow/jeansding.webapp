@@ -60,5 +60,8 @@ export default defineComponent({
 })</script>
 
 <style lang="scss">
-
+.v-inventory {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
 </style>
