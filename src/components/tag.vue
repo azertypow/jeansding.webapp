@@ -1,7 +1,7 @@
 <template>
   <button
       class="v-tag"
-      @click="pushTag"
+      @click.stop="pushTag"
   >{{name}}</button>
 </template>
 
@@ -25,7 +25,15 @@ export default defineComponent({
 
   methods: {
     pushTag() {
-      this.stateStore.pushTag(this.name)
+
+      document.querySelector('.v-app__body__left')?.scrollTo({
+        behavior: 'smooth',
+        top: 0,
+      })
+      window.setTimeout(() => {
+        this.stateStore.pushTag(this.name)
+      }, 500)
+
     }
   },
 
