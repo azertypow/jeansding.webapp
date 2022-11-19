@@ -6,7 +6,7 @@
       class="v-search-bar__text"
     >{{searchBarText}}</span>
     <span
-      class="jd-button is-active"
+      class="jd-button is-active v-search-bar__tag"
       v-for="tag of activatedFilterTag"
       @click="removeTag(tag)"
     >{{tag}} ✗</span>
@@ -58,6 +58,10 @@ export default defineComponent({
 
   .v-search-bar__text {
     opacity: .5;
+  }
+
+  .v-search-bar__tag {
+    text-transform: capitalize;
   }
 }
 </style>
