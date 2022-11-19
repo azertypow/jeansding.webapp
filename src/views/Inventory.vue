@@ -26,20 +26,6 @@
       </div>
     </template>
 
-<!--    <h4>Artist video</h4>-->
-<!--    <div-->
-<!--        v-for="article of Array(5)"-->
-<!--    >-->
-<!--      <article-container></article-container>-->
-<!--    </div>-->
-
-<!--    <h4>Denim pop book</h4>-->
-<!--    <div-->
-<!--        v-for="article of Array(5)"-->
-<!--    >-->
-<!--      <article-container></article-container>-->
-<!--    </div>-->
-
   </div>
 </template>
 
