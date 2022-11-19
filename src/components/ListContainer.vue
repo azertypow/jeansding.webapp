@@ -1,7 +1,11 @@
 <template>
   <div class="v-list-container">
 
-    <search-bar></search-bar>
+    <div
+        class="v-list-container__search-bar-box"
+    >
+      <search-bar></search-bar>
+    </div>
 
     <div
         class="v-list-container__coll-header"
@@ -58,6 +62,11 @@ export default defineComponent({
 <style lang="scss">
 .v-list-container {
   overflow: hidden;
+
+  .v-list-container__search-bar-box {
+    width: calc(100% / 6 * 4);
+    margin: 3rem auto 2rem;
+  }
 
   .v-list-container__coll-header {
     display: flex;

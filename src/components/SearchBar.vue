@@ -52,9 +52,7 @@ export default defineComponent({
   user-select: none;
   padding: .5rem;
   border-radius: 1rem;
-  width: calc(100% / 6 * 4);
   border: solid 1px var(--jd-color--secondary);
-  margin: 3rem auto 2rem;
 
   .v-search-bar__text {
     opacity: .5;
