@@ -16,6 +16,7 @@ export const stateStore = defineStore('stateStore', {
 
   actions: {
     pushTag(value: string) {
+      if( this.activatedFilterTag.includes( value ) ) return
       this.activatedFilterTag.push(value)
     },
     removeTag(value: string) {
