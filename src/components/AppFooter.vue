@@ -9,17 +9,38 @@
     <div
         class="v-app-footer__body__right"
     >
-      <div class="jd-with-gutter" style="white-space: nowrap">search item</div>
-      <div class="jd-with-gutter" style="white-space: nowrap">nav item</div>
+      <div
+          v-if="!searchIsOpen"
+          class="jd-with-gutter"
+          @click="searchIsOpen = true"
+      >
+        <img src="../assets/icons/search.svg" alt="search" class="v-app-footer__search-icon" >
+      </div>
+      <div
+          class="v-app-footer__search-bar"
+          v-if="searchIsOpen"
+      >
+        <search-bar></search-bar>
+      </div>
+      <div class="jd-with-gutter" style="white-space: nowrap">
+        <img src="../assets/icons/menu.svg" alt="menu" class="v-app-footer__menu" >
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue"
+import SearchBar from "@/components/SearchBar.vue";
 
 export default defineComponent({
+  components: {SearchBar},
 
+  data() {
+    return {
+      searchIsOpen: false,
+    }
+  },
 })</script>
 
 <style lang="scss">
@@ -36,5 +57,16 @@ export default defineComponent({
 .v-app-footer__body__left,
 .v-app-footer__body__right {
   display: flex;
+  align-items: center;
+}
+
+.v-app-footer__search-bar {
+  width: 20rem;
+}
+
+.v-app-footer__search-icon,
+.v-app-footer__menu {
+  display: block;
+  height: 1rem;
 }
 </style>
