@@ -28,7 +28,7 @@
         <div
             v-for="block of globalState.apiProjects[currentSectionUID].text"
             v-html="block"
-            class="v-media__intro-text jd-text-max-width-large"
+            class="v-media__intro-text jd-text-max-width-reg"
         >
         </div>
       </div>
@@ -131,10 +131,6 @@ export default defineComponent({
       h1, h2 {
         text-align: center;
         color: var(--jd-color--secondary);
-      }
-
-      * {
-        color: var(--jd-color--main);
       }
     }
   }

@@ -26,7 +26,7 @@
           class="v-article__content__header"
       >
         <div
-            class="v-article__content__description jd-text-max-width-large"
+            class="v-article__content__description jd-text-max-width-reg"
             v-html="currentArticle.description"
         ></div>
         <h1>{{currentArticle.title}}<template v-if="currentArticle.subtitle" ><br>{{currentArticle.subtitle}}</template></h1>
@@ -86,7 +86,7 @@ export default defineComponent({
 
       if(! this.currentArticle) return null
 
-      const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&portrait=0&&color=025BFA&url=' + encodeURI(this.currentArticle.vimeoLink)
+      const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&responsive=1&portrait=0&&color=025BFA&url=' + encodeURI(this.currentArticle.vimeoLink)
 
       this.video = (await (await window.fetch(vimeoUrl)).json() as IVimeoOembed).html
     }
@@ -130,13 +130,13 @@ export default defineComponent({
   padding: 0 .5rem;
 
   .v-article__content__vimeo-box {
-    margin-top: 1rem;
     width: 100%;
     box-sizing: border-box;
-    height: calc(100vh - 15rem);
     overflow: hidden;
     transition: border-radius .5s ease-out;
     border-radius: 1rem;
+    max-width: var(--js-max-width--reg);
+    margin: 1rem auto auto auto;
 
     &:hover {
       border-radius: .2rem;
@@ -151,7 +151,8 @@ export default defineComponent({
   }
 
   .v-article__content__header {
-    margin-top: 1rem;
+    margin: 1rem auto auto auto;
+    max-width: var(--js-max-width--reg);
 
     h1, h2 {
       text-align: center;
