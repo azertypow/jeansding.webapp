@@ -33,7 +33,7 @@
         {{ dataTag.title }}
       </div>
 
-      <transition name="slide-fade">
+<!--      <transition name="slide-fade">-->
         <div
             class="v-list-item__coll jd-with-gutter"
             v-show="$route.path === '/'"
@@ -43,7 +43,7 @@
               :name="tagName"
           ></tag>
         </div>
-      </transition>
+<!--      </transition>-->
     </div>
 
     <transition name="item__body">
@@ -161,6 +161,7 @@ export default defineComponent({
   background: white;
   z-index: 1;
   position: relative;
+  height: 2rem;
 
 
   .is-open & {

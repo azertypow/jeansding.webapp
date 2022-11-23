@@ -16,7 +16,11 @@
       <div
           class="v-app__body__right"
       >
-        <RouterView />
+        <router-view v-slot="{ Component }">
+          <transition name="transition-page">
+            <component :is="Component" />
+          </transition>
+        </router-view>
       </div>
     </div>
 
@@ -63,10 +67,9 @@ export default defineComponent({
 }
 
 .v-app__body {
-  display: flex;
-  flex-wrap: nowrap;
+  display: block;
   height: 100%;
-  padding-right: .5rem;
+  position: relative;
 }
 
 .v-app__body__left {
@@ -77,6 +80,11 @@ export default defineComponent({
   box-sizing: border-box;
   height: 100%;
   overflow: scroll;
+  background: var(--jd-color--white);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 
   &::-webkit-scrollbar {
     background: var(--jd-color--white);
@@ -100,7 +108,10 @@ export default defineComponent({
   padding-bottom:  50vh;
   height: 100%;
   overflow: scroll;
-  transition: width 500ms ease-in-out;
+  position: absolute;
+  right: 0;
+  top: 0;
+  //transition: width 500ms ease-in-out;
 
   .is-projects & {
     width: 75%;

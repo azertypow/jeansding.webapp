@@ -82,3 +82,14 @@ button,
   transform: translate(0, -.5rem);
   opacity: 0;
 }
+
+//// page
+.transition-page-leave-active,
+.transition-page-enter-active {
+  //transition: opacity .5s ease-in-out;
+}
+
+.transition-page-enter-from,
+.transition-page-leave-to {
+  opacity: 0;
+}
