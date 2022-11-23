@@ -2,6 +2,7 @@
   <div class="v-list-container">
 
     <div
+        v-if="$route.name === 'inventory'"
         class="v-list-container__search-bar-box"
     >
       <search-bar></search-bar>
@@ -9,6 +10,7 @@
 
     <div
         class="v-list-container__coll-header"
+        v-if="$route.name === 'inventory'"
     >
       <div>NUMBER</div>
       <div>ITEM</div>
