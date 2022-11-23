@@ -127,12 +127,15 @@ export default defineComponent({
     box-sizing: border-box;
     padding: 1rem;
     border-radius: 1rem;
+
+    .v-search-bar__tag {
+      margin-top: .25rem;
+      margin-right: .25rem;
+    }
   }
 
   .v-search-bar__tag {
     text-transform: capitalize;
-    margin-top: .25rem;
-    margin-right: .25rem;
   }
 
   &.tag-on-top {
@@ -140,11 +143,11 @@ export default defineComponent({
     .v-search-bar__list-of-tag {
       top: auto;
       bottom: 100%;
-    }
 
-    .v-search-bar__tag {
-      margin-top: 0;
-      margin-bottom: .25rem;
+      .v-search-bar__tag {
+        margin-top: 0;
+        margin-bottom: .25rem;
+      }
     }
   }
 }
