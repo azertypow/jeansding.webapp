@@ -75,7 +75,6 @@ export default defineComponent({
   width: 75%;
   transition: width 500ms ease-in-out;
   box-sizing: border-box;
-  padding-bottom:  50vh;
   height: 100%;
   overflow: scroll;
 

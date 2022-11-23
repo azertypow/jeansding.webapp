@@ -62,6 +62,7 @@ export default defineComponent({
 <style lang="scss">
 .v-list-container {
   overflow: hidden;
+  padding-bottom:  50vh;
 
   .v-list-container__search-bar-box {
     width: calc(100% / 6 * 4);
