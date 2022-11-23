@@ -78,7 +78,7 @@ export default defineComponent({
 
       if(! this.currentArticle) return null
 
-      const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&portrait=0&color=025BFA&url=' + encodeURI(this.currentArticle.vimeoLink)
+      const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&portrait=0&responsive=1&color=025BFA&url=' + encodeURI(this.currentArticle.vimeoLink)
 
       this.video = (await (await window.fetch(vimeoUrl)).json() as IVimeoOembed).html
     }
@@ -125,7 +125,13 @@ export default defineComponent({
     margin-top: 1rem;
     width: 100%;
     box-sizing: border-box;
-    height: calc(100vh - 15rem);
+    overflow: hidden;
+    transition: border-radius .5s ease-out;
+    border-radius: 1rem;
+
+    &:hover {
+      border-radius: .2rem;
+    }
 
     > * {
       display: block;
