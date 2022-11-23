@@ -97,7 +97,7 @@ export default defineComponent({
   color: var(--jd-color--secondary);
   width: 25%;
   box-sizing: border-box;
-  padding-bottom:  4rem;
+  padding-bottom:  50vh;
   height: 100%;
   overflow: scroll;
   transition: width 500ms ease-in-out;
