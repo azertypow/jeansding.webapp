@@ -22,6 +22,13 @@
         @mouseenter="showImagePrevious()"
         @mouseleave="hiddeImagePrevious()"
     >
+      <img
+          class="v-list-item__icon-video"
+          v-if="vimeoPlayerHTML && $route.path === '/'"
+          src="../assets/icons/play.svg"
+          alt="icon info: this item contain a video"
+      />
+
       <div
           class="v-list-item--id v-list-item__coll jd-with-gutter"
       >
@@ -75,6 +82,13 @@
             <li><strong>Material:</strong > {{dataTag.infoMaterial}}</li>
             <li><strong>Price:</strong    > {{dataTag.infoPrice}}</li>
           </ul>
+
+          <div
+              class="v-list-item__vimeo"
+              v-if="vimeoPlayerHTML"
+              v-html="vimeoPlayerHTML"
+          >
+          </div>
         </div>
 
       </div>
@@ -89,6 +103,7 @@ import type {PropType} from "vue"
 import type {Api} from "@/Utils/api"
 import Tag from "@/components/tag.vue"
 import {stateStore} from "@/stores/stateStore"
+import type {IVimeoOembed} from "@/Utils/vimeo";
 
 export default defineComponent({
   components: {Tag},
@@ -97,7 +112,14 @@ export default defineComponent({
     return {
       globalState: stateStore(),
       imagePreviousIsOpen: false,
+      vimeoPlayerHTML: null as string | null
     }
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      this.setVimeoPlayerHTML()
+    })
   },
 
   methods: {
@@ -122,6 +144,16 @@ export default defineComponent({
     hiddeImagePrevious() {
       this.imagePreviousIsOpen = false;
     },
+
+    async setVimeoPlayerHTML() {
+      if( ! this.dataTag.vimeoLink ) return
+
+      const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&portrait=0&color=025BFA&responsive=1&url=' + encodeURI(this.dataTag.vimeoLink)
+
+      this.vimeoPlayerHTML = (await (await window.fetch(vimeoUrl)).json() as IVimeoOembed).html
+
+    }
+
   },
 
   props: {
@@ -162,6 +194,13 @@ export default defineComponent({
   z-index: 1;
   position: relative;
   height: 2rem;
+
+  .v-list-item__icon-video {
+    position: absolute;
+    height: 1rem;
+    width: auto;
+    right: 0;
+  }
 
 
   .is-open & {
@@ -233,6 +272,16 @@ export default defineComponent({
 .v-list-item--id,
 .v-list-item--title {
   font-weight: 500;
+}
+
+.v-list-item__vimeo {
+  width: 100%;
+  position: relative;
+
+  > iframe {
+    width: 100%;
+    height: auto;
+  }
 }
 
 </style>
