@@ -151,7 +151,7 @@ export default defineComponent({
   }
 
   .v-article__content__header {
-    margin: 1rem auto auto auto;
+    margin: 1rem auto 2rem auto;
     max-width: var(--js-max-width--reg);
 
     h1, h2 {
@@ -162,6 +162,10 @@ export default defineComponent({
 
   .v-article__content__description {
     color: var(--jd-color--main);
+
+    + * {
+      margin-top: 4rem !important;
+    }
   }
 
   .v-article__header {
