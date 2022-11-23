@@ -70,7 +70,10 @@
         <div
             class="v-list-item__body__right jd-with-gutter"
         >
-          <div>{{dataTag.text}}</div>
+          <div
+              class="v-list-item__body__right__text-content"
+              v-html="dataTag.text"
+          ></div>
 
           <ul>
             <li><strong>Date:</strong     > {{dataTag.infoDate}}</li>
@@ -266,6 +269,16 @@ export default defineComponent({
       display: block;
       padding: 0;
     }
+  }
+}
+
+.v-list-item__body__right__text-content {
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
   }
 }
 
