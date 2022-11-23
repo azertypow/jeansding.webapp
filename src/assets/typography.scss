@@ -40,6 +40,16 @@
   line-height: 2rem;
 }
 
+h1 {
+  @extend .jd-font-xxl;
+  font-weight: 500;
+}
+
+
+h2 {
+  @extend .jd-font-xxl;
+}
+
 .jd-font-title {
   font-size: .8rem;
   line-height: 1rem;
@@ -85,4 +95,12 @@ h5 {
     margin-bottom: 1rem;
     text-indent: 0;
   }
+}
+
+.jd-text-max-width-large {
+  max-width: 55em;
+}
+
+.jd-text-max-width-reg {
+  max-width: 44em;
 }

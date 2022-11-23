@@ -17,13 +17,19 @@
       <div
           class="v-media__intro"
       >
-        <h3>{{ globalState.apiProjects[currentSectionUID].description_title }}</h3>
-        <h5>{{ globalState.apiProjects[currentSectionUID].description_author }}</h5>
+        <div
+            class="v-media__intro-header"
+        >
+          <h3 v-if="globalState.apiProjects[currentSectionUID].description_title"       >{{ globalState.apiProjects[currentSectionUID].description_title }}</h3>
+          <h3 v-if="globalState.apiProjects[currentSectionUID].description_subtitle"    >{{ globalState.apiProjects[currentSectionUID].description_subtitle }}</h3>
+          <h5 v-if="globalState.apiProjects[currentSectionUID].description_author"      >{{ globalState.apiProjects[currentSectionUID].description_author }}</h5>
+        </div>
 
         <div
             v-for="block of globalState.apiProjects[currentSectionUID].text"
+            v-html="block"
+            class="v-media__intro-text jd-text-max-width-large"
         >
-          <div v-html="block" ></div>
         </div>
       </div>
 
@@ -109,6 +115,28 @@ export default defineComponent({
     box-sizing: border-box;
     padding-left: .5rem;
     padding-right: .5rem;
+  }
+
+  .v-media__intro-header {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    > * {
+      margin: 0;
+    }
+  }
+
+  .v-media__intro-text {
+    > {
+      h1, h2 {
+        text-align: center;
+        color: var(--jd-color--secondary);
+      }
+
+      * {
+        color: var(--jd-color--main);
+      }
+    }
   }
 
   .v-media__item {

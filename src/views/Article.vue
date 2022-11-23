@@ -11,25 +11,34 @@
       >{{value.title}}</router-link>
     </header>
 
-    <template v-if="currentArticle" >
+    <div
+        v-if="currentArticle"
+        class="v-article__content"
+    >
 
       <div
-          class="v-article__vimeo-box"
+          class="v-article__content__vimeo-box"
           v-if="currentArticle.vimeoLink"
           v-html="video"
       ></div>
 
-      <h1>{{currentArticle.title}}</h1>
+      <div
+          class="v-article__content__header"
+      >
+        <h1>{{currentArticle.title}}<template v-if="currentArticle.subtitle" ><br>{{currentArticle.subtitle}}</template></h1>
+        <h2>{{currentArticle.author}}</h2>
 
-      <h2>{{currentArticle.author}}</h2>
-
-      <div v-html="currentArticle.description"></div>
+        <div
+            class="jd-text-max-width-reg"
+            v-html="currentArticle.description"
+        ></div>
+      </div>
 
       <div
           class="v-article__blocks"
           v-for="element of currentArticle.article_content" v-html="element"
       ></div>
-    </template>
+    </div>
 
     <section
         class="v-article__item"
@@ -121,7 +130,7 @@ export default defineComponent({
 .v-article {
   padding: 0 .5rem;
 
-  .v-article__vimeo-box {
+  .v-article__content__vimeo-box {
     margin-top: 1rem;
     width: 100%;
     box-sizing: border-box;
@@ -138,6 +147,19 @@ export default defineComponent({
       margin: auto;
       height: 100%;
       width: 100%;
+    }
+  }
+
+  .v-article__content__header {
+    margin-top: 1rem;
+
+    h1, h2 {
+      text-align: center;
+      margin: 0;
+    }
+
+    > * {
+      margin: auto;
     }
   }
 
