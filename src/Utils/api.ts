@@ -16,6 +16,7 @@ export namespace Api {
     infoDimensions: string
     infoLoan:       string
     img:            {[key: string]: IImage}
+    vimeoLink:      string | null
   }
 
   export interface IProjects {
