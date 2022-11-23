@@ -125,7 +125,6 @@ export default defineComponent({
     margin-top: 1rem;
     width: 100%;
     box-sizing: border-box;
-    background: var(--jd-color--dark);
     height: calc(100vh - 15rem);
 
     > * {
@@ -158,15 +157,15 @@ export default defineComponent({
       width: 100%;
       margin: 0;
       padding: 0;
-      background: var(--jd-color--dark);
 
       > ul {
         display: flex;
         box-sizing: border-box;
-        width: 100%;
+        width: calc(100% + .5rem);
         height: calc(100vh - 15rem);
         overflow: auto;
-        padding: 0 .5rem;
+        padding: 0;
+        margin-left: -.5rem;
 
         li {
           display: block;
