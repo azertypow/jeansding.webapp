@@ -2,6 +2,7 @@
   <div
       class="v-search-bar"
       @click="listOfTagIsOpen = !listOfTagIsOpen"
+      :class="{'tag-on-top': tagsOnTop}"
   >
     <span
       class="v-search-bar__text"
@@ -12,16 +13,19 @@
       @click.stop="removeTag(tag)"
     >{{tag}} ✗</span>
 
-    <div
-        v-if="listOfTagIsOpen"
-        class="v-search-bar__list-of-tag"
-    >
-      <span
-          class="jd-button is-active v-search-bar__tag"
-          v-for="tag of possibleTags"
-          @click.stop="pushTag(tag)"
-      >{{tag}}</span>
-    </div>
+
+    <transition name="slide_top" >
+      <div
+          v-if="listOfTagIsOpen"
+          class="v-search-bar__list-of-tag"
+      >
+        <span
+            class="jd-button is-active v-search-bar__tag"
+            v-for="tag of possibleTags"
+            @click.stop="pushTag(tag)"
+        >{{tag}}</span>
+      </div>
+    </transition>
 
   </div>
 </template>
@@ -34,6 +38,14 @@ import type {Api} from "@/Utils/api";
 export default defineComponent({
   name: 'SearchBar',
   components: {},
+
+  props: {
+    'tagsOnTop': {
+      required: false,
+      default: false,
+      type: Boolean,
+    }
+  },
 
   data() {
     return {
@@ -104,14 +116,35 @@ export default defineComponent({
     opacity: .5;
   }
 
-  .v-search-bar__tag {
-    text-transform: capitalize;
+  .v-search-bar__list-of-tag {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: white;
+    border: solid 1px var(--jd-color--secondary);
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 1rem;
   }
 
-  .v-search-bar__list-of-tag {
-    > * {
-      margin-top: .25rem;
-      margin-right: .25rem;
+  .v-search-bar__tag {
+    text-transform: capitalize;
+    margin-top: .25rem;
+    margin-right: .25rem;
+  }
+
+  &.tag-on-top {
+
+    .v-search-bar__list-of-tag {
+      top: auto;
+      bottom: 100%;
+    }
+
+    .v-search-bar__tag {
+      margin-top: 0;
+      margin-bottom: .25rem;
     }
   }
 }

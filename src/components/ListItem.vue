@@ -229,25 +229,6 @@ export default defineComponent({
   }
 }
 
-.item__body-enter-active {
-  transition: all .5s ease-out;
-  //max-height: 50rem;
-  //overflow: hidden;
-}
-
-.item__body-leave-active {
-  transition: all 0s ease-out;
-  //max-height: 50rem;
-  //overflow: hidden;
-}
-
-.item__body-enter-from,
-.item__body-leave-to {
-  transform: translate(0, -2rem);
-  opacity: 0;
-  //max-height: 0;
-}
-
 .v-list-item--id,
 .v-list-item--title {
   font-weight: 500;

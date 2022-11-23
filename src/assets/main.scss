@@ -39,6 +39,8 @@ button,
 }
 
 // vuetransition
+
+//// slide
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;
 }
@@ -50,5 +52,33 @@ button,
 .slide-fade-enter-from,
 .slide-fade-leave-to {
   transform: translateX(-20px);
+  opacity: 0;
+}
+
+//// item transition
+.item__body-enter-active {
+  transition: all .5s ease-out;
+}
+
+.item__body-leave-active {
+  transition: all 0s ease-out;
+}
+
+.item__body-enter-from,
+.item__body-leave-to {
+  transform: translate(0, -2rem);
+  opacity: 0;
+}
+
+
+//// slide from top
+.slide_top-leave-active,
+.slide_top-enter-active {
+  transition: transform .25s ease-out, opacity .25s linear;
+}
+
+.slide_top-enter-from,
+.slide_top-leave-to {
+  transform: translate(0, -.5rem);
   opacity: 0;
 }

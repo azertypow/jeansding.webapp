@@ -20,7 +20,9 @@
           class="v-app-footer__search-bar"
           v-if="searchIsOpen"
       >
-        <search-bar></search-bar>
+        <search-bar
+            :tags-on-top="true"
+        ></search-bar>
       </div>
       <div class="jd-with-gutter" style="white-space: nowrap">
         <img src="../assets/icons/menu.svg" alt="menu" class="v-app-footer__menu" >
