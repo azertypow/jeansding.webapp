@@ -44,7 +44,7 @@ export default defineComponent({
   cursor: pointer;
   border: none;
   border-left: solid var(--jd-color--white);
-  padding: .5rem;
+  padding: .4rem;
   background-color: var(--jd-color--white);
   color: inherit;
   font-size: .8rem;

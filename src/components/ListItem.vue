@@ -196,7 +196,7 @@ export default defineComponent({
   background: white;
   z-index: 1;
   position: relative;
-  height: 2rem;
+  height: 1.9rem;
 
   .v-list-item__icon-video {
     position: absolute;
