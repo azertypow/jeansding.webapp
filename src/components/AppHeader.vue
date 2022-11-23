@@ -67,6 +67,7 @@ export default defineComponent({
   text-align: center;
   position: relative;
   color: var(--jd-color--varriable);
+  transition: color 1s ease-in-out;
 }
 
 .v-app-header__ui {

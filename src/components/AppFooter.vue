@@ -54,6 +54,7 @@ export default defineComponent({
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 1s ease-in-out;
 }
 
 .v-app-footer__body__left,
