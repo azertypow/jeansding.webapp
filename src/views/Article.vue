@@ -25,13 +25,12 @@
       <div
           class="v-article__content__header"
       >
-        <h1>{{currentArticle.title}}<template v-if="currentArticle.subtitle" ><br>{{currentArticle.subtitle}}</template></h1>
-        <h2>{{currentArticle.author}}</h2>
-
         <div
-            class="jd-text-max-width-reg"
+            class="v-article__content__description jd-text-max-width-large"
             v-html="currentArticle.description"
         ></div>
+        <h1>{{currentArticle.title}}<template v-if="currentArticle.subtitle" ><br>{{currentArticle.subtitle}}</template></h1>
+        <h2>{{currentArticle.author}}</h2>
       </div>
 
       <div
@@ -158,10 +157,10 @@ export default defineComponent({
       text-align: center;
       margin: 0;
     }
+  }
 
-    > * {
-      margin: auto;
-    }
+  .v-article__content__description {
+    color: var(--jd-color--main);
   }
 
   .v-article__header {
@@ -179,6 +178,28 @@ export default defineComponent({
   }
 
   .v-article__blocks {
+    margin: auto;
+
+    h1,
+    h2 {
+      margin-top: 5rem;
+      margin-bottom: 0;
+      text-align: center;
+
+      + h1,
+      + h2 {
+        margin-top: 0;
+      }
+    }
+
+    p {
+      max-width: var(--js-max-width--reg);
+      margin: auto;
+      font-size: 1rem;
+      line-height: 1.25rem;
+      margin-top: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
 
     figure {
       display: block;

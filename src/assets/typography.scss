@@ -97,10 +97,21 @@ h5 {
   }
 }
 
+.jd-font-default {
+  font-size: .8rem;
+  line-height: 1rem;
+}
+
+p {
+  @extend .jd-font-default;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .jd-text-max-width-large {
-  max-width: 55em;
+  max-width: var(--js-max-width--large);
 }
 
 .jd-text-max-width-reg {
-  max-width: 44em;
+  max-width: var(--js-max-width--reg);
 }
