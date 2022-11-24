@@ -36,6 +36,29 @@ router.beforeEach((to, from, next) => {
 
   document.querySelector('html')!.className = to.name === 'inventory' ? 'is-inventory' : 'is-projects'
 
+  if( from.name === ':projectSection' || from.name === ':projectSection/:articleUid' ) {
+
+    if (to.name === ':projectSection' || to.name === ':projectSection/:articleUid')
+      document.querySelector('.v-app__body__right')!.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+
+
+  } else if( to.name === 'inventory' || to.name === ':projectSection') {
+    document.querySelector('.v-app__body__right')!.scrollTo({
+      top: 0,
+      behavior: undefined,
+    })
+    document.querySelector('.v-app__body__left')!.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+
+  console.log( 'from.name', from.name )
+  console.log( 'to.name', to.name )
+
   stateStore().currentOpenObject = null
 
   next()
