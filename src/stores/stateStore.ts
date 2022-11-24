@@ -8,6 +8,8 @@ export const stateStore = defineStore('stateStore', {
     apiData: {} as Api.ItemList,
     apiProjects: {} as Api.IProjects,
     activatedFilterTag: [] as string[],
+    menuIsOpen: false,
+    creditIsOpen: false,
   }),
 
   getters: {

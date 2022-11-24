@@ -9,24 +9,12 @@
     <div
         class="v-app-footer__body__right"
     >
-      <div
-          v-if="!searchIsOpen"
-          class="jd-with-gutter"
-          @click="searchIsOpen = true"
-      >
-        <img src="../assets/icons/search.svg" alt="search" class="v-app-footer__search-icon" >
-      </div>
-      <div
-          class="v-app-footer__search-bar"
-          v-if="searchIsOpen"
-      >
-        <search-bar
-            :tags-on-top="true"
-        ></search-bar>
-      </div>
       <div class="jd-with-gutter" style="white-space: nowrap">
-        <img src="../assets/icons/menu.svg" alt="menu" class="v-app-footer__menu" >
+        <burger-icon
+            @iconClicked="toggleMenu"
+        ></burger-icon>
       </div>
+
     </div>
   </div>
 </template>
@@ -34,20 +22,29 @@
 <script lang="ts">
 import {defineComponent} from "vue"
 import SearchBar from "@/components/SearchBar.vue";
+import BurgerIcon from "@/components/burgerIcon.vue";
+import {stateStore} from "@/stores/stateStore";
 
 export default defineComponent({
-  components: {SearchBar},
+  components: {BurgerIcon, SearchBar},
 
   data() {
     return {
       searchIsOpen: false,
+      stateStore: stateStore()
     }
+  },
+
+  methods: {
+    toggleMenu(isOpen: boolean) {
+      this.stateStore.menuIsOpen = isOpen
+    },
   },
 })</script>
 
 <style lang="scss">
 .v-app-footer {
-  height: 3rem;
+  height:2rem;
   color: var(--jd-color--white);
   background-color: var(--jd-color--varriable);
   display: flex;

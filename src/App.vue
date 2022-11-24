@@ -1,10 +1,22 @@
 <template>
   <div
       class="v-app"
+      :class="{
+        'credit-is-open': creditIsOpen,
+        'menu-is-open': menuIsOpen,
+      }"
   >
     <header>
       <app-header></app-header>
     </header>
+
+    <div
+        class="v-app__cross-icon"
+        v-if="creditIsOpen"
+        @click="crossIconClicked"
+    >
+      <cross-icon></cross-icon>
+    </div>
 
     <div class="v-app__body">
       <div
@@ -35,11 +47,33 @@ import {defineComponent} from "vue"
 import AppHeader from "@/components/AppHeader.vue"
 import AppFooter from "@/components/AppFooter.vue"
 import ListContainer from "@/components/ListContainer.vue"
+import { stateStore } from "./stores/stateStore"
+import CrossIcon from "@/components/crossIcon.vue";
 
 export default defineComponent({
-  components: {ListContainer, AppFooter, AppHeader, },
+  components: {CrossIcon, ListContainer, AppFooter, AppHeader, },
 
-  computed: {},
+  computed: {
+    creditIsOpen(): boolean {
+      return this.stateSore.creditIsOpen
+    },
+
+    menuIsOpen(): boolean {
+      return this.stateSore.menuIsOpen
+    },
+  },
+
+  data() {
+    return {
+      stateSore: stateStore(),
+    }
+  },
+
+  methods: {
+    crossIconClicked() {
+      this.stateSore.creditIsOpen = false
+    }
+  }
 
 })</script>
 
@@ -64,6 +98,13 @@ export default defineComponent({
     width: 100%;
     z-index: 10;
   }
+}
+
+.v-app__cross-icon {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
 }
 
 .v-app__body {
