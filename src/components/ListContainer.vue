@@ -5,7 +5,11 @@
         v-if="$route.name === 'inventory'"
         class="v-list-container__search-bar-box"
     >
-      <search-bar></search-bar>
+      <div
+          class="v-list-container__search-bar"
+      >
+        <search-bar></search-bar>
+      </div>
     </div>
 
     <div
@@ -65,10 +69,22 @@ export default defineComponent({
 .v-list-container {
   overflow: hidden;
   padding-bottom:  50vh;
+  position: relative;
+  padding-top: 4rem;
 
   .v-list-container__search-bar-box {
+    top: var(--v-app-header--title-height);
+    left: 0;
+    position: fixed;
+    width: calc(100% / 4 * 3);
+    z-index: 100;
+    background: var(--jd-color--white);
+    box-shadow: 0 10px 10px 0 var(--jd-color--white);
+  }
+
+  .v-list-container__search-bar {
     width: calc(100% / 6 * 4);
-    margin: 3rem auto 2rem;
+    margin: 1rem auto 0;
   }
 
   .v-list-container__coll-header {

@@ -42,11 +42,7 @@ export default defineComponent({
 
 <style lang="scss">
 .v-app-header {
-  --v-app-header--title-height: 5em;
-  --v-app-header--title-width: 21em;
-  --v-app-header--ui-size: 4rem;
   background: var(--jd-color--white);
-  box-shadow: 0 10px 10px  var(--jd-color--white);
 }
 
 .v-app-header__title {
