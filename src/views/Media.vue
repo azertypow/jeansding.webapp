@@ -12,6 +12,7 @@
     </header>
 
     <main
+        class="v-media__content"
         v-if="globalState.apiProjects[currentSectionUID]"
     >
       <div
@@ -116,6 +117,10 @@ export default defineComponent({
       margin-left: .5rem;
       margin-right: .5rem;
     }
+  }
+
+  .v-media__content {
+    padding-top: 2rem;
   }
 
   .v-media__intro {
