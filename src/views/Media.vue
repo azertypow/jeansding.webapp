@@ -158,7 +158,7 @@ export default defineComponent({
   }
 
   .v-media__item__grid {
-    width: calc(100% / 4);
+    width: calc(100% / 3);
     box-sizing: border-box;
     padding-left: .5rem;
     padding-right: .5rem;

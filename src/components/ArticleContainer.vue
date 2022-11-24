@@ -68,14 +68,17 @@ export default defineComponent({
   display: block;
   box-sizing: border-box;
   border-bottom: solid 2px var(--jd-color--secondary);
-  border-radius: 0;
+  border-radius: .25rem;
+
+  // transition
+  transition: border-radius .5s ease-in-out;
 
   &:hover {
-    border-radius: 1rem;
-    box-shadow: 0 0 0 10px white, 0 0 0 12px var(--jd-color--secondary);
+    border-radius: .5rem;
+    box-shadow: 0 0 0 8px white, 0 0 0 10px var(--jd-color--secondary);
     img {
-      border-bottom-right-radius: 1rem;
-      border-bottom-left-radius:  1rem;
+      border-bottom-right-radius: .5rem;
+      border-bottom-left-radius:  .5rem;
     }
   }
 }
@@ -90,12 +93,8 @@ export default defineComponent({
   width: 100%;
 }
 
-h3, h5 {
-  font-size: 1rem;
-  line-height: 1.2em;
-}
 
-p {
+h3, h5, p {
   font-size: .9rem;
   line-height: 1.2em;
 }
