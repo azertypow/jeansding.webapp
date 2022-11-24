@@ -28,9 +28,9 @@
       <div
           class="v-app__body__right"
       >
-        <router-view v-slot="{ Component }">
+        <router-view v-slot="{ Component, route }">
           <transition name="transition-page">
-            <component :is="Component" />
+            <component :is="Component" :key="route.path" />
           </transition>
         </router-view>
       </div>
