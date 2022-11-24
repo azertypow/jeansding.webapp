@@ -21,8 +21,8 @@
         <div
             class="v-media__intro-header"
         >
-          <h3 v-if="globalState.apiProjects[currentSectionUID].description_title"       >{{ globalState.apiProjects[currentSectionUID].description_title }}</h3>
-          <h3 v-if="globalState.apiProjects[currentSectionUID].description_subtitle"    >{{ globalState.apiProjects[currentSectionUID].description_subtitle }}</h3>
+          <h1 v-if="globalState.apiProjects[currentSectionUID].description_title"       >{{ globalState.apiProjects[currentSectionUID].description_title }}</h1>
+          <h2 v-if="globalState.apiProjects[currentSectionUID].description_subtitle"    >{{ globalState.apiProjects[currentSectionUID].description_subtitle }}</h2>
           <h5 v-if="globalState.apiProjects[currentSectionUID].description_author"      >{{ globalState.apiProjects[currentSectionUID].description_author }}</h5>
         </div>
 
@@ -144,6 +144,11 @@ export default defineComponent({
         text-align: center;
         color: var(--jd-color--secondary);
       }
+    }
+
+    p {
+      font-size: .9rem;
+      line-height: 1.2em;
     }
   }
 
