@@ -35,6 +35,43 @@
 }
 
 
+@font-face {
+  font-family: 'Denim';
+  font-weight: 600;
+  src:
+          url('./DP_order_136359/WEB/Denim-SemiBold.woff2'),
+          url('./DP_order_136359/WEB/Denim-SemiBold.woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Denim';
+  font-weight: 600;
+  src:
+          url('./DP_order_136359/WEB/Denim-SemiBoldItalic.woff2'),
+          url('./DP_order_136359/WEB/Denim-SemiBoldItalic.woff2');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Denim';
+  font-weight: 700;
+  src:
+          url('./DP_order_136359/WEB/Denim-Bold.woff2'),
+          url('./DP_order_136359/WEB/Denim-Bold.woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Denim';
+  font-weight: 700;
+  src:
+          url('./DP_order_136359/WEB/Denim-BoldItalic.woff2'),
+          url('./DP_order_136359/WEB/Denim-BoldItalic.woff2');
+  font-style: italic;
+}
+
+
 .jd-font-xxl {
   font-size: 1.8rem;
   line-height: 2rem;

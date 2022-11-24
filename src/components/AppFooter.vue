@@ -3,7 +3,6 @@
     <div
         class="v-app-footer__body__left"
     >
-      <div class="jd-with-gutter">About/Contact</div>
     </div>
 
     <div
@@ -44,7 +43,7 @@ export default defineComponent({
 
 <style lang="scss">
 .v-app-footer {
-  height:2rem;
+  height:1.5rem;
   color: var(--jd-color--white);
   background-color: var(--jd-color--varriable);
   display: flex;

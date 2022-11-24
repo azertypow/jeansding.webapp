@@ -3,7 +3,7 @@
 
     <div class="v-app-header__title">
       <router-link to="/"       class="v-app-header__title__left jd-font-xxl">Inventory</router-link>
-      <div                      class="v-app-header__title__center jd-font-xxl">Jeansdinge</div>
+      <div                      class="v-app-header__title__center jd-font-xxl" style="font-weight: 600">Jeansdinge</div>
       <router-link to="/projects"  class="v-app-header__title__right jd-font-xxl">Projects</router-link>
       <div
           class="v-app-header__ui"

@@ -79,7 +79,7 @@ export default defineComponent({
 
 <style lang="scss">
 .v-app {
-  padding-top: 5rem;
+  padding-top: var(--v-app-header--title-height);
   height: 100%;
   box-sizing: border-box;
 
