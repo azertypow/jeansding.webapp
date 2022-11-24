@@ -3,10 +3,21 @@
 
     <div
         v-if="$route.name === 'inventory'"
-        class="v-list-container__search-bar-box"
+        class="v-list-container__header"
     >
       <div
-          class="v-list-container__search-bar"
+          class="v-list-container__header__box"
+      >
+        <search-bar></search-bar>
+      </div>
+    </div>
+
+    <div
+        v-else
+        class="v-list-container__header"
+    >
+      <div
+          class="v-list-container__header__box"
       >
         <search-bar></search-bar>
       </div>
@@ -72,7 +83,11 @@ export default defineComponent({
   position: relative;
   padding-top: 4rem;
 
-  .v-list-container__search-bar-box {
+  .is-projects & {
+    padding-top: 5rem;
+  }
+
+  .v-list-container__header {
     top: var(--v-app-header--title-height);
     left: 0;
     position: fixed;
@@ -80,9 +95,13 @@ export default defineComponent({
     z-index: 100;
     background: var(--jd-color--white);
     box-shadow: 0 10px 10px 0 var(--jd-color--white);
+
+    .is-projects & {
+      width: calc(100% / 4 * 1);
+    }
   }
 
-  .v-list-container__search-bar {
+  .v-list-container__header__box {
     width: calc(100% / 6 * 4);
     margin: 1rem auto 0;
   }

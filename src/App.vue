@@ -156,6 +156,7 @@ export default defineComponent({
 
   .is-projects & {
     width: 75%;
+    padding-top: 1rem;
   }
 
   &::-webkit-scrollbar {
