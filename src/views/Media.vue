@@ -99,11 +99,18 @@ export default defineComponent({
 
   .v-media__header {
     display: flex;
-    width: 100%;
     justify-content: center;
     box-sizing: border-box;
+    padding-top: 1rem;
     padding-left: .5rem;
-    padding-rigt: .5rem;
+    padding-right: .5rem;
+    right: 0;
+    top: var(--v-app-header--title-height);
+    width: calc(100% / 4 * 3);
+    position: fixed;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 10px 10px 0 var(--jd-color--white);
 
     > button, .jd-button {
       margin-left: .5rem;

@@ -129,6 +129,10 @@ export default defineComponent({
 .v-article {
   padding: 0 .5rem;
 
+  .v-article__content {
+    padding-top: 2rem;
+  }
+
   .v-article__content__vimeo-box {
     width: 100%;
     box-sizing: border-box;
@@ -137,6 +141,7 @@ export default defineComponent({
     border-radius: 1rem;
     max-width: var(--js-max-width--reg);
     margin: 1rem auto auto auto;
+    background-color: var(--jd-color--secondary);
 
     &:hover {
       border-radius: .2rem;
@@ -170,11 +175,18 @@ export default defineComponent({
 
   .v-article__header {
     display: flex;
-    width: 100%;
     justify-content: center;
     box-sizing: border-box;
+    padding-top: 1rem;
     padding-left: .5rem;
-    padding-rigt: .5rem;
+    padding-right: .5rem;
+    right: 0;
+    top: var(--v-app-header--title-height);
+    width: calc(100% / 4 * 3);
+    position: fixed;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 10px 10px 0 var(--jd-color--white);
 
     > button, .jd-button {
       margin-left: .5rem;
