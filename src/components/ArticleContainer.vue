@@ -1,7 +1,7 @@
 <template>
   <router-link
       class="v-article-container"
-      :to="`${articleData.parentUid}/${articleData.uid}`"
+      :to="`/projects/${articleData.parentUid}/${articleData.uid}`"
   >
     <h3>{{articleData.title}}</h3>
     <h5>{{articleData.author}}</h5>
