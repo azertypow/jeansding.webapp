@@ -67,15 +67,16 @@ export default defineComponent({
 .v-article-container {
   display: block;
   box-sizing: border-box;
-  border-bottom: solid 2px var(--jd-color--secondary);
+  border-bottom: solid 2px var(--jd-palette--blue-light);
   border-radius: .25rem;
+  text-decoration: none;
 
   // transition
   transition: border-radius .5s ease-in-out;
 
   &:hover {
     border-radius: .5rem;
-    box-shadow: 0 0 0 8px white, 0 0 0 10px var(--jd-color--secondary);
+    box-shadow: 0 0 0 8px white, 0 0 0 10px var(--jd-palette--blue-light);
     img {
       border-bottom-right-radius: .5rem;
       border-bottom-left-radius:  .5rem;

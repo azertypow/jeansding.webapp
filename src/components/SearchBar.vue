@@ -109,7 +109,7 @@ export default defineComponent({
   user-select: none;
   padding: .5rem;
   border-radius: 1rem;
-  border: solid 2px var(--jd-color--secondary);
+  border: solid 2px var(--jd-palette--blue-dark);
   position: relative;
 
   .v-search-bar__text {
