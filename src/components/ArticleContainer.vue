@@ -63,11 +63,25 @@ export default defineComponent({
 
 })</script>
 
-<style lang="scss" >
+<style lang="scss" scoped >
 .v-article-container {
+  display: block;
   box-sizing: border-box;
-  padding-bottom: 1rem;
+  //padding-bottom: .5rem;
   border-bottom: solid 2px var(--jd-color--secondary);
+  border-radius: 1rem;
+
+  &:hover {
+    box-shadow: 0 0 0 10px white, 0 0 0 12px var(--jd-color--secondary);
+    img {
+      border-bottom-right-radius: 1rem;
+      border-bottom-left-radius:  1rem;
+    }
+  }
+
+  img {
+    transition: border-radius .15s ease-in-out;
+  }
 }
 
 .v-article-container__intro {
@@ -78,6 +92,24 @@ export default defineComponent({
 .v-article-container__img {
   display: block;
   width: 100%;
+}
+
+h3, h5 {
+  font-size: 1rem;
+  line-height: 1.2em;
+}
+
+p {
+  font-size: .9rem;
+  line-height: 1.2em;
+}
+
+h3 {
+  text-transform: capitalize;
+}
+
+h5 {
+  margin-bottom: .5rem;
 }
 
 </style>
