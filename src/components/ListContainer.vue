@@ -94,7 +94,7 @@ export default defineComponent({
     width: calc(100% / 4 * 3);
     z-index: 100;
     background: var(--jd-color--white);
-    box-shadow: 0 10px 10px 0 var(--jd-color--white);
+    box-shadow: 0 10px 0 0 var(--jd-color--white);
 
     .is-projects & {
       width: calc(100% / 4 * 1);

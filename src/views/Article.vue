@@ -186,7 +186,7 @@ export default defineComponent({
     position: fixed;
     z-index: 100;
     background: white;
-    box-shadow: 0 10px 10px 0 var(--jd-color--white);
+    box-shadow: 0 10px 0 0 var(--jd-color--white);
 
     > button, .jd-button {
       margin-left: .5rem;
