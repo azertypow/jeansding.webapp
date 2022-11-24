@@ -1,6 +1,5 @@
 <template>
   <div
-      @click="iconClicked"
       class="v-cross-icon"
   >
     <div class="v-cross-icon__center-line"></div>
