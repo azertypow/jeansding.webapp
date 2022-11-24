@@ -10,9 +10,7 @@
           @click="smileyClicked"
       >
         <jeansdinge-smiley></jeansdinge-smiley>
-        <div
-            class="v-app-header__background"
-        ></div>
+        <div class="v-app-header__background"></div>
       </div>
     </div>
 
@@ -120,8 +118,8 @@ export default defineComponent({
     top:  50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:  calc( 100% - .5rem);
-    height: calc( 100% - .5rem);
+    width:  0;
+    height: 0;
     border-radius: 100%;
 
     // transitions properties
@@ -141,8 +139,8 @@ export default defineComponent({
       height: calc(200vw);
 
       transition:
-          width         1s ease-in-out .25s,
-          height        1s ease-in-out .25s;
+          width         .75s ease-in-out .25s,
+          height        .75s ease-in-out .25s;
     }
   }
 }
