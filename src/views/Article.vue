@@ -209,13 +209,27 @@ export default defineComponent({
       }
     }
 
-    p {
+    p, h6 {
+      box-sizing: border-box;
       max-width: var(--js-max-width--reg);
       margin: auto;
       font-size:    1.2rem;
       line-height:  1.25em;
-      margin-top: 1.25rem;
-      margin-bottom: 1.25rem;
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+    }
+
+    h3 {
+      margin: auto;
+      max-width: var(--js-max-width--reg);
+      font-size:    1.2rem;
+      line-height:  1.25em;
+      margin-top: calc(1.25em * 2);
+      margin-bottom: 1.25em;
+    }
+
+    h6 {
+      padding-left: 5rem;
     }
 
     figure {
