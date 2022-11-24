@@ -22,11 +22,11 @@ button,
 .jd-button {
   user-select: none;
   color: inherit;
-  border: solid 1px var(--jd-color--secondary);
+  border: solid 2px var(--jd-color--secondary);
   background: transparent;
   border-radius: 3em;
   display: inline-block;
-  padding: 0 .5rem;
+  padding: .25rem .75rem;
   font-size: inherit;
   line-height: inherit;
   cursor: pointer;
