@@ -91,7 +91,7 @@ export default defineComponent({
     top: var(--v-app-header--title-height);
     left: 0;
     position: fixed;
-    width: calc(100% / 4 * 3);
+    width: calc( (100% / 4 * 3) - 1rem);
     z-index: 100;
     background: var(--jd-color--white);
     box-shadow: 0 10px 0 0 var(--jd-color--white);
