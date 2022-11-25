@@ -126,7 +126,7 @@ export default defineComponent({
     border: solid 2px var(--jd-palette--blue-dark);
     box-sizing: border-box;
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: 2rem;
 
     .v-search-bar__tag {
       margin-top: .25rem;
@@ -136,6 +136,7 @@ export default defineComponent({
 
   .v-search-bar__tag {
     text-transform: capitalize;
+    border: none;
   }
 
   &.tag-on-top {
