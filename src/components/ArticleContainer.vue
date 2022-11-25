@@ -67,7 +67,7 @@ export default defineComponent({
 .v-article-container {
   display: block;
   box-sizing: border-box;
-  border-bottom: solid 2px var(--jd-palette--blue-light);
+  //border-bottom: solid 2px var(--jd-palette--blue-light);
   border-radius: .25rem;
   text-decoration: none;
 
