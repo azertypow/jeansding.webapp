@@ -166,7 +166,7 @@ export default defineComponent({
   }
 
   .v-article__content__description {
-    color: var(--jd-color--main);
+    color: var(--jd-palette--blue-light);
 
     + * {
       margin-top: 4rem !important;
