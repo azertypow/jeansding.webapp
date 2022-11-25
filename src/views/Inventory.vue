@@ -2,7 +2,7 @@
   <div class="v-inventory">
 
     <div
-        v-if="globalState.apiProjects.symposium"
+        v-if="globalState.apiProjects.symposium && globalState.activatedFilterTag.length === 0"
     >
       <h4>text</h4>
       <h3>{{ globalState.apiProjects.symposium.description_title }}</h3>
@@ -13,18 +13,13 @@
       ></div>
     </div>
 
-    <template
-        v-if="globalState.apiProjects.symposium"
+    <div
+      v-for="article of filteredArticle"
     >
-      <h4>Symposium</h4>
-      <div
-        v-for="article of globalState.apiProjects.symposium.children"
-      >
-        <article-container
-            :article-data="article"
-        ></article-container>
-      </div>
-    </template>
+      <article-container
+          :article-data="article"
+      ></article-container>
+    </div>
 
   </div>
 </template>
@@ -35,6 +30,7 @@ import ListContainer from "@/components/ListContainer.vue"
 import ArticleContainer from "@/components/ArticleContainer.vue"
 import {stateStore} from "@/stores/stateStore"
 import {cleanIntroHTML} from "@/Utils/cleanIntroHTML"
+import type {Api} from "@/Utils/api";
 
 export default defineComponent({
   components: {ArticleContainer, ListContainer},
@@ -54,6 +50,10 @@ export default defineComponent({
       || '<p>continu to read</p>'
 
       return  cleanIntroHTML(firstBlockHtml) + '<p>…</p>'
+    },
+
+    filteredArticle(): Api.IArticle[] {
+      return this.globalState.filteredArticle
     }
   },
 

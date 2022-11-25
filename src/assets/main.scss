@@ -15,7 +15,7 @@ button,
 .jd-button {
   user-select: none;
   color: inherit;
-  border: solid 2px var(--jd-color--secondary);
+  border: solid 2px var(--jd-palette--blue-dark);
   background: transparent;
   border-radius: 3em;
   display: inline-block;
@@ -28,7 +28,7 @@ button,
 
   &.is-active {
     color: white;
-    background: var(--jd-color--secondary);
+    background: var(--jd-palette--blue-dark);
   }
 }
 

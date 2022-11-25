@@ -123,7 +123,7 @@ export default defineComponent({
     width: 100%;
     z-index: 10;
     background: white;
-    border: solid 2px var(--jd-color--secondary);
+    border: solid 2px var(--jd-palette--blue-dark);
     box-sizing: border-box;
     padding: 1rem;
     border-radius: 1rem;

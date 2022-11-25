@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type {Api} from "@/Utils/api"
+import article from "@/views/Article.vue";
 
 export const stateStore = defineStore('stateStore', {
 
@@ -13,7 +14,21 @@ export const stateStore = defineStore('stateStore', {
   }),
 
   getters: {
-    // doubleCount: (state) => state.count * 2,
+    filteredArticle(): Api.IArticle[] {
+
+      let allProjectsArticle: Api.IArticle[] = []
+
+      allProjectsArticle = allProjectsArticle.concat(Object.values( this.apiProjects['symposium']?.children || {} ))
+      allProjectsArticle = allProjectsArticle.concat(Object.values( this.apiProjects['artist-videos']?.children || {} ))
+      allProjectsArticle = allProjectsArticle.concat(Object.values( this.apiProjects['denimpop']?.children || {} ))
+      allProjectsArticle = allProjectsArticle.concat(Object.values( this.apiProjects['exhibitions']?.children || {} ))
+
+      if(this.activatedFilterTag.length === 0) return allProjectsArticle
+
+      return allProjectsArticle.filter(article => {
+        return this.activatedFilterTag.every(category=> article.category.includes(category))
+      })
+    }
   },
 
   actions: {
