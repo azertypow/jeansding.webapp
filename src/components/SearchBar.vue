@@ -126,7 +126,7 @@ export default defineComponent({
     border: solid 2px var(--jd-palette--blue-dark);
     box-sizing: border-box;
     padding: 1rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
 
     .v-search-bar__tag {
       margin-top: .25rem;
