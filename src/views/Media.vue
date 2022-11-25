@@ -116,6 +116,12 @@ export default defineComponent({
     > button, .jd-button {
       margin-left: .5rem;
       margin-right: .5rem;
+
+      border-color: var(--jd-palette--blue-light);
+
+      &.is-active {
+        background-color: var(--jd-palette--blue-light);
+      }
     }
   }
 
