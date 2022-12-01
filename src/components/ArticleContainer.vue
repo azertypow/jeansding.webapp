@@ -48,7 +48,8 @@ export default defineComponent({
 
   methods: {
     async setThumbnail_url() {
-      if(this.articleData.vimeoLink === null) return
+      if(this.articleData.vimeoLink === null ) return
+      if(this.articleData.vimeoLink.length < 1 ) return
 
       const vimeoUrl = 'https://vimeo.com/api/oembed.json?width=1280&url=' + encodeURI(this.articleData.vimeoLink)
 
