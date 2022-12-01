@@ -103,7 +103,7 @@ h3, h5, p {
 }
 
 h3 {
-  text-transform: capitalize;
+  //text-transform: capitalize;
 }
 
 h5 {
