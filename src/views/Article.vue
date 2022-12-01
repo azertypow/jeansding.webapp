@@ -231,7 +231,11 @@ export default defineComponent({
       font-size:    1.2rem;
       line-height:  1.25em;
       margin-top: calc(1.25em * 2);
-      margin-bottom: 1.25em;
+      //margin-bottom: 1.25em;
+
+      + p {
+        margin-top: 0;
+      }
     }
 
     h6 {
