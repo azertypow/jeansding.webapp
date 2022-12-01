@@ -106,9 +106,9 @@ export default defineComponent({
     padding-top: 1rem;
     padding-left: .5rem;
     padding-right: .5rem;
-    right: 0;
+    right: 1rem;
     top: var(--v-app-header--title-height);
-    width: calc(100% / 4 * 3);
+    width: calc(100% / 4 * 3 - 2rem);
     position: fixed;
     z-index: 100;
     background: white;
