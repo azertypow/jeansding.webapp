@@ -56,8 +56,7 @@ router.beforeEach((to, from, next) => {
     })
   }
 
-  console.log( 'from.name', from.name )
-  console.log( 'to.name', to.name )
+  if( to.name === 'inventory' || from.name === 'inventory' ) stateStore().activatedFilterTag = []
 
   stateStore().currentOpenObject = null
 
