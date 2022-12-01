@@ -230,7 +230,7 @@ export default defineComponent({
       max-width: var(--js-max-width--reg);
       font-size:    1.2rem;
       line-height:  1.25em;
-      margin-top: calc(1.25em * 2);
+      margin-top: calc(1.25em * 1);
       //margin-bottom: 1.25em;
 
       + p {
