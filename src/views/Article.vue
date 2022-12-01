@@ -232,6 +232,7 @@ export default defineComponent({
       line-height:  1.25em;
       margin-top: calc(1.25em * 1);
       //margin-bottom: 1.25em;
+      text-transform: uppercase;
 
       + p {
         margin-top: 0;
