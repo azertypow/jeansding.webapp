@@ -41,6 +41,7 @@
 
     <section
         class="v-article__item"
+        v-if="globalState.apiProjects[currentSectionUID]"
     >
       <div
           class="v-article__item__grid"

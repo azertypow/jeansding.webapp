@@ -36,6 +36,7 @@
 
       <section
           class="v-media__item"
+          v-if="globalState.apiProjects[currentSectionUID]"
       >
         <div
             class="v-media__item__grid"
