@@ -9,6 +9,9 @@ export const stateStore = defineStore('stateStore', {
     apiData: {} as Api.ItemList,
     apiProjects: {} as Api.IProjects,
     activatedFilterTag: [] as string[],
+    activatedFilterBySlug: [] as string[],
+    objectByActivatedFilterBySlug: null as null | Api.IItem[],
+
     menuIsOpen: false,
     creditIsOpen: false,
   }),
@@ -26,7 +29,7 @@ export const stateStore = defineStore('stateStore', {
       if(this.activatedFilterTag.length === 0) return allProjectsArticle
 
       return allProjectsArticle.filter(article => {
-        return this.activatedFilterTag.every(category=> article.category.includes(category))
+        return this.activatedFilterTag.every(category=> article.category?.includes(category))
       })
     }
   },
@@ -44,6 +47,20 @@ export const stateStore = defineStore('stateStore', {
       console.log(indexOfMatchedTag)
 
       this.activatedFilterTag.splice(indexOfMatchedTag, indexOfMatchedTag + 1)
+    },
+
+    setActivatedFilterBySlug(listOfSlug: string[]) {
+      this.activatedFilterBySlug = listOfSlug
+      this.setObjectByActivatedFilterBySlug()
+    },
+
+    async setObjectByActivatedFilterBySlug() {
+
+      if (this.activatedFilterBySlug.length < 1) this.objectByActivatedFilterBySlug = null
+
+      else this.objectByActivatedFilterBySlug = Object.values( this.apiData ).filter((item) => {
+        return this.activatedFilterBySlug.every( slug => item.slug?.includes(slug))
+      })
     },
   },
 })

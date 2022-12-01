@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Inventory from '../views/Inventory.vue'
 import {stateStore} from "../stores/stateStore"
-import {getTagsOfArticle} from "@/Utils/setTgsFilterByCurentArticleView";
+import {getSlugOfLinkedObjectsOfArticle, getTagsOfArticle} from "@/Utils/setTgsFilterByCurentArticleView";
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -65,6 +65,11 @@ router.beforeEach((to, from, next) => {
       projectSection: to.params.projectSection as string,
       articleUid: to.params.articleUid as string,
     })
+
+    stateStore().setActivatedFilterBySlug(getSlugOfLinkedObjectsOfArticle({
+      projectSection: to.params.projectSection as string,
+      articleUid: to.params.articleUid as string,
+    }))
   }
 
   stateStore().currentOpenObject = null

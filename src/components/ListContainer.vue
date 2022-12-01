@@ -24,6 +24,16 @@
     </div>
 
     <div
+
+        style="padding-top: 2rem; padding-bottom: 2rem"
+    >
+      <list-item
+          v-for="item of globalState.objectByActivatedFilterBySlug"
+          :dataTag="item"
+      ></list-item>
+    </div>
+
+    <div
         class="v-list-container__coll-header"
         v-if="$route.name === 'inventory'"
     >

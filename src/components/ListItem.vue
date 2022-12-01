@@ -173,7 +173,7 @@ export default defineComponent({
 
     isVisible(): boolean {
       if(this.globalState.activatedFilterTag.length < 1) return true
-      return this.globalState.activatedFilterTag.every(category=> this.dataTag.category.includes(category))
+      return this.globalState.activatedFilterTag.every(category=> this.dataTag.category?.includes(category))
     },
   },
 
