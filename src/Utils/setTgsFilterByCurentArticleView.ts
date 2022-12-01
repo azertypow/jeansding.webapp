@@ -7,5 +7,5 @@ export function getTagsOfArticle(
     const currentArticle: Api.IArticle | null =
         stateStore().apiProjects[projectSection]?.children['mediapage/'+projectSection+'/'+articleUid]
 
-    return currentArticle?.category.split(",")
+    return currentArticle?.category.split(",").filter(category => { return category.length > 0 }) || []
 }
