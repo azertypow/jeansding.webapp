@@ -85,6 +85,7 @@ export default defineComponent({
     async setVideo() {
 
       if(! this.currentArticle) return null
+      if( this.currentArticle.vimeoLink === null ) return null
 
       const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&responsive=1&portrait=0&&color=025BFA&url=' + encodeURI(this.currentArticle.vimeoLink)
 

@@ -45,7 +45,7 @@ export namespace Api {
     uid: string
     title: string,
     subtitle: string,
-    "vimeoLink": string,
+    "vimeoLink": string | null,
     "author": string,
     "category": string,
     "Linkwith": string | null,

@@ -34,6 +34,7 @@ export default defineComponent({
 
   mounted() {
     this.$nextTick(() => {
+
       this.setThumbnail_url()
     })
   },
@@ -47,7 +48,7 @@ export default defineComponent({
 
   methods: {
     async setThumbnail_url() {
-
+      if(this.articleData.vimeoLink === null) return
 
       const vimeoUrl = 'https://vimeo.com/api/oembed.json?width=1280&url=' + encodeURI(this.articleData.vimeoLink)
 
