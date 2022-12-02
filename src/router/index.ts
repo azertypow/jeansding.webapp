@@ -70,6 +70,8 @@ router.beforeEach((to, from, next) => {
       projectSection: to.params.projectSection as string,
       articleUid: to.params.articleUid as string,
     }))
+  } else {
+    stateStore().setActivatedFilterBySlug([])
   }
 
   stateStore().currentOpenObject = null

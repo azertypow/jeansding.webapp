@@ -10,7 +10,7 @@ export const stateStore = defineStore('stateStore', {
     apiProjects: {} as Api.IProjects,
     activatedFilterTag: [] as string[],
     activatedFilterBySlug: [] as string[],
-    objectByActivatedFilterBySlug: null as null | Api.IItem[],
+    objectByActivatedFilterBySlug: [] as Api.IItem[],
 
     menuIsOpen: false,
     creditIsOpen: false,
@@ -56,7 +56,7 @@ export const stateStore = defineStore('stateStore', {
 
     async setObjectByActivatedFilterBySlug() {
 
-      if (this.activatedFilterBySlug.length < 1) this.objectByActivatedFilterBySlug = null
+      if (this.activatedFilterBySlug.length < 1) this.objectByActivatedFilterBySlug = []
 
       else this.objectByActivatedFilterBySlug = Object.values( this.apiData ).filter((item) => {
         return this.activatedFilterBySlug.every( slug => item.slug?.includes(slug))
