@@ -221,8 +221,8 @@ export default defineComponent({
     flex-direction: column;
   }
 
-  .v-media__item__grid {
-
+  .v-media__item__grid + .v-media__item__grid {
+    margin-top: 1rem;
   }
 }
 
