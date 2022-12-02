@@ -188,6 +188,12 @@ export default defineComponent({
   box-sizing: border-box;
   background: white;
   padding: .5rem;
+  padding-right: 1.5rem;
+
+  > * {
+    max-width: var(--js-max-width--reg);
+    margin: auto;
+  }
 }
 
 </style>
