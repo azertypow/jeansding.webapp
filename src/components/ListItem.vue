@@ -219,11 +219,6 @@ export default defineComponent({
     right: 0;
   }
 
-
-  .is-open & {
-    margin-bottom: 1rem;
-  }
-
   > .v-list-item__coll {
     box-sizing: border-box;
     width: calc(100% / 3);
