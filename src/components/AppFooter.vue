@@ -43,7 +43,7 @@ export default defineComponent({
 
 <style lang="scss">
 .v-app-footer {
-  height:1.5rem;
+  height: var(--jd-height-of-header);
   color: var(--jd-color--white);
   background-color: var(--jd-color--varriable);
   display: flex;

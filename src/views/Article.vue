@@ -35,8 +35,10 @@
 
       <div
           class="v-article__blocks"
-          v-for="element of currentArticle.article_content" v-html="element"
-      ></div>
+          v-for="element of currentArticle.article_content"
+      ><article-block
+          :html="element"
+      ></article-block></div>
     </div>
 
     <section
@@ -63,10 +65,11 @@ import {stateStore} from "@/stores/stateStore"
 import type {Api} from "@/Utils/api";
 import type {IVimeoOembed} from "@/Utils/vimeo";
 import ArticleContainer from "@/components/ArticleContainer.vue";
+import ArticleBlock from "@/components/ArticleBlock.vue";
 
 export default defineComponent({
 
-  components: {ArticleContainer},
+  components: {ArticleBlock, ArticleContainer},
 
   data(){return {
 

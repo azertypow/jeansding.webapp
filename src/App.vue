@@ -37,6 +37,12 @@
     </div>
 
     <footer>
+      <div class="v-app__footnote">
+        <div
+            v-for="note of footNotes"
+            v-html="note.index + ' - ' + note.html"
+        ></div>
+      </div>
       <app-footer></app-footer>
     </footer>
   </div>
@@ -61,6 +67,10 @@ export default defineComponent({
     menuIsOpen(): boolean {
       return this.stateSore.menuIsOpen
     },
+
+    footNotes(): {index: number, html: string}[] {
+      return this.stateSore.footNotes
+    }
   },
 
   data() {
@@ -169,4 +179,15 @@ export default defineComponent({
     border-radius: 1rem;
   }
 }
+
+.v-app__footnote {
+  position: fixed;
+  right: 0;
+  bottom: var(--jd-height-of-header);
+  width: calc( 100% / 4 * 3);
+  box-sizing: border-box;
+  background: white;
+  padding: .5rem;
+}
+
 </style>
