@@ -19,7 +19,7 @@
       <div
           class="v-list-container__header__box"
       >
-        <search-bar></search-bar>
+        <toggle-list-item-view-button></toggle-list-item-view-button>
       </div>
     </div>
 
@@ -61,9 +61,10 @@ import {stateStore} from "@/stores/stateStore"
 import type {Api} from "@/Utils/api"
 import ListItem from "@/components/ListItem.vue"
 import SearchBar from "@/components/SearchBar.vue";
+import ToggleListItemViewButton from "@/components/ToggleListItemViewButton.vue";
 
 export default defineComponent({
-  components: {SearchBar, ListItem},
+  components: {ToggleListItemViewButton, SearchBar, ListItem},
   data() {
     return {
       globalState: stateStore(),
