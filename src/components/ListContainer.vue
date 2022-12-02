@@ -24,28 +24,34 @@
     </div>
 
     <div
-
-        style="padding-top: 2rem; padding-bottom: 2rem"
+        v-if="globalState.objectByActivatedFilterBySlug && $route.name !== 'inventory'"
+        class="v-list-container__linked-object"
     >
       <list-item
           v-for="item of globalState.objectByActivatedFilterBySlug"
           :dataTag="item"
+          :isAlwaysOpen="true"
+          :disableTagFilterAction="true"
       ></list-item>
     </div>
 
     <div
-        class="v-list-container__coll-header"
-        v-if="$route.name === 'inventory'"
+        v-show="showItem"
     >
-      <div>NUMBER</div>
-      <div>ITEM</div>
-      <div>CATEGORIES</div>
-    </div>
+      <div
+          class="v-list-container__coll-header"
+          v-if="$route.name === 'inventory'"
+      >
+        <div>NUMBER</div>
+        <div>ITEM</div>
+        <div>CATEGORIES</div>
+      </div>
 
-    <list-item
-        v-for="item of globalState.apiData"
-        :dataTag="item"
-    ></list-item>
+      <list-item
+          v-for="item of globalState.apiData"
+          :dataTag="item"
+      ></list-item>
+    </div>
   </div>
 </template>
 
@@ -65,19 +71,14 @@ export default defineComponent({
   },
 
   computed: {
-    // itemList(): Api.IItem[] {
-    //   if(this.globalState.activatedFilterTag.length === 0) return Object.values( this.globalState.apiData )
-    //   return Object.values(this.globalState.apiData).filter(value => {
-    //
-    //     let containMinOneTagOfFilteredTags = false
-    //
-    //     this.globalState.activatedFilterTag.forEach(tagFiltered => {
-    //       if(value.category.includes(tagFiltered)) containMinOneTagOfFilteredTags = true
-    //     })
-    //
-    //     return containMinOneTagOfFilteredTags
-    //   })
-    // },
+    showItem(): boolean {
+
+      if( this.$route.name === 'inventory' ) return true
+      if( this.$route.name === ':projectSection' ) return true
+
+      return this.$route.name === ':projectSection/:articleUid' && this.globalState.activatedFilterTag.length > 0;
+
+    },
 
     activatedFilterTag(): string[] {
       return this.globalState.activatedFilterTag
@@ -109,6 +110,10 @@ export default defineComponent({
     .is-projects & {
       width: calc(100% / 4 * 1);
     }
+  }
+
+  .v-list-container__linked-object {
+
   }
 
   .v-list-container__header__box {

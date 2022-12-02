@@ -164,14 +164,28 @@ export default defineComponent({
       required: true,
       type: Object as PropType<Api.IItem>,
     },
+
+    isAlwaysOpen: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
+
+    disableTagFilterAction: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
     isOpen(): boolean {
+      if (this.isAlwaysOpen) return true
       return this.dataTag.slug === this.globalState.currentOpenObject?.slug
     },
 
     isVisible(): boolean {
+      if(this.disableTagFilterAction) return true
       if(this.globalState.activatedFilterTag.length < 1) return true
       return this.globalState.activatedFilterTag.every(category=> this.dataTag.category?.includes(category))
     },
