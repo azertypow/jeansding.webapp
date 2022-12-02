@@ -39,9 +39,15 @@
     <footer>
       <div class="v-app__footnote">
         <div
+            class="v-app__footnote__item"
             v-for="note of footNotes"
-            v-html="note.index + ' - ' + note.html"
-        ></div>
+        >
+          <div class="v-app__footnote__item__index">{{note.index}}</div>
+          <div
+              class="v-app__footnote__item__content"
+              v-html="note.html"
+          ></div>
+        </div>
       </div>
       <app-footer></app-footer>
     </footer>
@@ -189,11 +195,16 @@ export default defineComponent({
   background: white;
   padding: .5rem;
   padding-right: 1.5rem;
+}
 
-  > * {
-    max-width: var(--js-max-width--reg);
-    margin: auto;
-  }
+.v-app__footnote__item {
+  max-width: var(--js-max-width--reg);
+  margin: auto;
+  display: flex;
+}
+
+.v-app__footnote__item__index {
+  padding-right: .5rem;
 }
 
 </style>
