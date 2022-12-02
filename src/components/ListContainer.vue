@@ -103,12 +103,14 @@ export default defineComponent({
     left: 0;
     position: fixed;
     width: calc( (100% / 4 * 3) - 1rem);
+    box-sizing: border-box;
     z-index: 100;
     background: var(--jd-color--white);
     box-shadow: 0 10px 0 0 var(--jd-color--white);
 
     .is-projects & {
-      width: calc(100% / 4 * 1);
+      padding-left: 1rem;
+      width: calc(100% / 4 * 1 - 1rem);
     }
   }
 
