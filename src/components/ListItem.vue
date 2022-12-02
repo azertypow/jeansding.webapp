@@ -260,21 +260,34 @@ export default defineComponent({
   flex-wrap: nowrap;
   border-bottom: solid 1px;
   padding-bottom: 2rem;
+
+  .is-projects & {
+    flex-direction: column;
+
+    > * {
+      width: 100%;
+    }
+  }
 }
 
 .v-list-item__body__left {
   width: calc(100% / 3 * 2);
+  box-sizing: border-box;
 
   img {
     display: block;
     width: 100%;
     height: auto;
-    //background-color: var(--jd-color--main);
+  }
+
+  .is-projects & {
+    margin-bottom: 1rem;
   }
 }
 
 .v-list-item__body__right {
   width: calc(100% / 3);
+  box-sizing: border-box;
 
   > ul {
     padding: 0;
@@ -283,7 +296,12 @@ export default defineComponent({
       display: block;
       padding: 0;
     }
+
+    .is-projects & {
+      display: none;
+    }
   }
+
 }
 
 .v-list-item__body__right__text-content {
