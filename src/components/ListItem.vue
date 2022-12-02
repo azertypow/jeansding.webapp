@@ -302,10 +302,12 @@ export default defineComponent({
 
     .is-projects & {
       display: none;
-      padding-left: 0;
     }
   }
 
+  .is-projects & {
+    padding-left: 0;
+  }
 }
 
 .v-list-item__body__right__text-content {
