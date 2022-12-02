@@ -262,6 +262,7 @@ export default defineComponent({
         overflow: auto;
         padding: 0;
         margin-left: -.5rem;
+        min-height: 20rem;
 
         li {
           display: block;
