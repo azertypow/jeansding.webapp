@@ -59,7 +59,7 @@
           v-if="isOpen"
       >
         <div
-            class="v-list-item__body__left jd-with-gutter"
+            class="v-list-item__body__left"
         >
           <img
               v-for="img of dataTag.img"
@@ -68,7 +68,7 @@
           />
         </div>
         <div
-            class="v-list-item__body__right jd-with-gutter"
+            class="v-list-item__body__right"
         >
           <div
               class="v-list-item__body__right__text-content"
@@ -259,7 +259,7 @@ export default defineComponent({
   display: flex;
   flex-wrap: nowrap;
   border-bottom: solid 1px;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 
   .is-projects & {
     flex-direction: column;
@@ -273,6 +273,7 @@ export default defineComponent({
 .v-list-item__body__left {
   width: calc(100% / 3 * 2);
   box-sizing: border-box;
+  padding-right: .5rem;
 
   img {
     display: block;
@@ -282,12 +283,14 @@ export default defineComponent({
 
   .is-projects & {
     margin-bottom: 1rem;
+    padding-right: 0;
   }
 }
 
 .v-list-item__body__right {
   width: calc(100% / 3);
   box-sizing: border-box;
+  padding-left: .5rem;
 
   > ul {
     padding: 0;
@@ -299,6 +302,7 @@ export default defineComponent({
 
     .is-projects & {
       display: none;
+      padding-left: 0;
     }
   }
 
