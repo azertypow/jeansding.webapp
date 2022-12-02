@@ -39,14 +39,51 @@
           v-if="globalState.apiProjects[currentSectionUID]"
       >
         <div
-            class="v-media__item__grid"
-            v-for="item of globalState.apiProjects[currentSectionUID].children"
+            class="v-media__item__coll"
         >
-          <article-container
-              style="border-bottom: none"
-              :article-data="item"
-          ></article-container>
+          <div
+              v-if=         "getShortedItemForColumn(3)[0]"
+              v-for="item of getShortedItemForColumn(3)[0]"
+              class="v-media__item__grid"
+          >
+            <article-container
+                style="border-bottom: none"
+                :article-data="item"
+            ></article-container>
+          </div>
         </div>
+
+        <div
+            class="v-media__item__coll"
+        >
+          <div
+              v-if=         "getShortedItemForColumn(3)[1]"
+              v-for="item of getShortedItemForColumn(3)[1]"
+              class="v-media__item__grid"
+          >
+            <article-container
+                style="border-bottom: none"
+                :article-data="item"
+            ></article-container>
+          </div>
+        </div>
+
+        <div
+            class="v-media__item__coll"
+        >
+          <div
+              v-if=         "getShortedItemForColumn(3)[2]"
+              v-for="item of getShortedItemForColumn(3)[2]"
+              class="v-media__item__grid"
+          >
+            <article-container
+                style="border-bottom: none"
+                :article-data="item"
+            ></article-container>
+          </div>
+        </div>
+
+
       </section>
     </main>
   </div>
@@ -83,16 +120,27 @@ export default defineComponent({
     currentProjectsSection(): Api.IProjectsSubpage | null {
       return this.globalState.apiProjects[this.currentSectionUID]
     },
-
-    // sortedArticle() {
-    //   /**
-    //    * todo: trier par importance
-    //    * moins l'articles a de relation avec les objet, plus il a une valeur élevé.
-    //    * un article lié a un seul objet plus fort en importance
-    //    * qu'un article lié a 2 objets
-    //    * */
-    // }
   },
+
+  methods: {
+    getShortedItemForColumn(numCols: number): Api.IArticle[][] {
+
+      const arrayToReturn: Api.IArticle[][] = []
+
+      Object.values(this.globalState.apiProjects[this.currentSectionUID].children)
+          .forEach((value, index) => {
+
+            const collIndex = index % numCols
+
+            arrayToReturn[collIndex] = Array.isArray(arrayToReturn[collIndex])
+                ? [...arrayToReturn[collIndex], value]
+                : [value]
+
+          })
+
+      return arrayToReturn
+    }
+  }
 
 })</script>
 
@@ -164,11 +212,17 @@ export default defineComponent({
     flex-wrap: wrap;
   }
 
-  .v-media__item__grid {
+  .v-media__item__coll {
     width: calc(100% / 3);
     box-sizing: border-box;
     padding-left: .5rem;
     padding-right: .5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .v-media__item__grid {
+
   }
 }
 
