@@ -252,6 +252,10 @@ export default defineComponent({
   .is-projects & {
     width: calc( 100% - 4rem);
   }
+
+  .is-open & {
+    display: none !important;
+  }
 }
 
 .v-list-item__body {
