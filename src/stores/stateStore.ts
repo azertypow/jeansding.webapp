@@ -16,6 +16,16 @@ export const stateStore = defineStore('stateStore', {
 
     menuIsOpen: false,
     creditIsOpen: false,
+
+    filteredArticleBySections: {
+      symposium: [],
+      denimpop: [],
+      exhibitions: [],
+    } as {
+      symposium:    Api.IArticle[],
+      denimpop:     Api.IArticle[],
+      exhibitions:  Api.IArticle[],
+    }
   }),
 
   getters: {
@@ -37,18 +47,24 @@ export const stateStore = defineStore('stateStore', {
   },
 
   actions: {
-    pushTag(value: string) {
+    async pushTag(value: string) {
       if( this.activatedFilterTag.includes( value ) ) return
       this.activatedFilterTag.push(value)
+
+      this.filteredArticleBySections.denimpop = await this.getFilteredArticle_bySection('denimpop')
+      this.filteredArticleBySections.exhibitions = await this.getFilteredArticle_bySection('exhibitions')
+      this.filteredArticleBySections.symposium = await this.getFilteredArticle_bySection('symposium')
     },
-    removeTag(value: string) {
+    async removeTag(value: string) {
       const indexOfMatchedTag = this.activatedFilterTag.findIndex((arrayValue) => {
         return arrayValue === value
       })
 
-      console.log(indexOfMatchedTag)
-
       this.activatedFilterTag.splice(indexOfMatchedTag, indexOfMatchedTag + 1)
+
+      this.filteredArticleBySections.denimpop = await this.getFilteredArticle_bySection('denimpop')
+      this.filteredArticleBySections.exhibitions = await this.getFilteredArticle_bySection('exhibitions')
+      this.filteredArticleBySections.symposium = await this.getFilteredArticle_bySection('symposium')
     },
 
     setActivatedFilterBySlug(listOfSlug: string[]) {
@@ -62,6 +78,19 @@ export const stateStore = defineStore('stateStore', {
 
       else this.objectByActivatedFilterBySlug = Object.values( this.apiData ).filter((item) => {
         return this.activatedFilterBySlug.every( slug => item.slug?.includes(slug))
+      })
+    },
+
+    async getFilteredArticle_bySection(sectionName: 'symposium' | 'denimpop' | 'exhibitions'): Promise<Api.IArticle[]> {
+
+      let allProjectsArticle: Api.IArticle[] = []
+
+      allProjectsArticle = allProjectsArticle.concat(Object.values( this.apiProjects[sectionName]?.children || {} ))
+
+      if(this.activatedFilterTag.length === 0) return allProjectsArticle
+
+      return allProjectsArticle.filter(article => {
+        return this.activatedFilterTag.every(category=> article.category?.includes(category))
       })
     },
   },

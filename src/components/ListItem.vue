@@ -332,6 +332,10 @@ export default defineComponent({
     width: 100%;
     height: auto;
   }
+
+  .is-projects & {
+    display: none;
+  }
 }
 
 </style>

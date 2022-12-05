@@ -13,8 +13,27 @@
       ></div>
     </div>
 
+    <div class="jd-button" v-if="globalState.filteredArticleBySections.symposium.length > 0">Symposium</div>
     <div
-      v-for="article of filteredArticle"
+      v-for="article of globalState.filteredArticleBySections.symposium"
+    >
+      <article-container
+          :article-data="article"
+      ></article-container>
+    </div>
+
+    <div class="jd-button" v-if="globalState.filteredArticleBySections.denimpop.length > 0">Book</div>
+    <div
+        v-for="article of globalState.filteredArticleBySections.denimpop"
+    >
+      <article-container
+          :article-data="article"
+      ></article-container>
+    </div>
+
+    <div class="jd-button" v-if="globalState.filteredArticleBySections.exhibitions.length > 0">exhibitions</div>
+    <div
+        v-for="article of globalState.filteredArticleBySections.exhibitions"
     >
       <article-container
           :article-data="article"
@@ -52,9 +71,6 @@ export default defineComponent({
       return  cleanIntroHTML(firstBlockHtml) + '<p>…</p>'
     },
 
-    filteredArticle(): Api.IArticle[] {
-      return this.globalState.filteredArticle
-    }
   },
 
 })</script>
