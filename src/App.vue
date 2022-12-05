@@ -104,7 +104,7 @@ export default defineComponent({
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 9999;
   }
 
   > footer {
@@ -112,7 +112,7 @@ export default defineComponent({
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 1000;
   }
 }
 
@@ -120,7 +120,7 @@ export default defineComponent({
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .v-app__body {

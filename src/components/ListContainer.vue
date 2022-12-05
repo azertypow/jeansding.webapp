@@ -24,7 +24,7 @@
     </div>
 
     <div
-        v-if="this.globalState.objectByActivatedFilterBySlug.length > 0 && $route.name !== 'inventory'"
+        v-if="globalState.objectByActivatedFilterBySlug.length > 0 && $route.name !== 'inventory'"
         class="v-list-container__linked-object"
     >
       <list-item

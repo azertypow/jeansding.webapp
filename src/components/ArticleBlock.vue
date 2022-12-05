@@ -100,7 +100,22 @@ export default defineComponent({
 
 <style lang="scss" >
 .v-article-block {
+  .v-article-block__html {
 
+    figure {
+      > ul {
+        > li {
+          &:only-child {
+            margin: auto;
+          }
+        }
+      }
+    }
+
+    figure > ul > li > img:only-child {
+      display: block;
+    }
+  }
 }
 
 .v-article-block-note-reference {

@@ -1,5 +1,13 @@
 <template>
   <div class="v-app-footer">
+
+    <div
+        class="v-app-footer__content"
+        v-if="stateStore.menuIsOpen"
+    >
+
+    </div>
+
     <div
         class="v-app-footer__body__left"
     >
@@ -51,12 +59,24 @@ export default defineComponent({
   justify-content: space-between;
   align-items: center;
   transition: background-color 1s ease-in-out;
+  z-index: 1000;
+}
+
+.v-app-footer__content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--jd-color--varriable);
+  z-index: 1000;
 }
 
 .v-app-footer__body__left,
 .v-app-footer__body__right {
   display: flex;
   align-items: center;
+  z-index: 100000;
 }
 
 .v-app-footer__search-bar {
@@ -65,6 +85,7 @@ export default defineComponent({
 
 .v-app-footer__search-icon,
 .v-app-footer__menu {
+  position: relative;
   display: block;
   height: 1rem;
 }
