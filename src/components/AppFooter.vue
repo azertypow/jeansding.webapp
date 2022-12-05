@@ -1,12 +1,71 @@
 <template>
   <div class="v-app-footer">
 
-    <div
-        class="v-app-footer__content"
-        v-if="stateStore.menuIsOpen"
-    >
+    <transition name="slide_top">
 
-    </div>
+      <div
+          class="v-app-footer__content"
+          v-if="stateStore.menuIsOpen"
+      >
+        <div
+            class="v-app-footer__content__left jd-with-gutter"
+        >
+          <h1>Colophon</h1>
+
+          <p
+          >The Jeansdinge collection is an ongoing project by Katharina Hohmann and Katharina Tietze.
+            It started in 2001 with the first exhibition at K&K. Zentrum für Kunst und Mode, Weimar. Since then, the archive is growing, as almost every week new objects join the collection.
+            This website is the result of a practice-based research project straddling the fields of art and fashion design at HEAD–Genève directed by Katharina Hohmann and funded by HES-SO (2021-2022). It is supported by the Swiss National Science Foundation (SNSF).
+          </p>
+
+          <h3>Research team:</h3>
+          <p>Aude Fellay</p>
+          <p>Katharina Hohmann</p>
+          <p>Lorelei Regamey</p>
+          <p>Katharina Tietze</p>
+          <p>Chaïm Vischel</p>
+
+
+          <h3>Acknowledgements</h3>
+          <p>Webdesign</p>
+          <p>Rob van Leijsen, Sonia Dominguez</p>
+
+          <h3>Content Management</h3>
+          <p>Nico Baldran</p>
+
+          <h3>Object-Photography</h3>
+          <p>Manuel Fabritz</p>
+
+          <h3>Translations and Proofreading English</h3>
+          <p>Lucinda Rennison (For the book: Denimpop. Reading Jeansdige.)</p>
+
+          <h3>Symposium / Open Archive Exhibition, Geneva, march 2022</h3>
+          <p>Video: Jimmy Roura, HEAD–Genève</p>
+          <p>Photography: Emmanuelle Bayart, Guillaume Collignon, HEAD–Genève</p>
+          <p>Scenography: Camille Farrah Buhler</p>
+          <p>Graphic Design: Maurane Zaugg</p>
+          <p>Technics and Support: Helder Dos Santos, Frédéric Thrane</p>
+          <p>Helping Hands: Oskar Fougeirol, Alexandra Galian, Félice Hubert, Niels Hung</p>
+
+          <h3>Film-project with students</h3>
+          <p>For co-teaching the film-project with students at HEAD-Genève - and uploading the films:</p>
+          <p>Lucien Monot</p>
+          <p>For co-teaching the film-project with students at ZHdK: Eva Wandeler</p>
+
+        </div>
+
+        <div
+            class="v-app-footer__content__right jd-with-gutter"
+        >
+          <p>Head of Research: Anthony Masure</p>
+          <p>Financial advisor: Christelle Granite-Noble</p>
+          <p>Financing: HES-SO, HEAD–Genève, SNF, ZHdK (translations)</p>
+        </div>
+
+      </div>
+
+    </transition>
+
 
     <div
         class="v-app-footer__body__left"
@@ -67,9 +126,51 @@ export default defineComponent({
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 1rem);
   background: var(--jd-color--varriable);
   z-index: 1000;
+  overflow: auto;
+  box-sizing: border-box;
+  padding-top: var(--v-app-header--title-height);
+  user-select: none;
+  display: flex;
+}
+
+.v-app-footer__content__left {
+  width: 50%;
+  margin-left: 25%;
+  box-sizing: border-box;
+  padding-top: 5rem;
+
+  h1 {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    background-color: var(--jd-color--varriable);
+    position: fixed;
+    left: 0;
+    top: var(--v-app-header--title-height);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.v-app-footer__content__right {
+  width: 25%;
+  position: fixed;
+  right: 0;
+  top: var(--v-app-header--title-height);
+  padding-top: 5rem;
+  box-sizing: border-box;
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
+    opacity: .5;
+  }
 }
 
 .v-app-footer__body__left,

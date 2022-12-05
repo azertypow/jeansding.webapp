@@ -36,6 +36,12 @@
       </div>
     </div>
 
+    <transition name="transition-contributors">
+      <Contributors
+          v-if="stateSore.creditIsOpen"
+      ></Contributors>
+    </transition>
+
     <footer>
       <div class="v-app__footnote">
         <div
@@ -61,9 +67,10 @@ import AppFooter from "@/components/AppFooter.vue"
 import ListContainer from "@/components/ListContainer.vue"
 import { stateStore } from "./stores/stateStore"
 import CrossIcon from "@/components/crossIcon.vue";
+import Contributors from "@/components/Contributors.vue";
 
 export default defineComponent({
-  components: {CrossIcon, ListContainer, AppFooter, AppHeader, },
+  components: {Contributors, CrossIcon, ListContainer, AppFooter, AppHeader, },
 
   computed: {
     creditIsOpen(): boolean {
@@ -120,7 +127,7 @@ export default defineComponent({
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 9999;
+  z-index: 99999;
 }
 
 .v-app__body {

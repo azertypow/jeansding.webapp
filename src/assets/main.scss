@@ -89,3 +89,20 @@ button,
 .transition-page-leave-to {
   opacity: 0;
 }
+
+
+//// slide from top
+.transition-contributors-leave-active,
+.transition-contributors-enter-active {
+  transition: transform .25s ease-out .75s, opacity .25s linear .75s;
+}
+
+.transition-contributors-enter-from,
+.transition-contributors-leave-to {
+  transform: translate(0, -.5rem);
+  opacity: 0;
+}
+
+.transition-contributors-leave-to {
+  transition: transform .75s ease-out, opacity .75s linear;
+}
