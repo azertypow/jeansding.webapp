@@ -183,11 +183,11 @@ export default defineComponent({
     justify-content: center;
     box-sizing: border-box;
     padding-top: 1rem;
-    padding-left: .5rem;
+    padding-left: 2.5rem;
     padding-right: .5rem;
     right: 1rem;
     top: var(--v-app-header--title-height);
-    width: calc(100% / 4 * 3 - 2rem);
+    width: calc(100% / 4 * 3);
     position: fixed;
     z-index: 100;
     background: white;
