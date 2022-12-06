@@ -25,6 +25,10 @@
   &.is-projects {
     --jd-color--varriable: var(--jd-palette--blue-light);
   }
+
+  @media (min-width: $break-width-extra-xxl) {
+    --js-max-width--reg: 55rem;
+  }
 }
 
 *,
