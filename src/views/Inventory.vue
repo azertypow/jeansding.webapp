@@ -1,16 +1,15 @@
 <template>
   <div class="v-inventory">
 
+    <div class="jd-button">Welcome!</div>
+
     <div
         v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0"
     >
-      <h4>text</h4>
-      <h3>{{ globalState.apiProjects.symposium.description_title }}</h3>
-      <h5>{{ globalState.apiProjects.symposium.description_author }}</h5>
-
-      <div
-          v-html="cleanedIntroSymposiumForAside"
-      ></div>
+      <div>
+        <p>Why is it that denim sneaks up on objects? Why do designers and marketers feel compelled to wrap commodities in denim-like materials? By claiming some higher aesthetic or symbolic property (why else adorn themselves in denim?), all the while flagrantly displaying their cheapness (the denim is fake), the denim-wrapped objects that artist Katharina Hohmann and designer Katharina Tietze have collected over the past 20 years form a puzzling and alluring whole. The Jeansdinge (‘denim things’) collection includes a wide range of objects, mass-produced commodities for the most part: desk chairs, condoms, plates, bikinis, perfume, headphones, etc.</p>
+        <p>Yanking these objects out of consumption cycles, the collection affords a means through which to reflect on art, design and the various accusations of complicity with which they have been charged. What does a “vulgar” collection of denim-swathed objects have to say about both fields, their relation and our current moment? What histories, affects and stories does the collection ‘archive’ through them? In what ways can we account for the violence that underwrites the production of these mass-produced objects? What new narratives does it make possible?</p>
+      </div>
     </div>
 
     <div class="jd-button" v-if="globalState.filteredArticleBySections.symposium.length > 0">Symposium</div>
