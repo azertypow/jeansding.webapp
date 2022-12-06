@@ -30,7 +30,7 @@
             v-html="currentArticle.description"
         ></div>
         <h1>{{currentArticle.title}}<template v-if="currentArticle.subtitle" ><br>{{currentArticle.subtitle}}</template></h1>
-        <h2>{{currentArticle.author}}</h2>
+        <h2 v-if="currentArticle.author" >{{currentArticle.author}}</h2>
       </div>
 
       <div
