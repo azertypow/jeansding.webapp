@@ -194,6 +194,8 @@ export default defineComponent({
 })</script>
 
 <style lang="scss">
+@import "../assets/scss-var";
+
 .v-list-item {
   width: 100%;
   user-select: none;
@@ -326,6 +328,13 @@ export default defineComponent({
 .v-list-item--id,
 .v-list-item--title {
   font-weight: 500;
+}
+
+.v-list-item--id {
+
+  @media (max-width: $break-width-reg) {
+    width: 3rem !important;
+  }
 }
 
 .v-list-item__vimeo {

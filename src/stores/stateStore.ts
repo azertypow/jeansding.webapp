@@ -54,7 +54,7 @@ export const stateStore = defineStore('stateStore', {
       const indexFoot = this.footNoteElements.length + 1
 
       const noteReferenceInText = articleFootNote.parentElement.insertBefore(articleDocument.createElement('span'), articleFootNote)
-      noteReferenceInText.innerHTML = `[&nbsp;${indexFoot}&nbsp;]`
+      noteReferenceInText.innerHTML = `&nbsp;[${indexFoot}]`
       noteReferenceInText.dataset.html = articleFootNote.innerHTML
       noteReferenceInText.dataset.index = indexFoot.toString()
       noteReferenceInText.className = "v-article-block-note-reference"

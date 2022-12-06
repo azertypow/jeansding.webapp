@@ -31,7 +31,7 @@
       ></article-container>
     </div>
 
-    <div class="jd-button" v-if="globalState.filteredArticleBySections.exhibitions.length > 0">exhibitions</div>
+    <div class="jd-button" v-if="globalState.filteredArticleBySections.exhibitions.length > 0">Exhibitions</div>
     <div
         v-for="article of globalState.filteredArticleBySections.exhibitions"
     >

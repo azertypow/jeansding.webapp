@@ -166,7 +166,7 @@ export default defineComponent({
     width: calc( 100% / 3 * 1);
   }
 
-  @media (min-width: $break-width-s) {
+  @media (min-width: $break-width-reg) {
     width: 75%;
 
     .is-projects & {
@@ -202,7 +202,7 @@ export default defineComponent({
     border-radius: 1rem;
   }
 
-  @media (min-width: $break-width-s) {
+  @media (min-width: $break-width-reg) {
     width: 25%;
 
     .is-projects & {
