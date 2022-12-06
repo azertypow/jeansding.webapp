@@ -101,6 +101,8 @@ export default defineComponent({
 })</script>
 
 <style lang="scss">
+@import "assets/scss-var";
+
 .v-app {
   padding-top: var(--v-app-header--title-height);
   height: 100%;
@@ -139,7 +141,7 @@ export default defineComponent({
 .v-app__body__left {
   padding-left: 1rem;
   padding-right: .5rem;
-  width: 75%;
+  width: calc(100% / 3 * 2);
   transition: width 500ms ease-in-out;
   box-sizing: border-box;
   height: 100%;
@@ -161,13 +163,21 @@ export default defineComponent({
   }
 
   .is-projects & {
-    width: 25%;
+    width: calc( 100% / 3 * 1);
+  }
+
+  @media (min-width: $break-width-s) {
+    width: 75%;
+
+    .is-projects & {
+      width: 25%;
+    }
   }
 }
 
 .v-app__body__right {
   color: var(--jd-color--secondary);
-  width: 25%;
+  width: calc( 100% / 3 * 1);
   box-sizing: border-box;
   padding-bottom:  50vh;
   height: 100%;
@@ -178,7 +188,7 @@ export default defineComponent({
   //transition: width 500ms ease-in-out;
 
   .is-projects & {
-    width: 75%;
+    width: calc( 100% / 3 * 2);
     padding-top: 1rem;
   }
 
@@ -190,6 +200,14 @@ export default defineComponent({
   &::-webkit-scrollbar-thumb {
     background: var(--jd-color--secondary);
     border-radius: 1rem;
+  }
+
+  @media (min-width: $break-width-s) {
+    width: 25%;
+
+    .is-projects & {
+      width: 75%;
+    }
   }
 }
 
