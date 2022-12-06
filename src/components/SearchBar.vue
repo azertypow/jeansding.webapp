@@ -113,7 +113,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 .v-search-bar {
   user-select: none;
-  padding: .5rem;
+  padding: 0 .5rem;
+  height: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
   border-radius: 2rem;
   border: solid 2px var(--jd-palette--blue-dark);
   position: relative;
