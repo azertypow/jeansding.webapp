@@ -210,6 +210,7 @@ export default defineComponent({
   .v-media__item {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 4rem;
   }
 
   .v-media__item__coll {
