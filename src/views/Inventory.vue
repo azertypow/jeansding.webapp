@@ -2,7 +2,7 @@
   <div class="v-inventory">
 
     <div
-        v-if="globalState.apiProjects.symposium && globalState.activatedFilterTag.length === 0"
+        v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0"
     >
       <h4>text</h4>
       <h3>{{ globalState.apiProjects.symposium.description_title }}</h3>

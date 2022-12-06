@@ -9,6 +9,7 @@ export const stateStore = defineStore('stateStore', {
     apiData: {} as Api.ItemList,
     apiProjects: {} as Api.IProjects,
     activatedFilterTag: [] as string[],
+    abstractActivatedFilterTagForArticle: [] as string[],
     activatedFilterBySlug: [] as string[],
     objectByActivatedFilterBySlug: [] as Api.IItem[],
 
@@ -103,24 +104,34 @@ export const stateStore = defineStore('stateStore', {
       }
     },
 
-    async pushTag(value: string) {
-      if( this.activatedFilterTag.includes( value ) ) return
-      this.activatedFilterTag.push(value)
-
+    async updateFilteredArticles_bySection() {
       this.filteredArticleBySections.denimpop = await this.getFilteredArticle_bySection('denimpop')
       this.filteredArticleBySections.exhibitions = await this.getFilteredArticle_bySection('exhibitions')
       this.filteredArticleBySections.symposium = await this.getFilteredArticle_bySection('symposium')
     },
-    async removeTag(value: string) {
+
+    pushTag(value: string) {
+      if( this.activatedFilterTag.includes( value ) ) return
+      this.activatedFilterTag.push(value)
+      this.abstractActivatedFilterTagForArticle = this.activatedFilterTag
+
+      this.updateFilteredArticles_bySection().then(() => console.log('push category filter update'))
+    },
+    removeTag(value: string) {
       const indexOfMatchedTag = this.activatedFilterTag.findIndex((arrayValue) => {
         return arrayValue === value
       })
 
       this.activatedFilterTag.splice(indexOfMatchedTag, indexOfMatchedTag + 1)
 
-      this.filteredArticleBySections.denimpop = await this.getFilteredArticle_bySection('denimpop')
-      this.filteredArticleBySections.exhibitions = await this.getFilteredArticle_bySection('exhibitions')
-      this.filteredArticleBySections.symposium = await this.getFilteredArticle_bySection('symposium')
+      this.abstractActivatedFilterTagForArticle = this.activatedFilterTag
+
+      this.updateFilteredArticles_bySection().then(() => console.log('remove category filter update'))
+    },
+
+    clearAllTag() {
+      this.activatedFilterTag = []
+      this.abstractActivatedFilterTagForArticle = this.activatedFilterTag
     },
 
     setActivatedFilterBySlug(listOfSlug: string[]) {
@@ -143,10 +154,10 @@ export const stateStore = defineStore('stateStore', {
 
       allProjectsArticle = allProjectsArticle.concat(Object.values( this.apiProjects[sectionName]?.children || {} ))
 
-      if(this.activatedFilterTag.length === 0) return allProjectsArticle
+      if(this.abstractActivatedFilterTagForArticle.length === 0) return allProjectsArticle
 
       return allProjectsArticle.filter(article => {
-        return this.activatedFilterTag.every(category=> article.category?.includes(category))
+        return this.abstractActivatedFilterTagForArticle.every(category=> article.category?.includes(category))
       })
     },
   },

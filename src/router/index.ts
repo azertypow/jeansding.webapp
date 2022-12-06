@@ -57,7 +57,7 @@ router.beforeEach((to, from, next) => {
     })
   }
 
-  if( to.name === 'inventory' || from.name === 'inventory' || to.name === ':projectSection' ) stateStore().activatedFilterTag = []
+  if( to.name === 'inventory' || from.name === 'inventory' || to.name === ':projectSection' ) stateStore().clearAllTag()
 
   if( to.name === ':projectSection/:articleUid' ) {
 

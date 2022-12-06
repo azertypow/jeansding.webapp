@@ -131,6 +131,10 @@ export default defineComponent({
 
       this.globalState.currentOpenObject = this.isOpen ? null : this.dataTag;
 
+      this.globalState.abstractActivatedFilterTagForArticle = this.isOpen ? this.dataTag.category : []
+
+      this.globalState.updateFilteredArticles_bySection()
+
       window.setTimeout(() => {
         document.querySelector('.v-app__body__left')?.scrollTo({
           behavior: 'smooth',
