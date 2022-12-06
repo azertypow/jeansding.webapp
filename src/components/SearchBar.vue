@@ -84,15 +84,13 @@ export default defineComponent({
             })
           })
 
-      console.log(arrayOfItemActive)
-
       for (let item of arrayOfItemActive) {
         for( const category of item.category ) {
           if( ! arrayOfAllTags.includes(category) ) arrayOfAllTags.push(category)
         }
       }
 
-      return arrayOfAllTags
+      return arrayOfAllTags.sort()
     },
 
     searchBarText(): string {
