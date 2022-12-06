@@ -331,6 +331,7 @@ export default defineComponent({
 }
 
 .v-list-item--id {
+  transition: width 500ms ease-in-out;
 
   @media (max-width: $break-width-reg) {
     width: 3rem !important;
