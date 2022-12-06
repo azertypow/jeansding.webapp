@@ -128,9 +128,8 @@ export default defineComponent({
   methods: {
     toggleOpenStatus() {
       if(this.$route.name === 'media') return
-      this.isOpen ?
-          this.globalState.currentOpenObject = null
-          : this.globalState.currentOpenObject = this.dataTag
+
+      this.globalState.currentOpenObject = this.isOpen ? null : this.dataTag;
 
       window.setTimeout(() => {
         document.querySelector('.v-app__body__left')?.scrollTo({
