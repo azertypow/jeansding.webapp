@@ -29,7 +29,10 @@
             class="v-article__content__description jd-text-max-width-reg"
             v-html="currentArticle.description"
         ></div>
-        <h1>{{currentArticle.title}}<template v-if="currentArticle.subtitle" ><br>{{currentArticle.subtitle}}</template></h1>
+        <h1
+            v-if="italicMarkdownCurrentArticleTitleAndSubtitle"
+            v-html="italicMarkdownCurrentArticleTitleAndSubtitle"
+        ></h1>
         <h2 v-if="currentArticle.author" >{{currentArticle.author}}</h2>
       </div>
 
@@ -66,6 +69,7 @@ import type {Api} from "@/Utils/api";
 import type {IVimeoOembed} from "@/Utils/vimeo";
 import ArticleContainer from "@/components/ArticleContainer.vue";
 import ArticleBlock from "@/components/ArticleBlock.vue";
+import {italicMarkdown} from "@/Utils/TextFormat";
 
 export default defineComponent({
 
@@ -105,6 +109,15 @@ export default defineComponent({
 
     currentArticle(): Api.IArticle | null {
       return this.apiProjects[this.projectSection]?.children['mediapage/'+this.projectSection+'/'+this.articleUid]
+    },
+
+    italicMarkdownCurrentArticleTitleAndSubtitle(): string | null {
+      if(this.currentArticle === null) return null
+
+      const titleWithMarkdownItalic     = this.currentArticle.title     ? italicMarkdown(this.currentArticle.title) : ''
+      const subtitleWithMarkdownItalic  = this.currentArticle.subtitle  ? '<br>' + italicMarkdown(this.currentArticle.subtitle) : ''
+
+      return titleWithMarkdownItalic + subtitleWithMarkdownItalic
     },
 
     projectSection(): string {
