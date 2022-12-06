@@ -68,7 +68,7 @@ export default defineComponent({
           .text)[0]
       || '<p>continu to read</p>'
 
-      return  cleanIntroHTML(firstBlockHtml) + '<p>…</p>'
+      return  cleanIntroHTML(firstBlockHtml) + '<div>…</div>'
     },
 
   },
@@ -79,5 +79,13 @@ export default defineComponent({
 .v-inventory {
   padding-left: .5rem;
   padding-right: .5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .jd-button {
+    margin-top: 2rem;
+    border-color: var(--jd-palette--blue-light);
+  }
 }
 </style>
