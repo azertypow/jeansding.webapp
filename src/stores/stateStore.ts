@@ -13,6 +13,7 @@ export const stateStore = defineStore('stateStore', {
     objectByActivatedFilterBySlug: [] as Api.IItem[],
 
     footNotes: [] as {index: number, html: string}[],
+    footNoteElements: [] as HTMLSpanElement[],
 
     menuIsOpen: false,
     creditIsOpen: false,
@@ -47,6 +48,51 @@ export const stateStore = defineStore('stateStore', {
   },
 
   actions: {
+    pushFooterNoteElement(articleDocument: Document, articleFootNote: Element) {
+      if( ! (articleFootNote.parentElement instanceof HTMLElement) ) return
+
+      const indexFoot = this.footNoteElements.length + 1
+
+      const noteReferenceInText = articleFootNote.parentElement.insertBefore(articleDocument.createElement('span'), articleFootNote)
+      noteReferenceInText.innerHTML = `[&nbsp;${indexFoot}&nbsp;]`
+      noteReferenceInText.dataset.html = articleFootNote.innerHTML
+      noteReferenceInText.dataset.index = indexFoot.toString()
+      noteReferenceInText.className = "v-article-block-note-reference"
+      this.footNoteElements.push( noteReferenceInText )
+
+      document.querySelector('.v-app__body__right')!.addEventListener('scroll', this.onScrollAction)
+    },
+
+    onScrollAction() {
+      for (const footNoteElement of this.footNoteElements) {
+        const footNoteIsVisibleOnScreen =
+            footNoteElement.getBoundingClientRect().top > 50
+            && footNoteElement.getBoundingClientRect().top < window.innerHeight
+
+        const footNoteIsNotVisibleOnScreen = !footNoteIsVisibleOnScreen
+
+        const keyOfNoteInGlobalArrayOfNoteToShow = this.footNotes.findIndex(value => {
+          return value.index === parseInt(footNoteElement.dataset.index as string)
+        })
+
+        const footNoteIsNotInGlobalArrayOfNotesToShow = keyOfNoteInGlobalArrayOfNoteToShow < 0
+        const footNoteIsInTheArrayOfNotesToShow = ! footNoteIsNotInGlobalArrayOfNotesToShow
+
+        if ( footNoteIsVisibleOnScreen && footNoteIsNotInGlobalArrayOfNotesToShow ) {
+          this.footNotes.push({
+            index: parseInt(footNoteElement.dataset.index as string),
+            html: footNoteElement.dataset.html as string
+          })
+        }
+
+        if(footNoteIsNotVisibleOnScreen && footNoteIsInTheArrayOfNotesToShow) {
+          this.footNotes.splice(keyOfNoteInGlobalArrayOfNoteToShow, 1)
+        }
+
+
+      }
+    },
+
     async pushTag(value: string) {
       if( this.activatedFilterTag.includes( value ) ) return
       this.activatedFilterTag.push(value)
