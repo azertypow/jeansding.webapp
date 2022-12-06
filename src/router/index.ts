@@ -75,6 +75,7 @@ router.beforeEach((to, from, next) => {
   }
 
   stateStore().currentOpenObject = null
+  stateStore().clearFootNoteListAndRemoveScrollListener()
 
   next()
 })

@@ -64,6 +64,7 @@ export const stateStore = defineStore('stateStore', {
     },
 
     clearFootNoteListAndRemoveScrollListener() {
+      this.footNotes = []
       this.footNoteElements = []
       document.querySelector('.v-app__body__right')!.removeEventListener('scroll', this.onScrollAction)
     },
