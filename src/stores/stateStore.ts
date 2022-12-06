@@ -88,6 +88,10 @@ export const stateStore = defineStore('stateStore', {
             index: parseInt(footNoteElement.dataset.index as string),
             html: footNoteElement.dataset.html as string
           })
+
+          this.footNotes = this.footNotes.sort( (footNoteItemA, footNoteItemB) => {
+            return footNoteItemA.index < footNoteItemB.index ? -1 : 1
+          })
         }
 
         if(footNoteIsNotVisibleOnScreen && footNoteIsInTheArrayOfNotesToShow) {
