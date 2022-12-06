@@ -56,6 +56,14 @@ export default defineComponent({
 .v-article-block {
   .v-article-block__html {
 
+    //todo: tu remove
+    h5 {
+      text-align: center;
+      text-indent: 0;
+      top: 4rem;
+      position: relative;
+    }
+
     figure {
       > ul {
         > li {
