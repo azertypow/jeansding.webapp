@@ -30,8 +30,7 @@ export default defineComponent({
   },
 
   beforeUnmount() {
-    //todo: remove listener on change page from global store
-    document.querySelector('.v-app__body__right')!.removeEventListener('scroll', this.onScrollAction)
+    stateStore().clearFootNoteListAndRemoveScrollListener()
   },
 
   computed: {
