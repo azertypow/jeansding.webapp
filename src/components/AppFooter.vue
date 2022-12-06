@@ -18,7 +18,7 @@
             This website is the result of a practice-based research project straddling the fields of art and fashion design at HEAD–Genève directed by Katharina Hohmann and funded by HES-SO (2021-2022). It is supported by the Swiss National Science Foundation (SNSF).
           </p>
 
-          <h3>Research team:</h3>
+          <h3>Research team</h3>
           <p>Aude Fellay</p>
           <p>Katharina Hohmann</p>
           <p>Lorelei Regamey</p>
@@ -26,12 +26,9 @@
           <p>Chaïm Vischel</p>
 
 
-          <h3>Acknowledgements</h3>
-          <p>Webdesign</p>
-          <p>Rob van Leijsen, Sonia Dominguez</p>
-
-          <h3>Content Management</h3>
-          <p>Nico Baldran</p>
+          <h3>Website</h3>
+          <p>Design: Sonia Dominguez, Rob van Leijsen</p>
+          <p>Development: Nicolas Baldran</p>
 
           <h3>Object-Photography</h3>
           <p>Manuel Fabritz</p>
@@ -52,14 +49,33 @@
           <p>Lucien Monot</p>
           <p>For co-teaching the film-project with students at ZHdK: Eva Wandeler</p>
 
+          <h3>Head of Research: Anthony Masure</h3>
+          <p>Financial advisor: Christelle Granite-Noble</p>
+          <p>Financing: HES-SO, HEAD–Genève, SNF, ZHdK (translations)</p>
+          
+          <div
+              class="v-app-footer__logo"
+          >
+            <div>
+              <img alt="logo" src="../assets/logo/logo-head.svg">
+              <img alt="logo" src="../assets/logo/2018_zhdk_logo_E_weiss.svg">
+              <img alt="logo" src="../assets/logo/SNF_logo_standard_web_sw_neg_e.svg">
+            </div>
+            <div>
+            </div>
+            <div>
+            </div>
+
+
+
+          </div>
+          
         </div>
 
         <div
             class="v-app-footer__content__right jd-with-gutter"
         >
-          <p>Head of Research: Anthony Masure</p>
-          <p>Financial advisor: Christelle Granite-Noble</p>
-          <p>Financing: HES-SO, HEAD–Genève, SNF, ZHdK (translations)</p>
+
         </div>
 
       </div>
@@ -189,5 +205,25 @@ export default defineComponent({
   position: relative;
   display: block;
   height: 1rem;
+}
+
+.v-app-footer__logo {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+
+  > div {
+    width: calc(100% / 3);
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 3rem;
+  }
 }
 </style>

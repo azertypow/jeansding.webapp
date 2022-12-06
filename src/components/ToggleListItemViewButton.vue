@@ -1,6 +1,7 @@
 <template>
   <div
       class="v-toggle-list-item-view-button"
+      @click="globalState.itemImageMode = !globalState.itemImageMode"
   >
     <span
       class="v-toggle-list-item-view-button__text"
@@ -25,8 +26,7 @@ export default defineComponent({
 
   computed: {
     buttonText(): string {
-      if(this.globalState.activatedFilterTag.length > 0) return 'switch to compact list'
-      return 'switch to compact list'
+      return this.globalState.itemImageMode ? 'switch to compact view' : 'switch to image view'
     },
   },
 
@@ -40,10 +40,8 @@ export default defineComponent({
   border-radius: 2rem;
   border: solid 2px var(--jd-palette--blue-dark);
   position: relative;
-
-  .v-toggle-list-item-view-button__text {
-    opacity: .5;
-  }
+  text-align: center;
+  cursor: pointer;
 
   .v-toggle-list-item-view-button__list-of-tag {
     position: absolute;

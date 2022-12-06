@@ -13,6 +13,8 @@ export const stateStore = defineStore('stateStore', {
     activatedFilterBySlug: [] as string[],
     objectByActivatedFilterBySlug: [] as Api.IItem[],
 
+    itemImageMode: false,
+
     footNotes: [] as {index: number, html: string}[],
     footNoteElements: [] as HTMLSpanElement[],
 
