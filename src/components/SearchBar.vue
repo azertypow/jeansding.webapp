@@ -27,6 +27,14 @@
       </div>
     </transition>
 
+    <transition name="slide_top" >
+      <div
+          v-if="listOfTagIsOpen"
+          @click.stop="listOfTagIsOpen = false"
+          class="v-search-bar__cache-to-close"
+      ><div class="v-search-bar__cache-to-close__background" ></div></div>
+    </transition>
+
   </div>
 </template>
 
@@ -151,5 +159,23 @@ export default defineComponent({
       }
     }
   }
+}
+
+.v-search-bar__cache-to-close {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.v-search-bar__cache-to-close__background {
+  position: absolute;
+  background-color: var(--jd-color--white);
+  opacity: .75;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 </style>
