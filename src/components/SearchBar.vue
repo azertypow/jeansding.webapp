@@ -11,7 +11,7 @@
       class="jd-button is-active v-search-bar__tag"
       v-for="tag of activatedFilterTag"
       @click.stop="removeTag(tag)"
-    >{{tag}} ✗</span>
+    >{{tag.replace('null', 'coming soon')}} ✗</span>
 
 
     <transition name="slide_top" >
@@ -23,7 +23,7 @@
             class="jd-button is-active v-search-bar__tag"
             v-for="tag of possibleTags"
             @click.stop="pushTag(tag)"
-        >{{tag}}</span>
+        >{{tag.replace('null', 'coming soon')}} ✗</span>
       </div>
     </transition>
 

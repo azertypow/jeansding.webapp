@@ -2,7 +2,7 @@
   <button
       class="v-tag"
       @click.stop="pushTag"
-  >{{name}}</button>
+  >{{placeholder}}</button>
 </template>
 
 <script lang="ts">
@@ -21,6 +21,11 @@ export default defineComponent({
     return {
       stateStore: stateStore()
     }
+  },
+
+  computed: {
+    // todo string replace NULL
+    placeholder(): string {return this.name.replace('null', 'coming soon')}
   },
 
   methods: {
