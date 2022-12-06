@@ -122,6 +122,10 @@ export default defineComponent({
   border: solid 2px var(--jd-palette--blue-dark);
   position: relative;
 
+  > * {
+    margin-right: .25rem;
+  }
+
   .v-search-bar__text {
     opacity: .5;
   }
