@@ -15,6 +15,6 @@ export function getSlugOfLinkedObjectsOfArticle(
 
     const currentArticle: Api.IArticle | null =
         stateStore().apiProjects[projectSection]?.children['mediapage/'+projectSection+'/'+articleUid]
-
-    return currentArticle?.Linkwith?.split(",").filter(category => { return category.length > 0 }) || []
+    console.log( currentArticle )
+    return currentArticle?.Linkwith?.split(",").map(category => category.trim()).filter(category => { return category.length > 0 }) || []
 }

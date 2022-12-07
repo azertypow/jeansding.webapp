@@ -146,7 +146,10 @@ export const stateStore = defineStore('stateStore', {
       if (this.activatedFilterBySlug.length < 1) this.objectByActivatedFilterBySlug = []
 
       else this.objectByActivatedFilterBySlug = Object.values( this.apiData ).filter((item) => {
-        return this.activatedFilterBySlug.every( slug => item.slug?.includes(slug))
+
+        if(item.slug === null) return
+
+        return this.activatedFilterBySlug.includes( item.slug )
       })
     },
 
