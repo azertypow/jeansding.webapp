@@ -11,7 +11,7 @@
     <div
             class="counter-container"
     >
-        <div class="counter-container__text" >Jeansdinge.com sera en ligne&nbsp;: <span class="counter"></span> /  jeansdinge.com will be online: <span class="counter"></span></div>
+        <div class="counter-container__text" >Jeansdinge.com sera en ligne&nbsp;:<span class="counter"></span>/ Jeansdinge.com will be online:<span class="counter"></span></div>
     </div>
 </body>
 <script>
@@ -85,21 +85,26 @@
         /*height: 2rem;*/
         padding-top: .5rem;
         padding-bottom: .5rem;
-        line-height: 2rem;
         transform-origin: top center;
         bottom: calc(50% - 1rem);
         left: 50%;
         transform: translate(-50%, -50%) rotate(-15deg);
-        /*bottom: 0;*/
-        /*left: 0;*/
-        /*transform: none;*/
-        /*width: 100%;*/
+        bottom: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
         color: #020166;
         background: white;
     }
-    .counter-container__text {
-        width: 50vw;
+    .counter-container__text,
+    .counter-container__text > * {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
         margin: auto;
+        font-size: 1.5rem;
+        line-height: 2rem;
     }
 
 </style>

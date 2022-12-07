@@ -9,19 +9,19 @@
             class="v-contributors__content__left jd-with-gutter"
         >
           <h1>Contributors</h1>
-          <p class="jd-font-xl" >Veronica Amorim</p>
-          <p class="jd-font-xl" >Kevin van Aartsen</p>
-          <p class="jd-font-xl" >Nico Baldran</p>
-          <p class="jd-font-xl" >Emmanuelle Bayart</p>
-          <p class="jd-font-xl" >Roger Behrens</p>
-          <p class="jd-font-xl" >Mercedes Bunz</p>
-          <p class="jd-font-xl" >Sabrina Calvo</p>
-          <p class="jd-font-xl" >Guillaume Collignon</p>
-          <p class="jd-font-xl" >Natalia Comandari</p>
-          <p class="jd-font-xl" >Alan Croissant</p>
-          <p class="jd-font-xl" >Nura Sina Deon</p>
-          <p class="jd-font-xl" >Julian Daubas</p>
-          <p class="jd-font-xl" >Sonia Dominguez</p>
+          <p class="jd-font-xl head-student" >Veronica Amorim</p>
+          <p class="jd-font-xl zhdk-student" >Kevin van Aartsen</p>
+          <p class="jd-font-xl web-site-doc" >Nico Baldran</p>
+          <p class="jd-font-xl web-site-doc" >Emmanuelle Bayart</p>
+          <p class="jd-font-xl denimpop-pub" >Roger Behrens</p>
+          <p class="jd-font-xl denimpop-pub" >Mercedes Bunz</p>
+          <p class="jd-font-xl speaker" >Sabrina Calvo</p>
+          <p class="jd-font-xl web-site-doc" >Guillaume Collignon</p>
+          <p class="jd-font-xl film speaker" >Natalia Comandari</p>
+          <p class="jd-font-xl head-student" >Alan Croissant</p>
+          <p class="jd-font-xl zhdk-student" >Nura Sina Deon</p>
+          <p class="jd-font-xl head-student" >Julian Daubas</p>
+          <p class="jd-font-xl " >Sonia Dominguez</p>
           <p class="jd-font-xl" >Salomé Djeranian</p>
           <p class="jd-font-xl" >Daniela Eberle</p>
           <p class="jd-font-xl" >Dorotea Eichelberg</p>
