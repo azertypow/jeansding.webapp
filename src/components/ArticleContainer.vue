@@ -55,7 +55,26 @@ export default defineComponent({
 
   methods: {
     async setThumbnail_url() {
-      if(this.articleData.vimeoLink === null ) return
+      if(this.articleData.vimeoLink === null ) {
+
+        for (let articleContentKey in this.articleData.article_content) {
+          const article = this.articleData.article_content[articleContentKey]
+
+          const domparser = new DOMParser()
+          const articleDocument = domparser.parseFromString(article, 'text/html')
+
+          const possibleImage = articleDocument.querySelector('img')
+
+          if(possibleImage) {
+            this.thumbnail_url = possibleImage.src
+            return
+          }
+        }
+
+        this.thumbnail_url = null
+
+        return
+      }
       if(this.articleData.vimeoLink.length < 1 ) return
 
       const vimeoUrl = 'https://vimeo.com/api/oembed.json?width=1280&url=' + encodeURI(this.articleData.vimeoLink)
