@@ -49,14 +49,51 @@
         v-if="globalState.apiProjects[currentSectionUID]"
     >
       <div
-          class="v-article__item__grid"
-          v-for="item of globalState.apiProjects[currentSectionUID].children"
+          class="v-article__item__coll"
       >
-        <article-container
-            style="border-bottom: none"
-            :article-data="item"
-        ></article-container>
+        <div
+            v-if=         "getShortedItemForColumn(3)[0]"
+            v-for="item of getShortedItemForColumn(3)[0]"
+            class="v-article__item__grid"
+        >
+          <article-container
+              style="border-bottom: none"
+              :article-data="item"
+          ></article-container>
+        </div>
       </div>
+
+      <div
+          class="v-article__item__coll"
+      >
+        <div
+            v-if=         "getShortedItemForColumn(3)[1]"
+            v-for="item of getShortedItemForColumn(3)[1]"
+            class="v-article__item__grid"
+        >
+          <article-container
+              style="border-bottom: none"
+              :article-data="item"
+          ></article-container>
+        </div>
+      </div>
+
+      <div
+          class="v-article__item__coll"
+      >
+        <div
+            v-if=         "getShortedItemForColumn(3)[2]"
+            v-for="item of getShortedItemForColumn(3)[2]"
+            class="v-article__item__grid"
+        >
+          <article-container
+              style="border-bottom: none"
+              :article-data="item"
+          ></article-container>
+        </div>
+      </div>
+
+
     </section>
 
   </div>
@@ -98,7 +135,26 @@ export default defineComponent({
       const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&responsive=1&portrait=0&&color=025BFA&url=' + encodeURI(this.currentArticle.vimeoLink)
 
       this.video = (await (await window.fetch(vimeoUrl)).json() as IVimeoOembed).html
+    },
+
+    getShortedItemForColumn(numCols: number): Api.IArticle[][] {
+
+      const arrayToReturn: Api.IArticle[][] = []
+
+      Object.values(this.globalState.apiProjects[this.currentSectionUID].children)
+          .forEach((value, index) => {
+
+            const collIndex = index % numCols
+
+            arrayToReturn[collIndex] = Array.isArray(arrayToReturn[collIndex])
+                ? [...arrayToReturn[collIndex], value]
+                : [value]
+
+          })
+
+      return arrayToReturn
     }
+
   },
 
   computed: {
@@ -299,11 +355,17 @@ export default defineComponent({
     margin-top: 4rem;
   }
 
-  .v-article__item__grid {
+  .v-article__item__coll {
     width: calc(100% / 3);
     box-sizing: border-box;
     padding-left: .5rem;
     padding-right: .5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .v-article__item__grid + .v-article__item__grid {
+    margin-top: 1rem;
   }
 
 }
