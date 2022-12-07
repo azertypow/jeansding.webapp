@@ -26,7 +26,7 @@ export default defineComponent({
 
   computed: {
     buttonText(): string {
-      return this.globalState.itemImageMode ? 'switch to compact view' : 'switch to image view'
+      return this.globalState.itemImageMode ? 'Switch to compact view' : 'Switch to image view'
     },
   },
 
