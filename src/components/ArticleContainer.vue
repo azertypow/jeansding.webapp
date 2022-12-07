@@ -39,6 +39,13 @@ export default defineComponent({
     })
   },
 
+  updated() {
+    this.$nextTick(() => {
+      this.setThumbnail_url()
+      console.log('up date')
+    })
+  },
+
   props:{
     articleData: {
       type: Object as PropType<Api.IArticle>,
