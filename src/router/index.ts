@@ -34,6 +34,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  stateStore().itemImageMode = false
 
   document.querySelector('html')!.className = to.name === 'inventory' ? 'is-inventory' : 'is-projects'
 
