@@ -1,7 +1,7 @@
 <template>
   <div class="v-inventory">
 
-    <div class="jd-button" v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0" >Welcome!</div>
+    <div class="jd-button" style="cursor: default" v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0" >Welcome!</div>
 
     <div
         v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0"
