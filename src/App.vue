@@ -43,7 +43,10 @@
     </transition>
 
     <footer>
-      <div class="v-app__footnote">
+      <div
+          class="v-app__footnote"
+          v-if="footNotes.length > 0"
+      >
         <div
             class="v-app__footnote__item"
             v-for="note of footNotes"
