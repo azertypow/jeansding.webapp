@@ -183,6 +183,7 @@ export default defineComponent({
 
   computed: {
     isOpen(): boolean {
+      if(this.globalState.itemImageMode) return true
       if (this.isAlwaysOpen) return true
       return this.dataTag.slug === this.globalState.currentOpenObject?.slug
     },
