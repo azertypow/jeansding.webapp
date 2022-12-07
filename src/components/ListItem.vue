@@ -191,6 +191,10 @@ export default defineComponent({
     isVisible(): boolean {
       if(this.disableTagFilterAction) return true
       if(this.globalState.activatedFilterTag.length < 1) return true
+
+      if( this.$route.name === ':projectSection' || this.$route.name === ':projectSection/:articleUid')
+        return this.globalState.activatedFilterTag.some(category=> this.dataTag.category?.includes(category))
+
       return this.globalState.activatedFilterTag.every(category=> this.dataTag.category?.includes(category))
     },
   },
