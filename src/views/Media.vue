@@ -236,6 +236,11 @@ export default defineComponent({
     padding-right: .5rem;
     display: flex;
     flex-direction: column;
+
+    .device-small & {
+      width: 100%;
+      padding-left: 1rem;
+    }
   }
 
   .v-media__item__grid + .v-media__item__grid {
