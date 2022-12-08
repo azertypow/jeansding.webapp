@@ -237,8 +237,8 @@ export default defineComponent({
   position: fixed;
   right: 0;
   top: 50%;
-  transform: translate(calc(50vh - 1rem), -50%) rotate(90deg);
-  width: 100vh;
+  transform: translate(calc(50vh - 3rem),-50%) rotate(90deg);
+  width: calc( 100vh - 4rem);
   box-sizing: border-box;
   transform-origin: center center;
   text-align: center;
