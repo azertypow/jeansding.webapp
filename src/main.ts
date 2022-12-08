@@ -19,3 +19,7 @@ async function initData() {
   stateStore().apiProjects  = await (await window.fetch('https://jeansdinge.sdrvl.ch/get/projects')).json()
 }
 initData().then()
+
+window.addEventListener('resize', () => {
+  stateStore().device = window.innerWidth < 900 ? 'small' : 'reg'
+})
