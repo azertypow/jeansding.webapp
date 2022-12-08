@@ -201,6 +201,13 @@ export default defineComponent({
   p {
     margin: 0;
   }
+
+  .device-small & {
+    margin-left: 0;
+    width: 100%;
+    padding-right: 2rem;
+  }
+
 }
 
 .v-contributors__content__right {
@@ -214,6 +221,10 @@ export default defineComponent({
     margin-top: 0;
     margin-bottom: 0;
     opacity: .5;
+  }
+
+  .device-small & {
+    display: none;
   }
 }
 </style>

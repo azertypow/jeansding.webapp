@@ -197,6 +197,12 @@ export default defineComponent({
   p {
     margin: 0;
   }
+
+  .device-small & {
+    margin-left: 0;
+    width: 100%;
+    padding-right: 2rem;
+  }
 }
 
 .v-app-footer__content__right {
