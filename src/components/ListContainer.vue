@@ -113,6 +113,10 @@ export default defineComponent({
       padding-left: 1rem;
       width: calc(100% / 4 * 1 - 1rem);
     }
+
+    .device-small & {
+      width: 100%;
+    }
   }
 
   .v-list-container__linked-object {
@@ -131,6 +135,10 @@ export default defineComponent({
       padding: 0 1rem;
       width: calc(100% / 3);
     }
+  }
+
+  .device-small & {
+    width: 100%;
   }
 }
 </style>

@@ -52,7 +52,9 @@ router.beforeEach((to, from, next) => {
       top: 0,
       behavior: undefined,
     })
-    document.querySelector('.v-app__body__left')!.scrollTo({
+
+    const leftElement = document.querySelector('.v-app__body__left')
+    if( leftElement instanceof HTMLElement) leftElement.scrollTo({
       top: 0,
       behavior: "smooth",
     })

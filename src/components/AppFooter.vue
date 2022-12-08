@@ -97,6 +97,20 @@
         ></burger-icon>
       </div>
 
+      <template
+          v-if="stateStore.device === 'small'"
+      >
+        <router-link
+            class="v-app-footer__body__right__link"
+            to="/projects"
+            v-if="$route.name === 'inventory'">Projects</router-link>
+        <router-link
+            class="v-app-footer__body__right__link"
+            to="/"
+            v-else>Inventory</router-link>
+      </template>
+
+
     </div>
   </div>
 </template>
@@ -135,6 +149,12 @@ export default defineComponent({
   align-items: center;
   transition: background-color 1s ease-in-out;
   z-index: 1000;
+
+  .device-small & {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
 }
 
 .v-app-footer__content {
@@ -150,6 +170,10 @@ export default defineComponent({
   padding-top: var(--v-app-header--title-height);
   user-select: none;
   display: flex;
+
+  .device-small & {
+    height: 100%;
+  }
 }
 
 .v-app-footer__content__left {
@@ -194,6 +218,31 @@ export default defineComponent({
   display: flex;
   align-items: center;
   z-index: 100000;
+
+  .device-small & {
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+
+    > * {
+      padding: .5rem;
+      margin: auto;
+    }
+  }
+}
+
+.v-app-footer__body__right__link {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translate(calc(50vh - 1rem), -50%) rotate(90deg);
+  width: 100vh;
+  box-sizing: border-box;
+  transform-origin: center center;
+  text-align: center;
+  text-decoration: none;
 }
 
 .v-app-footer__search-bar {

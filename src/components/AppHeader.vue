@@ -2,9 +2,9 @@
   <div class="v-app-header">
 
     <div class="v-app-header__title">
-      <router-link to="/"       class="v-app-header__title__left jd-font-xl">Inventory</router-link>
+      <router-link v-if="stateStore.device !== 'small'" to="/"       class="v-app-header__title__left jd-font-xl">Inventory</router-link>
       <div                      class="v-app-header__title__center jd-font-xxl">Jeansdinge</div>
-      <router-link to="/projects"  class="v-app-header__title__right jd-font-xl">Projects</router-link>
+      <router-link v-if="stateStore.device !== 'small'" to="/projects"  class="v-app-header__title__right jd-font-xl">Projects</router-link>
       <div
           class="v-app-header__ui"
           @click="smileyClicked"

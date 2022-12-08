@@ -4,6 +4,7 @@
       :class="{
         'credit-is-open': creditIsOpen,
         'menu-is-open': menuIsOpen,
+        'device-small': stateSore.device === 'small'
       }"
   >
     <header>
@@ -18,8 +19,10 @@
       <cross-icon></cross-icon>
     </div>
 
+
     <div class="v-app__body">
       <div
+          v-if="stateSore.device === 'reg'"
           class="v-app__body__left"
       >
         <list-container></list-container>
@@ -126,6 +129,17 @@ export default defineComponent({
     width: 100%;
     z-index: 1000;
   }
+
+  &.device-small {
+    > footer {
+      top: 0;
+      right: 0;
+      left: auto;
+      height: 100%;
+      width: 2rem;
+      z-index: 9999;
+    }
+  }
 }
 
 .v-app__cross-icon {
@@ -210,6 +224,16 @@ export default defineComponent({
 
     .is-projects & {
       width: 75%;
+    }
+  }
+
+  .device-small & {
+    width: 100%;
+    color: var(--jd-palette--blue-dark);
+    padding-right: 1.5rem;
+
+    .is-projects & {
+      color: var(--jd-palette--blue-light);
     }
   }
 }
