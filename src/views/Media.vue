@@ -172,6 +172,11 @@ export default defineComponent({
         background-color: var(--jd-palette--blue-light);
       }
     }
+
+    .device-small & {
+      left: 0;
+      width: 100%;
+    }
   }
 
   .v-media__content {
