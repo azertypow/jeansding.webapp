@@ -176,6 +176,17 @@ export default defineComponent({
     .device-small & {
       left: 0;
       width: 100%;
+      padding-left: .5rem;
+      padding-right: 2rem;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+      padding-top: 0;
+
+      > * {
+        margin-left: .25rem;
+        margin-right: .25rem;
+        margin-top: .5rem;
+      }
     }
   }
 
