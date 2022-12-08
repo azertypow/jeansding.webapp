@@ -154,6 +154,7 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     position: relative;
+    background-color: var(--jd-color--varriable--reverse);
   }
 }
 
@@ -243,8 +244,8 @@ export default defineComponent({
   position: fixed;
   right: 0;
   top: 50%;
-  transform: translate(calc(50vh - 3rem),-50%) rotate(90deg);
-  width: calc( 100vh - 4rem);
+  transform: translate(calc(50vh - 7rem), -50%) rotate(90deg);
+  width: calc(100vh - 12rem);
   box-sizing: border-box;
   transform-origin: center center;
   text-align: center;
