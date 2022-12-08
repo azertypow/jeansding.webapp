@@ -271,6 +271,22 @@ export default defineComponent({
         background-color: var(--jd-palette--blue-light);
       }
     }
+
+    .device-small & {
+      left: 0;
+      width: 100%;
+      padding-left: .5rem;
+      padding-right: 2rem;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+      padding-top: 0;
+
+      > * {
+        margin-left: .25rem;
+        margin-right: .25rem;
+        margin-top: .5rem;
+      }
+    }
   }
 
   .v-article__blocks {
@@ -362,6 +378,11 @@ export default defineComponent({
     padding-right: .5rem;
     display: flex;
     flex-direction: column;
+
+    .device-small & {
+      width: 100%;
+      padding-left: 1rem;
+    }
   }
 
   .v-article__item__grid + .v-article__item__grid {
