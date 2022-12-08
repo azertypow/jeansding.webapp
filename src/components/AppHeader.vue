@@ -62,6 +62,7 @@ export default defineComponent({
   transform: translate(0, -50%);
   color: var(--jd-palette--blue-dark);
   text-decoration: none;
+  user-select: none;
 }
 
 .v-app-header__title__right {
@@ -71,6 +72,7 @@ export default defineComponent({
   transform: translate(0, -50%);
   color: var(--jd-palette--blue-light);
   text-decoration: none;
+  user-select: none;
 }
 
 .v-app-header__title__center {
@@ -78,6 +80,7 @@ export default defineComponent({
   position: relative;
   color: var(--jd-color--varriable);
   transition: color 1s ease-in-out;
+  user-select: none;
 }
 
 .v-app-header__ui {

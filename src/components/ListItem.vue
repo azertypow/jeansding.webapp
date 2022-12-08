@@ -281,6 +281,14 @@ export default defineComponent({
       width: 100%;
     }
   }
+
+  .device-small & {
+    flex-direction: column;
+
+    > * {
+      width: 100%;
+    }
+  }
 }
 
 .v-list-item__body__left {
