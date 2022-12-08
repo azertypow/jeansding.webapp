@@ -6,7 +6,9 @@
   --jd-palette--blue-extra-light: #97b6d8;
   --jd-palette--blue-grey:        #a3afc2;
 
-  --jd-color--varriable:  var(--jd-palette--blue-dark);
+  --jd-color--varriable:            var(--jd-palette--blue-dark);
+  --jd-color--varriable--reverse:   var(--jd-palette--blue-light);
+
   --jd-color--main:       var(--jd-palette--blue-dark);
   --jd-color--secondary:  var(--jd-palette--blue-light);
   --jd-color--ternary:    var(--jd-palette--blue-extra-light);
@@ -23,7 +25,8 @@
   --jd-height-of-header: 1.5rem;
 
   &.is-projects {
-    --jd-color--varriable: var(--jd-palette--blue-light);
+    --jd-color--varriable:            var(--jd-palette--blue-light);
+    --jd-color--varriable--reverse:   var(--jd-palette--blue-dark);
   }
 
   @media (min-width: $break-width-extra-xxl) {
