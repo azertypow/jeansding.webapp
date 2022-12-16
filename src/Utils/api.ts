@@ -19,6 +19,14 @@ export namespace Api {
     vimeoLink:      string | null
   }
 
+  export interface IContributors {
+    contributors: {
+      name?:       string,
+      first_name?: string,
+      activity?: string[]
+    }[]
+  }
+
   export interface IProjects {
     "symposium":      IProjectsSubpage
     "artist-videos":  IProjectsSubpage

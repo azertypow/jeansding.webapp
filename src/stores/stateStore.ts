@@ -10,6 +10,8 @@ export const stateStore = defineStore('stateStore', {
     currentOpenObject: null as Api.IItem | null,
     apiData: {} as Api.ItemList,
     apiProjects: {} as Api.IProjects,
+    apiContributors: {} as Api.IContributors,
+
     activatedFilterTag: [] as string[],
     abstractActivatedFilterTagForArticle: [] as string[],
     activatedFilterBySlug: [] as string[],
