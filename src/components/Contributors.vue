@@ -7,27 +7,36 @@
       >
         <div
             class="v-contributors__content__left jd-with-gutter"
+            @mouseleave="activityActiveByOver = []"
         >
           <h1>Contributors</h1>
-          <p
-              v-for="contributor of stateStore().apiContributors.contributors"
-              class="jd-font-xl head-student"
-              :data-activity="contributor.activity"
-          >{{contributor.first_name}} {{contributor.name}}</p>
+          <transition-group
+              name="scale"
+          >
+            <p
+                v-for="contributor of stateStore().apiContributors.contributors"
+                :key="contributor"
+                class="jd-font-xl head-student"
+                @mouseenter="activityActiveByOver = contributor.activity"
+                v-show="activityActiveByClick === '' || contributor.activity.includes(activityActiveByClick)"
+            >{{contributor.first_name}} {{contributor.name}}</p>
+          </transition-group>
         </div>
 
         <div
             class="v-contributors__content__right jd-with-gutter"
+            :class="{
+              'has-active-activity': activityActiveByOver.length > 0
+            }"
         >
-          <p class="jd-font-default" >Films étudiantx HEAD</p>
-          <p class="jd-font-default" >Films étudiantx ZHdK</p>
-          <p class="jd-font-default" >Film</p>
-          <p class="jd-font-default" >Speakers Symposium</p>
-          <p class="jd-font-default" >Collaboration Symposium</p>
-          <p class="jd-font-default" >Collection Contributors</p>
-          <p class="jd-font-default" >Research Team</p>
-          <p class="jd-font-default" >Website / Photography / Documentation</p>
-          <p class="jd-font-default" >DENIMPOP Publication</p>
+          <p
+              class="jd-font-default"
+              v-for="activity of stateStore().apiContributors.activityList"
+              @click="activityActiveByClick = activity === activityActiveByClick ? '' : activity"
+              :class="{
+                'is-active': activityActiveByOver.includes( activity ) || activity === activityActiveByClick,
+              }"
+          >{{activity}}</p>
         </div>
 
       </div>
@@ -44,10 +53,27 @@ export default defineComponent({
 
   data() {
     return {
-      stateStore: stateStore
+      stateStore: stateStore,
+      activityActiveByOver:   [] as string[],
+      activityActiveByClick:  '',
     }
   },
 
+  methods: {
+    addActivityFilterByOver(arrayOfActivityToAdd: string[]) {
+      for(const activityToAdd of arrayOfActivityToAdd) {
+        if( this.activityActiveByOver.includes( activityToAdd ) ) return
+        else this.activityActiveByOver.push( activityToAdd )
+      }
+    },
+
+    removeActivityFilterByOver(arrayOfActivityToRemove: string[]) {
+      for(const activityToRemove of arrayOfActivityToRemove) {
+        const index = this.activityActiveByOver.indexOf(activityToRemove)
+        this.activityActiveByOver = this.activityActiveByOver.splice(index, 1)
+      }
+    },
+  },
 });
 </script>
 
@@ -111,6 +137,7 @@ export default defineComponent({
 
   p {
     margin: 0;
+    cursor: pointer;
   }
 
   .device-small & {
@@ -128,10 +155,24 @@ export default defineComponent({
   top: var(--v-app-header--title-height);
   padding-top: 5rem;
   box-sizing: border-box;
+
+  &.has-active-activity {
+    > * {
+      opacity: .15;
+    }
+  }
+
   > * {
     margin-top: 0;
     margin-bottom: 0;
     opacity: .5;
+    cursor: pointer;
+    transition: opacity 500ms 150ms;
+
+    &.is-active {
+      transition: opacity 500ms 0ms;
+      opacity: 1;
+    }
   }
 
   .device-small & {

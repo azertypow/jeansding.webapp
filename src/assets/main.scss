@@ -107,3 +107,23 @@ button,
 .transition-contributors-leave-to {
   transition: transform .75s ease-out, opacity .75s linear;
 }
+
+
+// transition
+.scale-enter-active{
+  transition: opacity .5s .5s, height 1s 0s;
+  height: 2rem;
+  overflow: hidden;
+}
+
+.scale-leave-active {
+  transition: opacity .5s 0s, height .5s .5s;
+  height: 2rem;
+  overflow: hidden;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  height: 0;
+}

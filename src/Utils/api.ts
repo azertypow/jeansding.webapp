@@ -20,6 +20,7 @@ export namespace Api {
   }
 
   export interface IContributors {
+    activityList: string[],
     contributors: {
       name?:       string,
       first_name?: string,
