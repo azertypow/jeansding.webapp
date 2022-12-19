@@ -14,11 +14,11 @@
               name="scale"
           >
             <p
-                v-for="contributor of stateStore().apiContributors.contributors"
-                :key="contributor"
+                v-for="(contributor, index) of stateStore().apiContributors.contributors"
+                :key="index"
                 class="jd-font-xl head-student"
-                @mouseenter="activityActiveByOver = contributor.activity"
-                v-show="activityActiveByClick === '' || contributor.activity.includes(activityActiveByClick)"
+                @mouseenter="activityActiveByOver = contributor.activity || []"
+                v-show="activityActiveByClick === '' || (contributor.activity && contributor.activity.includes(activityActiveByClick))"
             >{{contributor.first_name}} {{contributor.name}}</p>
           </transition-group>
         </div>
