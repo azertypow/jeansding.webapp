@@ -89,6 +89,8 @@ export default defineComponent({
 })</script>
 
 <style lang="scss">
+@import '../assets/scss-var';
+
 .v-list-container {
   overflow: hidden;
   padding-bottom:  50vh;
@@ -103,7 +105,7 @@ export default defineComponent({
     top: var(--v-app-header--title-height);
     left: 0;
     position: fixed;
-    width: calc( (100% / 4 * 3) - 1rem);
+    width: calc( (100% / 3 * 2) - 1rem);
     box-sizing: border-box;
     z-index: 100;
     background: var(--jd-color--white);
@@ -116,6 +118,10 @@ export default defineComponent({
 
     .device-small & {
       width: 100%;
+    }
+
+    @media (min-width: $break-width-reg) {
+      width: calc( (100% / 4 * 3) - 1rem);
     }
   }
 
