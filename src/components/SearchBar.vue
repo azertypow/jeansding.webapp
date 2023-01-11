@@ -23,7 +23,7 @@
             class="jd-button is-active v-search-bar__tag"
             v-for="tag of possibleTags"
             @click.stop="pushTag(tag)"
-        >{{tag.replace('null', 'coming soon')}} ✗</span>
+        >{{tag.replace('null', 'coming soon')}}</span>
       </div>
     </transition>
 
