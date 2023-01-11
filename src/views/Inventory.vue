@@ -91,6 +91,10 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
 
+  > div:not(.jd-button) {
+    width: 100%;
+  }
+
   > .jd-button {
     margin-top: 2rem;
     border-color: var(--jd-palette--blue-light);
