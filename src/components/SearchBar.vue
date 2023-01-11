@@ -86,7 +86,10 @@ export default defineComponent({
 
       for (let item of arrayOfItemActive) {
         for( const category of item.category ) {
-          if( ! arrayOfAllTags.includes(category) ) arrayOfAllTags.push(category)
+          if(
+                  ! arrayOfAllTags.includes(category)
+              &&  ! this.activatedFilterTag.includes(category)
+          ) arrayOfAllTags.push(category)
         }
       }
 
