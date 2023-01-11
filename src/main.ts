@@ -19,7 +19,9 @@ async function initData() {
   stateStore().apiProjects      = await (await window.fetch('https://jeansdinge.sdrvl.ch/get/projects')).json()
   stateStore().apiContributors  = await (await window.fetch('https://jeansdinge.sdrvl.ch/get/contributors')).json()
 }
-initData().then()
+initData().then(() => {
+  stateStore().updateFilteredArticles_bySection()
+})
 
 window.addEventListener('resize', () => {
   stateStore().device = window.innerWidth < 900 ? 'small' : 'reg'
