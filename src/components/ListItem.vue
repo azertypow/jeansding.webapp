@@ -24,7 +24,7 @@
     >
       <img
           class="v-list-item__icon-video"
-          v-if="vimeoPlayerHTML && $route.path === '/'"
+          v-if="dataTag.vimeoLink && $route.path === '/'"
           src="../assets/icons/play.svg"
           alt="icon info: this item contain a video"
       />
@@ -86,12 +86,6 @@
             <li><strong>Price:</strong    > {{dataTag.infoPrice}}</li>
           </ul>
 
-          <div
-              class="v-list-item__vimeo"
-              v-if="vimeoPlayerHTML"
-              v-html="vimeoPlayerHTML"
-          >
-          </div>
         </div>
 
       </div>
@@ -115,14 +109,7 @@ export default defineComponent({
     return {
       globalState: stateStore(),
       imagePreviousIsOpen: false,
-      vimeoPlayerHTML: null as string | null
     }
-  },
-
-  mounted() {
-    this.$nextTick(() => {
-      this.setVimeoPlayerHTML()
-    })
   },
 
   methods: {
@@ -134,6 +121,8 @@ export default defineComponent({
       this.globalState.abstractActivatedFilterTagForArticle = this.isOpen ? this.dataTag.category : []
 
       this.globalState.updateFilteredArticles_bySection()
+
+      this.setVimeoPlayerHTML()
 
       window.setTimeout(() => {
         document.querySelector('.v-app__body__left')?.scrollTo({
@@ -152,11 +141,17 @@ export default defineComponent({
     },
 
     async setVimeoPlayerHTML() {
-      if( ! this.dataTag.vimeoLink ) return
+      if( ! this.dataTag.vimeoLink || ! this.isOpen) {
 
-      const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&portrait=0&color=025BFA&responsive=1&url=' + encodeURI(this.dataTag.vimeoLink)
+        this.globalState.vimeoPlayerForRightPanelInInventoryPage = null
 
-      this.vimeoPlayerHTML = (await (await window.fetch(vimeoUrl)).json() as IVimeoOembed).html
+      } else {
+
+        const vimeoUrl = 'https://vimeo.com/api/oembed.json?autopip=1&title=0&byline=0&portrait=0&color=025BFA&responsive=1&url=' + encodeURI(this.dataTag.vimeoLink)
+        this.globalState.vimeoPlayerForRightPanelInInventoryPage = (await (await window.fetch(vimeoUrl)).json() as IVimeoOembed).html
+
+      }
+
 
     }
 

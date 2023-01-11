@@ -33,7 +33,9 @@ export const stateStore = defineStore('stateStore', {
       symposium:    Api.IArticle[],
       denimpop:     Api.IArticle[],
       exhibitions:  Api.IArticle[],
-    }
+    },
+
+    vimeoPlayerForRightPanelInInventoryPage: null as string | null
   }),
 
   getters: {

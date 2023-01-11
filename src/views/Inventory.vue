@@ -14,6 +14,13 @@
         </div>
       </div>
 
+      <div
+          class="v-list-item__vimeo"
+          v-if="globalState.vimeoPlayerForRightPanelInInventoryPage"
+          v-html="globalState.vimeoPlayerForRightPanelInInventoryPage"
+      >
+      </div>
+
       <div class="jd-button" v-if="globalState.filteredArticleBySections.symposium.length > 0">Symposium</div>
       <div
         v-for="article of globalState.filteredArticleBySections.symposium"
@@ -57,7 +64,6 @@ import ListContainer from "@/components/ListContainer.vue"
 import ArticleContainer from "@/components/ArticleContainer.vue"
 import {stateStore} from "@/stores/stateStore"
 import {cleanIntroHTML} from "@/Utils/cleanIntroHTML"
-import type {Api} from "@/Utils/api";
 
 export default defineComponent({
   components: {ArticleContainer, ListContainer},
