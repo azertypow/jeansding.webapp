@@ -46,7 +46,18 @@ export namespace Api {
   }
 
   export interface IImage {
-    mediaUrl: string
+    "url":      string
+    "mediaUrl": string
+    "width":    number
+    "height":   number
+    "resize": IImageResizes
+  }
+
+  export interface IImageResizes {
+    "tiny":   string
+    "small":  string
+    "reg":    string
+    "large":  string
   }
 
   export interface IArticle {

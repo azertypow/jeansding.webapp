@@ -9,12 +9,13 @@
     <template
         v-if="imagePreviousIsOpen"
     >
-      <img
+      <ImageLazyLoad
           v-for="img of dataTag.img"
           alt="item image previous"
-          :src="img.mediaUrl"
+          :image-data="img"
           class="v-list-item__img-previous"
-      >
+          size="small"
+      />
     </template>
     <div
         class="v-list-item__header"
@@ -61,10 +62,11 @@
         <div
             class="v-list-item__body__left"
         >
-          <img
+          <image-lazy-load
               v-for="img of dataTag.img"
-              :src="img.mediaUrl"
+              :image-data="img"
               alt=""
+              size="reg"
           />
         </div>
         <div
@@ -101,9 +103,10 @@ import type {Api} from "@/Utils/api"
 import Tag from "@/components/tag.vue"
 import {stateStore} from "@/stores/stateStore"
 import type {IVimeoOembed} from "@/Utils/vimeo";
+import ImageLazyLoad from "@/components/ImageLazyLoad.vue";
 
 export default defineComponent({
-  components: {Tag},
+  components: {ImageLazyLoad, Tag},
 
   data() {
     return {

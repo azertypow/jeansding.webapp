@@ -23,8 +23,10 @@ import type {PropType} from "vue"
 import type {Api} from "@/Utils/api"
 import {cleanIntroHTML} from "@/Utils/cleanIntroHTML"
 import type {IVimeoOembed} from "@/Utils/vimeo"
+import ImageLazyLoad from "@/components/ImageLazyLoad.vue";
 
 export default defineComponent({
+  components: {ImageLazyLoad},
 
   data() {
     return {
@@ -66,7 +68,14 @@ export default defineComponent({
           const possibleImage = articleDocument.querySelector('img')
 
           if(possibleImage) {
-            this.thumbnail_url = possibleImage.src
+            const articleName = `mediapage/${this.articleData.parentUid}/${this.articleData.uid}`
+            const fileName = possibleImage.src.split('/').pop()
+
+            const imageInfo:Api.IImage
+                = await ( await window.fetch(`https://jeansdinge.sdrvl.ch/get/imageData?page=${encodeURIComponent(articleName)}&file=${fileName}` )).json()
+
+            this.thumbnail_url = imageInfo.resize.small
+
             return
           }
         }
