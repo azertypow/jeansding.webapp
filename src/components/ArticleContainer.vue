@@ -24,6 +24,7 @@ import type {Api} from "@/Utils/api"
 import {cleanIntroHTML} from "@/Utils/cleanIntroHTML"
 import type {IVimeoOembed} from "@/Utils/vimeo"
 import ImageLazyLoad from "@/components/ImageLazyLoad.vue";
+import {fetchImageData} from "@/Utils/fetchImageData";
 
 export default defineComponent({
   components: {ImageLazyLoad},
@@ -69,10 +70,12 @@ export default defineComponent({
 
           if(possibleImage) {
             const articleName = `mediapage/${this.articleData.parentUid}/${this.articleData.uid}`
-            const fileName = possibleImage.src.split('/').pop()
+            const fileName = possibleImage.src.split('/').pop() || ''
 
-            const imageInfo:Api.IImage
-                = await ( await window.fetch(`https://jeansdinge.sdrvl.ch/get/imageData?page=${encodeURIComponent(articleName)}&file=${fileName}` )).json()
+            const imageInfo
+                = await fetchImageData({
+              articleName, fileName
+            })
 
             this.thumbnail_url = imageInfo.resize.small
 

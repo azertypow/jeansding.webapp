@@ -7,6 +7,7 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 import {stateStore} from "@/stores/stateStore";
+import {fetchImageData} from "@/Utils/fetchImageData";
 
 export default defineComponent({
   name: 'ArticleBlock',
@@ -14,7 +15,7 @@ export default defineComponent({
 
   data() {
     return {
-      footNoteElements: [] as HTMLSpanElement[]
+      footNoteElements: [] as HTMLSpanElement[],
     }
   },
 
@@ -25,25 +26,53 @@ export default defineComponent({
     }
   },
 
-  mounted() {
-    ;(this.$refs.articleBlockContainer as HTMLElement).append(this.articleContentHtmlElement)
+  async mounted() {
+    ;(this.$refs.articleBlockContainer as HTMLElement).append( await this.getArticleContentHtmlElement() )
   },
 
   beforeUnmount() {
     stateStore().clearFootNoteListAndRemoveScrollListener()
   },
 
-  computed: {
-    articleContentHtmlElement(): HTMLElement {
+  methods: {
+    async getArticleContentHtmlElement(): Promise<HTMLElement> {
       const domparser = new DOMParser()
       const articleDocument = domparser.parseFromString(`<div class="v-article-block__html"  >${this.html}</div>`, 'text/html')
 
+      // footnote
       articleDocument.querySelectorAll('article-footnote').forEach((articleFootNote) => {
 
         stateStore().pushFooterNoteElement( articleDocument, articleFootNote )
 
         articleFootNote.remove()
       })
+
+      //image
+      const imageInArticle = articleDocument.querySelectorAll('img')
+      const currentArticlePath = this.$router.currentRoute.value.fullPath.replace('/projects/', '')
+      const articleName = `mediapage/${currentArticlePath}`
+
+      for (const image of imageInArticle) {
+
+        const fileName = image.src.split('/').pop() || ''
+        image.classList.add('is-loading')
+        image.src = '' // prevent loaded image
+
+        fetchImageData({
+          articleName, fileName
+        }).then(imageData => {
+          image.src = imageData.resize.tiny
+
+          const loadedImage = new Image()
+          loadedImage.src = imageData.resize.reg
+
+          loadedImage.addEventListener('load', () => {
+            image.src = loadedImage.src
+            image.classList.add('is-load')
+          })
+        })
+
+      }
 
       return articleDocument.body.firstElementChild as HTMLElement
     }
@@ -77,6 +106,17 @@ export default defineComponent({
     figure > ul > li > img:only-child {
       display: block;
     }
+
+    img {
+      &.is-loading{
+        filter: blur(20px);
+      }
+      &.is-load {
+        transition: filter .25s linear;
+        filter: blur(0);
+      }
+    }
+
   }
 }
 
