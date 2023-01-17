@@ -95,7 +95,12 @@ export default defineComponent({
 
     figure {
       > ul {
+        scroll-snap-type: x mandatory;
+        padding-right: 100% !important;
+
         > li {
+          scroll-snap-align: start;
+
           &:only-child {
             margin: auto;
           }
