@@ -97,6 +97,12 @@ export default defineComponent({
       > ul {
         scroll-snap-type: x mandatory;
         padding-right: 100% !important;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
 
         > li {
           scroll-snap-align: start;
