@@ -248,15 +248,17 @@ export default defineComponent({
   }
 
   .v-article__header {
+    --right: 1rem;
+
     display: flex;
     justify-content: center;
     box-sizing: border-box;
     padding-top: 1rem;
     padding-left: 2.5rem;
     padding-right: .5rem;
-    right: 1rem;
+    right: var(--right);
     top: var(--v-app-header--title-height);
-    width: calc(100% / 4 * 3);
+    width: calc(100% / 4 * 3 - var(--right));
     position: fixed;
     z-index: 100;
     background: white;
