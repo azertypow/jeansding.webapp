@@ -94,7 +94,7 @@ export default defineComponent({
 
   computed: {
     cleanedIntro(): string {
-      return cleanIntroHTML(this.articleData.description)
+      return cleanIntroHTML(Object.values( this.articleData.article_content )[0] || '')
     },
   }
 
