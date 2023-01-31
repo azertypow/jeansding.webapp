@@ -205,8 +205,14 @@ export default defineComponent({
     hasBookArticleLinked(): boolean {
       if(! this.globalState.apiProjects['denimpop']) return false
 
+
       return  Object.values(this.globalState.apiProjects['denimpop'].children).find(value => {
-        return value.Linkwith === this.dataTag.slug
+
+        if( ! value.Linkwith ) return false
+
+        return value.Linkwith?.split(',').find(slugOfLinkedWidth => {
+          return slugOfLinkedWidth.trim() === this.dataTag.slug
+        }) !== undefined
       }) !== undefined
     }
   },
