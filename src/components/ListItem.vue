@@ -29,6 +29,13 @@
           alt="icon info: this item contain a video"
       />
 
+      <img
+          class="v-list-item__icon-video"
+          v-if="hasBookArticleLinked && $route.path === '/'"
+          src="../assets/icons/book.svg"
+          alt="icon info: this item contain a book link"
+      />
+
       <div
           class="v-list-item--id v-list-item__coll jd-with-gutter"
       >
@@ -194,6 +201,14 @@ export default defineComponent({
 
       return this.globalState.activatedFilterTag.every(category=> this.dataTag.category?.includes(category))
     },
+
+    hasBookArticleLinked(): boolean {
+      if(! this.globalState.apiProjects['denimpop']) return false
+
+      return  Object.values(this.globalState.apiProjects['denimpop'].children).find(value => {
+        return value.Linkwith === this.dataTag.slug
+      }) !== undefined
+    }
   },
 
 })</script>
