@@ -36,17 +36,17 @@
     </div>
 
     <div
+        class="v-list-container__coll-header"
+        v-if="$route.name === 'inventory'"
+    >
+      <div>NUMBER</div>
+      <div>ITEM</div>
+      <div>CATEGORIES</div>
+    </div>
+
+    <div
         v-show="showItem"
     >
-      <div
-          class="v-list-container__coll-header"
-          v-if="$route.name === 'inventory'"
-      >
-        <div>NUMBER</div>
-        <div>ITEM</div>
-        <div>CATEGORIES</div>
-      </div>
-
       <list-item
           v-for="item of globalState.apiData"
           :dataTag="item"
@@ -96,11 +96,7 @@ export default defineComponent({
   overflow: hidden;
   padding-bottom:  50vh;
   position: relative;
-  padding-top: 4rem;
-
-  .is-projects & {
-    padding-top: 5rem;
-  }
+  padding-top: 5rem;
 
   .v-list-container__header {
     top: var(--v-app-header--title-height);
@@ -137,6 +133,13 @@ export default defineComponent({
 
   .v-list-container__coll-header {
     display: flex;
+    position: fixed;
+    left: 1rem;
+    padding-top: 1rem;
+    top: 7rem;
+    z-index: 20;
+    background: white;
+    width: calc(75% - 2.25rem);
 
     > * {
       padding: 0 1rem;

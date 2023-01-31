@@ -129,7 +129,7 @@ export default defineComponent({
       window.setTimeout(() => {
         document.querySelector('.v-app__body__left')?.scrollTo({
           behavior: 'smooth',
-          top: this.$el.offsetTop - 100,
+          top: this.$el.offsetTop - 101,
         })
       }, 150)
     },
