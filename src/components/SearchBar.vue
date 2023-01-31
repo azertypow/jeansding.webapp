@@ -16,7 +16,7 @@
 
     <transition name="slide_top" >
       <div
-          v-if="listOfTagIsOpen"
+          v-if="listOfTagIsOpen && possibleTags.length > 0"
           class="v-search-bar__list-of-tag"
       >
         <span
@@ -29,7 +29,7 @@
 
     <transition name="slide_top" >
       <div
-          v-if="listOfTagIsOpen"
+          v-if="listOfTagIsOpen && possibleTags.length > 0"
           @click.stop="listOfTagIsOpen = false"
           class="v-search-bar__cache-to-close"
       ><div class="v-search-bar__cache-to-close__background" ></div></div>
