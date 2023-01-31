@@ -9,13 +9,12 @@
     <template
         v-if="imagePreviousIsOpen"
     >
-      <ImageLazyLoad
+      <img
           v-for="img of dataTag.img"
           alt="item image previous"
-          :image-data="img"
+          :src="img.resize.small"
           class="v-list-item__img-previous"
-          size="small"
-      />
+      >
     </template>
     <div
         class="v-list-item__header"
