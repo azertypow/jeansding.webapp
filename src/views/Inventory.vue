@@ -5,13 +5,13 @@
     >
       <div
           class="v-inventory__section-title"
-          v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0"
+          v-if="globalState.abstractActivatedFilterTagForArticle.length === 0"
       >
         <div class="jd-button" style="cursor: default" >Welcome!</div>
       </div>
 
       <div
-          v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0"
+          v-if="globalState.abstractActivatedFilterTagForArticle.length === 0"
       >
         <div>
           <p>Why is it that denim sneaks up on objects? Why do designers and marketers feel compelled to wrap commodities in denim-like materials? By claiming some higher aesthetic or symbolic property (why else adorn themselves in denim?), all the while flagrantly displaying their cheapness (the denim is fake), the denim-wrapped objects that artist Katharina Hohmann and designer Katharina Tietze have collected over the past 20 years form a puzzling and alluring whole. The Jeansdinge (‘denim things’) collection includes a wide range of objects, mass-produced commodities for the most part: desk chairs, condoms, plates, bikinis, perfume, headphones, etc.</p>
@@ -26,18 +26,22 @@
       >
       </div>
 
-      <div class="v-inventory__section-title" v-if="globalState.filteredArticleBySections.symposium.length > 0">
-        <div
-            class="jd-button"
-        >Symposium</div>
-      </div>
-      <div
-        v-for="article of globalState.filteredArticleBySections.symposium"
+      <template
+          v-if="globalState.abstractActivatedFilterTagForArticle.length === 0"
       >
-        <article-container
-            :article-data="article"
-        ></article-container>
-      </div>
+        <div class="v-inventory__section-title">
+          <div
+              class="jd-button"
+          >Symposium</div>
+        </div>
+        <div
+          v-for="article of globalState.filteredArticleBySections.symposium"
+        >
+          <article-container
+              :article-data="article"
+          ></article-container>
+        </div>
+      </template>
 
       <div class="v-inventory__section-title" v-if="globalState.filteredArticleBySections.denimpop.length > 0"
       >
@@ -53,18 +57,22 @@
         ></article-container>
       </div>
 
-      <div class="v-inventory__section-title" v-if="globalState.filteredArticleBySections.exhibitions.length > 0">
-        <div
-            class="jd-button"
-        >Exhibitions</div>
-      </div>
-      <div
-          v-for="article of globalState.filteredArticleBySections.exhibitions"
+      <template
+          v-if="globalState.abstractActivatedFilterTagForArticle.length === 0"
       >
-        <article-container
-            :article-data="article"
-        ></article-container>
-      </div>
+        <div class="v-inventory__section-title">
+          <div
+              class="jd-button"
+          >Exhibitions</div>
+        </div>
+        <div
+            v-for="article of globalState.filteredArticleBySections.exhibitions"
+        >
+          <article-container
+              :article-data="article"
+          ></article-container>
+        </div>
+      </template>
     </template>
 
     <template
