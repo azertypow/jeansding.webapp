@@ -50,6 +50,7 @@
       <list-item
           v-for="item of globalState.apiData"
           :dataTag="item"
+          :key="item.id"
       ></list-item>
     </div>
   </div>

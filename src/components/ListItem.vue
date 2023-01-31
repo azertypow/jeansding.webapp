@@ -56,7 +56,7 @@
     <transition name="item__body">
       <div
           class="v-list-item__body"
-          v-if="isOpen"
+          v-show="isOpen"
       >
         <div
             class="v-list-item__body__left"
