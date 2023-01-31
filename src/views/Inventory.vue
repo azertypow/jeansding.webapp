@@ -3,7 +3,12 @@
     <template
         v-if="globalState.device === 'reg'"
     >
-      <div class="jd-button" style="cursor: default" v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0" >Welcome!</div>
+      <div
+          class="v-inventory__section-title"
+          v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0"
+      >
+        <div class="jd-button" style="cursor: default" >Welcome!</div>
+      </div>
 
       <div
           v-if="globalState.apiProjects.symposium && globalState.abstractActivatedFilterTagForArticle.length === 0"
@@ -21,7 +26,11 @@
       >
       </div>
 
-      <div class="jd-button" v-if="globalState.filteredArticleBySections.symposium.length > 0">Symposium</div>
+      <div class="v-inventory__section-title" v-if="globalState.filteredArticleBySections.symposium.length > 0">
+        <div
+            class="jd-button"
+        >Symposium</div>
+      </div>
       <div
         v-for="article of globalState.filteredArticleBySections.symposium"
       >
@@ -30,7 +39,12 @@
         ></article-container>
       </div>
 
-      <div class="jd-button" v-if="globalState.filteredArticleBySections.denimpop.length > 0">Book</div>
+      <div class="v-inventory__section-title" v-if="globalState.filteredArticleBySections.denimpop.length > 0"
+      >
+        <div
+            class="jd-button"
+        >Book</div>
+      </div>
       <div
           v-for="article of globalState.filteredArticleBySections.denimpop"
       >
@@ -39,7 +53,11 @@
         ></article-container>
       </div>
 
-      <div class="jd-button" v-if="globalState.filteredArticleBySections.exhibitions.length > 0">Exhibitions</div>
+      <div class="v-inventory__section-title" v-if="globalState.filteredArticleBySections.exhibitions.length > 0">
+        <div
+            class="jd-button"
+        >Exhibitions</div>
+      </div>
       <div
           v-for="article of globalState.filteredArticleBySections.exhibitions"
       >
@@ -101,9 +119,22 @@ export default defineComponent({
     width: 100%;
   }
 
-  > .jd-button {
-    margin-top: 2rem;
-    border-color: var(--jd-palette--blue-light);
+
+  .v-inventory__section-title {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: white;
+    display: flex;
+    justify-content: center;
+    box-shadow: -10px 0 0px 0px white, 10px 0 0px 0px white;
+
+    > .jd-button {
+      border-color: var(--jd-palette--blue-light);
+    }
   }
 }
 </style>
