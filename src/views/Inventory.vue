@@ -100,19 +100,6 @@ export default defineComponent({
     }
   },
 
-  computed: {
-    cleanedIntroSymposiumForAside(): string {
-
-      const firstBlockHtml = Object.values(this.globalState.apiProjects
-          .symposium
-          .text)[0]
-      || '<p>continu to read</p>'
-
-      return  cleanIntroHTML(firstBlockHtml) + '<div>…</div>'
-    },
-
-  },
-
 })</script>
 
 <style lang="scss">
