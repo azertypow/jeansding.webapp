@@ -3,7 +3,7 @@
       class="v-article-container"
       :to="`/projects/${articleData.parentUid}/${articleData.uid}`"
   >
-    <h3>{{articleData.title}}</h3>
+    <h3 v-html="articleTitleMarkdown"></h3>
     <h5>{{articleData.author}}</h5>
     <img
         v-if="thumbnail_url"
@@ -25,6 +25,7 @@ import {cleanIntroHTML} from "@/Utils/cleanIntroHTML"
 import type {IVimeoOembed} from "@/Utils/vimeo"
 import ImageLazyLoad from "@/components/ImageLazyLoad.vue";
 import {fetchImageData} from "@/Utils/fetchImageData";
+import {italicMarkdown} from "@/Utils/TextFormat";
 
 export default defineComponent({
   components: {ImageLazyLoad},
@@ -99,6 +100,10 @@ export default defineComponent({
     cleanedIntro(): string {
       return cleanIntroHTML(Object.values( this.articleData.article_content )[0] || '')
     },
+
+    articleTitleMarkdown(): string {
+      return italicMarkdown(this.articleData.title)
+    }
   }
 
 })</script>
