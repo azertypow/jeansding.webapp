@@ -30,9 +30,10 @@
           v-if="globalState.abstractActivatedFilterTagForArticle.length === 0"
       >
         <div class="v-inventory__section-title">
-          <div
+          <router-link
+              to="projects/symposium"
               class="jd-button"
-          >Symposium</div>
+          >Symposium</router-link>
         </div>
         <div
           v-for="article of globalState.filteredArticleBySections.symposium"
@@ -45,9 +46,10 @@
 
       <div class="v-inventory__section-title" v-if="globalState.filteredArticleBySections.denimpop.length > 0"
       >
-        <div
+        <router-link
+            to="projects/denimpop"
             class="jd-button"
-        >Book</div>
+        >Book</router-link>
       </div>
       <div
           v-for="article of globalState.filteredArticleBySections.denimpop"
@@ -61,9 +63,10 @@
           v-if="globalState.abstractActivatedFilterTagForArticle.length === 0"
       >
         <div class="v-inventory__section-title">
-          <div
+          <router-link
+              to="projects/exhibitions"
               class="jd-button"
-          >Exhibitions</div>
+          >Exhibitions</router-link>
         </div>
         <div
             v-for="article of globalState.filteredArticleBySections.exhibitions"
