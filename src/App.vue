@@ -159,7 +159,7 @@ export default defineComponent({
   padding-left: 1rem;
   padding-right: .5rem;
   width: calc(100% / 3 * 2);
-  transition: width 500ms ease-in-out;
+  transition: width .5s 1s ease-in-out;
   box-sizing: border-box;
   height: 100%;
   overflow: scroll;
@@ -202,7 +202,7 @@ export default defineComponent({
   position: absolute;
   right: 0;
   top: 0;
-  //transition: width 500ms ease-in-out;
+  transition: width 0s 1s ease-in-out;
 
   .is-projects & {
     width: calc( 100% / 3 * 2);

@@ -81,9 +81,12 @@ button,
 }
 
 //// page
-.transition-page-leave-active,
-.transition-page-enter-active {
+.transition-page-leave-active {
   transition: opacity .5s ease-in-out;
+}
+
+.transition-page-enter-active {
+  transition: opacity .5s 1s ease-in-out;
 }
 
 .transition-page-enter-from,
