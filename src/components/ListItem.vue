@@ -267,11 +267,16 @@ export default defineComponent({
     white-space: nowrap;
   }
 
+  .v-list-item--id {
+    transition: padding-left .25s 1s linear;
+  }
+
   .is-projects & > .v-list-item__coll {
     width: calc(100%);
 
-    &:first-child {
-      width: 3rem;
+    &.v-list-item--id {
+      width: 3em;
+      padding: 0;
       flex-shrink: 0;
     }
   }
