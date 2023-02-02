@@ -1,6 +1,6 @@
 <template>
   <div
-      class="v-toggle-list-item-view-button"
+      class="v-toggle-list-item-view-button jd-button"
       @click="globalState.itemImageMode = !globalState.itemImageMode"
   >
     <span
@@ -35,10 +35,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .v-toggle-list-item-view-button {
+  box-sizing: border-box;
   user-select: none;
-  padding: .5rem;
-  border-radius: 2rem;
-  border: solid 2px var(--jd-palette--blue-dark);
   position: relative;
   text-align: center;
   cursor: pointer;

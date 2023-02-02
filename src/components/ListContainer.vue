@@ -17,7 +17,7 @@
         class="v-list-container__header"
     >
       <div
-          class="v-list-container__header__box"
+          class="v-list-container__header__box v-list-container__header__box--small"
       >
         <toggle-list-item-view-button></toggle-list-item-view-button>
       </div>
@@ -129,6 +129,12 @@ export default defineComponent({
   .v-list-container__header__box {
     width: calc(100% / 6 * 4);
     margin: 1rem auto 0;
+
+    &.v-list-container__header__box--small {
+      width: auto;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .v-list-container__coll-header {
