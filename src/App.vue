@@ -203,10 +203,10 @@ export default defineComponent({
   right: 0;
   top: 0;
   transition: width 0s 1s ease-in-out;
+  padding-top: 1rem;
 
   .is-projects & {
     width: calc( 100% / 3 * 2);
-    padding-top: 1rem;
   }
 
   &::-webkit-scrollbar {

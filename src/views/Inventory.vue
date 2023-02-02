@@ -4,6 +4,7 @@
         v-if="globalState.device === 'reg'"
     >
       <div
+          style="margin-top: 0; padding-top: .5rem"
           class="v-inventory__section-title"
           v-if="globalState.abstractActivatedFilterTagForArticle.length === 0"
       >
@@ -120,7 +121,7 @@ export default defineComponent({
 
   .v-inventory__section-title {
     position: sticky;
-    top: 0;
+    top: -1rem;
     width: 100%;
     margin-top: 1rem;
     padding-top: 1rem;
