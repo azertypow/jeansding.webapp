@@ -22,19 +22,21 @@
         @mouseenter="showImagePrevious()"
         @mouseleave="hiddeImagePrevious()"
     >
-      <img
-          class="v-list-item__icon-video"
-          v-if="dataTag.vimeoLink && $route.path === '/'"
-          src="../assets/icons/play.svg"
-          alt="icon info: this item contain a video"
-      />
+      <div
+          class="v-list-item__icon-box"
+      >
+        <img
+            v-if="dataTag.vimeoLink && $route.path === '/'"
+            src="../assets/icons/play.svg"
+            alt="icon info: this item contain a video"
+        />
 
-      <img
-          class="v-list-item__icon-video"
-          v-if="hasBookArticleLinked && $route.path === '/'"
-          src="../assets/icons/book.svg"
-          alt="icon info: this item contain a book link"
-      />
+        <img
+            v-if="hasBookArticleLinked && $route.path === '/'"
+            src="../assets/icons/book.svg"
+            alt="icon info: this item contain a book link"
+        />
+      </div>
 
       <div
           class="v-list-item--id v-list-item__coll jd-with-gutter"
@@ -240,11 +242,19 @@ export default defineComponent({
   position: relative;
   height: 1.9rem;
 
-  .v-list-item__icon-video {
+  .v-list-item__icon-box {
     position: absolute;
     height: 1rem;
     width: auto;
     right: 0;
+    display: flex;
+
+    > * {
+      display: block;
+      height: 1rem;
+      width: auto;
+      margin-left: .5rem;
+    }
   }
 
   .is-open & {
