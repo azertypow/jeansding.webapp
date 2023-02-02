@@ -40,11 +40,17 @@ router.beforeEach((to, from, next) => {
 
   if( from.name === ':projectSection' || from.name === ':projectSection/:articleUid' ) {
 
-    if (to.name === ':projectSection' || to.name === ':projectSection/:articleUid')
+    if (to.name === ':projectSection' || to.name === ':projectSection/:articleUid') {
+      document.querySelector('.v-app__body__left')!.scrollTo({
+        top: 0,
+        behavior: undefined,
+      })
+
       document.querySelector('.v-app__body__right')!.scrollTo({
         top: 0,
         behavior: "smooth",
       })
+    }
 
 
   } else if( to.name === 'inventory' || to.name === ':projectSection') {
