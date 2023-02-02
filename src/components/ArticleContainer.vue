@@ -127,6 +127,9 @@ export default defineComponent({
 .v-article-container__intro {
   max-height: 5rem;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
 }
 
 .v-article-container__img {
