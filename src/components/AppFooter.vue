@@ -10,7 +10,11 @@
         <div
             class="v-app-footer__content__left jd-with-gutter"
         >
-          <h1>Colophon</h1>
+          <div class="v-app-footer__content__header">
+            <div class="jd-font-xxl">Jeansdinge</div>
+
+            <h1>Colophon</h1>
+          </div>
 
           <p
           >The Jeansdinge collection is an ongoing project by Katharina Hohmann and Katharina Tietze.
@@ -177,23 +181,28 @@ export default defineComponent({
   }
 }
 
+.v-app-footer__content__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  padding-top: 1rem;
+  background-color: var(--jd-color--varriable);
+
+  h1 {
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-weight: 400;
+  }
+}
+
 .v-app-footer__content__left {
   width: 50%;
   margin-left: 25%;
   box-sizing: border-box;
   padding-top: 5rem;
-
-  h1 {
-    margin: 0;
-    text-align: center;
-    width: 100%;
-    background-color: var(--jd-color--varriable);
-    position: fixed;
-    left: 0;
-    top: var(--v-app-header--title-height);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
 
   p {
     margin: 0;

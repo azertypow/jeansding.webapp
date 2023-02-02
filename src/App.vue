@@ -127,7 +127,7 @@ export default defineComponent({
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 99999;
   }
 
   &.device-small {
