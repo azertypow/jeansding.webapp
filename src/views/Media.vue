@@ -152,7 +152,7 @@ export default defineComponent({
     justify-content: center;
     box-sizing: border-box;
     padding-top: 1rem;
-    padding-left: 1.5rem;
+    padding-left: 2.5rem;
     padding-right: .5rem;
     right: 1rem;
     top: var(--v-app-header--title-height);
