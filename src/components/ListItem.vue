@@ -125,7 +125,8 @@ export default defineComponent({
 
   methods: {
     toggleOpenStatus() {
-      if(this.$route.name === 'media') return
+
+      if(this.$route.name !== 'projects') return
 
       this.globalState.currentOpenObject = this.isOpen ? null : this.dataTag;
 
