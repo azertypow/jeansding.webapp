@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
 import type {Api} from "@/Utils/api"
-import article from "@/views/Article.vue";
 
 export const stateStore = defineStore('stateStore', {
 
   state: () => ({
     device: window.innerWidth < 900 ? 'small' : 'reg' as 'small' | 'reg',
+
+    itemToScrollOnInventoryIsOpen: null as any,
 
     currentOpenObject: null as Api.IItem | null,
     apiData: {} as Api.ItemList,

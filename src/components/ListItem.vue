@@ -125,7 +125,12 @@ export default defineComponent({
 
   methods: {
     toggleOpenStatus() {
-      if(this.$route.name !== 'inventory') return
+
+      if(this.$route.name !== 'inventory') {
+        this.globalState.itemToScrollOnInventoryIsOpen = this
+        this.$router.push('/')
+        return
+      }
 
       this.globalState.currentOpenObject = this.isOpen ? null : this.dataTag;
 

@@ -89,4 +89,14 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+router.afterEach(() => {
+  if(stateStore().itemToScrollOnInventoryIsOpen !== null) {
+    console.log(
+        stateStore().itemToScrollOnInventoryIsOpen
+    )
+    stateStore().itemToScrollOnInventoryIsOpen.toggleOpenStatus()
+    stateStore().itemToScrollOnInventoryIsOpen = null
+  }
+})
+
 export default router
