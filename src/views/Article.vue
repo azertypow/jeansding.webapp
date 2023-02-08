@@ -142,6 +142,9 @@ export default defineComponent({
       const arrayToReturn: Api.IArticle[][] = []
 
       Object.values(this.globalState.apiProjects[this.currentSectionUID].children)
+          .filter((value: Api.IArticle) => {
+            return value.uid !== this.$route.params.articleUid
+          })
           .forEach((value, index) => {
 
             const collIndex = index % numCols
