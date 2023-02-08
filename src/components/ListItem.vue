@@ -125,8 +125,7 @@ export default defineComponent({
 
   methods: {
     toggleOpenStatus() {
-
-      if(this.$route.name !== 'projects') return
+      if(this.$route.name !== 'inventory') return
 
       this.globalState.currentOpenObject = this.isOpen ? null : this.dataTag;
 
