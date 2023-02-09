@@ -74,6 +74,13 @@ export default defineComponent({
 
       }
 
+      const allFigureElementsInArticle = articleDocument.querySelectorAll('figure')
+
+      Object.values( allFigureElementsInArticle ).forEach( figureElement => {
+        if( figureElement.querySelectorAll('ul > li > img').length === 1 ) figureElement.classList.add('ts-article-block-has-only-one-image')
+      })
+
+
       return articleDocument.body.firstElementChild as HTMLElement
     }
   },
@@ -110,6 +117,15 @@ export default defineComponent({
           &:only-child {
             margin: auto;
           }
+        }
+      }
+
+      &.ts-article-block-has-only-one-image {
+
+        ul {
+          padding-right: 0 !important;
+          scroll-snap-type: none;
+          margin-left: 0;
         }
       }
     }
