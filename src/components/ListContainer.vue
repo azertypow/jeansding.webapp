@@ -205,14 +205,15 @@ export default defineComponent({
       box-sizing: content-box;
       border-bottom: solid 1px var(--jd-color--main);
       animation: width-scale 3s ease-in-out;
+      animation-iteration-count: 1;
       transform-origin: left;
       transform: scaleX(0);
 
       &:nth-child(2n) {
-        animation-delay: 1s;
+        animation-delay: .75s;
       }
       &:nth-child(3n) {
-        animation-delay: 2s;
+        animation-delay: 1.5s;
       }
     }
   }
@@ -231,6 +232,7 @@ export default defineComponent({
   .v-list-container__loader__text {
     line-height: 2rem;
     padding-left: 1rem;
+    font-weight: 500;
   }
 
   .device-small & {
