@@ -1,6 +1,7 @@
 <template>
   <div class="v-list-container">
 
+    <transition name="transition-header" >
     <div
         v-if="$route.name === 'inventory'"
         class="v-list-container__header"
@@ -22,6 +23,7 @@
         <toggle-list-item-view-button></toggle-list-item-view-button>
       </div>
     </div>
+    </transition>
 
     <div
         v-if="globalState.objectByActivatedFilterBySlug.length > 0 && $route.name !== 'inventory'"
@@ -35,6 +37,7 @@
       ></list-item>
     </div>
 
+    <transition name="transition-header" >
     <div
         class="v-list-container__coll-header"
         v-if="$route.name === 'inventory'"
@@ -43,6 +46,7 @@
       <div>ITEM</div>
       <div>CATEGORIES</div>
     </div>
+    </transition>
 
     <div
         v-show="showItem"

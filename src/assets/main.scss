@@ -94,6 +94,20 @@ button,
   opacity: 0;
 }
 
+//// header
+.transition-header-leave-active {
+  transition: none;
+}
+
+.transition-header-enter-active {
+  transition: opacity .5s 1s ease-in-out;
+}
+
+.transition-header-enter-from,
+.transition-header-leave-to {
+  opacity: 0;
+}
+
 
 //// slide from top
 .transition-contributors-leave-active,
