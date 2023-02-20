@@ -51,8 +51,29 @@
           v-for="item of globalState.apiData"
           :dataTag="item"
           :key="item.id"
+          @vue:mounted="onListItemMounted"
       ></list-item>
     </div>
+
+    <transition name="transition-page" >
+      <div
+          v-if="!listMounted"
+          class="v-list-container__loader"
+      >
+        <div
+            class="v-list-container__loader__lines"
+        >
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div
+            class="v-list-container__loader__text"
+        >
+          Loading Items…
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -69,10 +90,23 @@ export default defineComponent({
   data() {
     return {
       globalState: stateStore(),
+      counterOfMountedItemList: 0,
+      listMounted: false,
+    }
+  },
+
+  methods: {
+    onListItemMounted() {
+      this.counterOfMountedItemList++
+      if(Object.keys( this.itemList).length === this.counterOfMountedItemList)
+        this.listMounted = true
     }
   },
 
   computed: {
+    itemList(): Api.ItemList {
+      return this.globalState.apiData
+    },
     showItem(): boolean {
 
       if( this.$route.name === 'inventory' ) return true
@@ -151,6 +185,52 @@ export default defineComponent({
       padding: 0 1rem;
       width: calc(100% / 3);
     }
+  }
+
+  .v-list-container__loader {
+    position: absolute;
+    background: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    padding-top: 5rem;
+    box-sizing: border-box;
+  }
+
+  .v-list-container__loader__lines {
+    > div {
+      height: 1.9rem;
+      box-sizing: content-box;
+      border-bottom: solid 1px var(--jd-color--main);
+      animation: width-scale 3s ease-in-out;
+      transform-origin: left;
+      transform: scaleX(0);
+
+      &:nth-child(2n) {
+        animation-delay: 1s;
+      }
+      &:nth-child(3n) {
+        animation-delay: 2s;
+      }
+    }
+  }
+
+  @keyframes width-scale {
+    0% {
+      transform: scaleX(0);
+    }
+
+    100% {
+      transform: scaleX(100%);
+    }
+
+  }
+
+  .v-list-container__loader__text {
+    line-height: 2rem;
+    padding-left: 1rem;
   }
 
   .device-small & {
