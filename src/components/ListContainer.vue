@@ -45,7 +45,7 @@
     <transition name="transition-header" >
     <div
         class="v-list-container__coll-header"
-        v-if="$route.name === 'inventory'"
+        v-if="$route.name === 'inventory' && globalState.itemImageMode === 'list'"
     >
       <div>NUMBER</div>
       <div>ITEM</div>
@@ -306,6 +306,9 @@ export default defineComponent({
 
     .v-list-container__grid__coll {
       width: calc( 100% / 3 );
+      padding-left: .5rem;
+      padding-right: .5rem;
+      box-sizing: border-box;
     }
   }
 

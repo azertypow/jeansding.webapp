@@ -27,42 +27,32 @@
       </div>
 
       <div
-          class="v-card-item--id v-card-item__coll jd-with-gutter"
+          class="v-card-item--id v-card-item__coll"
       >
         {{ dataTag.id }}
       </div>
       <div
-          class="v-card-item--title v-card-item__coll jd-with-gutter"
+          class="v-card-item--title v-card-item__coll"
       >
         {{ dataTag.title }}
       </div>
-
-        <div
-            class="v-card-item__coll jd-with-gutter"
-            v-show="$route.path === '/'"
-        >
-          <tag
-              v-for="tagName of dataTag.category"
-              :name="tagName"
-          ></tag>
-        </div>
     </div>
 
+    <div
+        class="v-card-item__body"
+    >
       <div
-          class="v-card-item__body"
+          class="v-card-item__body__top"
       >
-        <div
-            class="v-card-item__body__top"
-        >
-          <image-lazy-load
-              v-for="img of dataTag.img"
-              :image-data="img"
-              alt=""
-              size="reg"
-          />
-        </div>
+        <image-lazy-load
+            v-for="img of dataTag.img"
+            :image-data="img"
+            alt=""
+            size="small"
+        />
+      </div>
 
-        <transition name="item__body">
+      <transition name="item__body">
         <div
             class="v-card-item__body__bottom"
             v-show="isOpen"
@@ -84,9 +74,19 @@
           </ul>
 
         </div>
-        </transition>
+      </transition>
 
+      <div
+          class="v-card-item__coll"
+          v-show="$route.path === '/'"
+      >
+        <tag
+            v-for="tagName of dataTag.category"
+            :name="tagName"
+        ></tag>
       </div>
+
+    </div>
 
   </div>
 </template>
@@ -112,7 +112,7 @@ export default defineComponent({
   methods: {
     toggleOpenStatus() {
 
-      if(this.$route.name !== 'inventory') {
+      if (this.$route.name !== 'inventory') {
         this.globalState.itemToScrollOnInventoryIsOpen = this
         this.$router.push('/')
         return
@@ -135,7 +135,7 @@ export default defineComponent({
     },
 
     async setVimeoPlayerHTML() {
-      if( ! this.dataTag.vimeoLink || ! this.isOpen) {
+      if (!this.dataTag.vimeoLink || !this.isOpen) {
 
         this.globalState.vimeoPlayerForRightPanelInInventoryPage = null
 
@@ -152,7 +152,7 @@ export default defineComponent({
   },
 
   props: {
-    dataTag:   {
+    dataTag: {
       required: true,
       type: Object as PropType<Api.IItem>,
     },
@@ -172,28 +172,28 @@ export default defineComponent({
 
   computed: {
     isOpen(): boolean {
-      if(this.globalState.itemImageMode) return true
+      if (this.globalState.itemImageMode) return true
       if (this.isAlwaysOpen) return true
       return this.dataTag.slug === this.globalState.currentOpenObject?.slug
     },
 
     isVisible(): boolean {
-      if(this.disableTagFilterAction) return true
-      if(this.globalState.activatedFilterTag.length < 1) return true
+      if (this.disableTagFilterAction) return true
+      if (this.globalState.activatedFilterTag.length < 1) return true
 
-      if( this.$route.name === ':projectSection' || this.$route.name === ':projectSection/:articleUid')
-        return this.globalState.activatedFilterTag.some(category=> this.dataTag.category?.includes(category))
+      if (this.$route.name === ':projectSection' || this.$route.name === ':projectSection/:articleUid')
+        return this.globalState.activatedFilterTag.some(category => this.dataTag.category?.includes(category))
 
-      return this.globalState.activatedFilterTag.every(category=> this.dataTag.category?.includes(category))
+      return this.globalState.activatedFilterTag.every(category => this.dataTag.category?.includes(category))
     },
 
     hasBookArticleLinked(): boolean {
-      if(! this.globalState.apiProjects['denimpop']) return false
+      if (!this.globalState.apiProjects['denimpop']) return false
 
 
-      return  Object.values(this.globalState.apiProjects['denimpop'].children).find(value => {
+      return Object.values(this.globalState.apiProjects['denimpop'].children).find(value => {
 
-        if( ! value.Linkwith ) return false
+        if (!value.Linkwith) return false
 
         return value.Linkwith?.split(',').find(slugOfLinkedWidth => {
           return slugOfLinkedWidth.trim() === this.dataTag.slug
@@ -217,19 +217,20 @@ export default defineComponent({
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
-  border-bottom: solid 1px;
-  align-items: center;
+  border-top: solid 1px;
+  align-items: flex-start;
   cursor: pointer;
   background: white;
   z-index: 1;
   position: relative;
-  height: 1.9rem;
+  flex-direction: column;
 
   .v-card-item__icon-box {
     position: absolute;
     height: 1rem;
     width: auto;
     right: 0;
+    top: 1rem;
     display: flex;
 
     > * {
@@ -240,64 +241,23 @@ export default defineComponent({
     }
   }
 
-  .is-open & {
-    border-bottom: none;
-  }
-
   > .v-card-item__coll {
     box-sizing: border-box;
-    width: calc(100% / 3);
+    width: 100%;
     white-space: nowrap;
   }
 
   .v-card-item--id {
-    transition: padding-left .25s 1s linear;
-  }
-
-  .is-projects & > .v-card-item__coll {
-    width: calc(100%);
-
-    &.v-card-item--id {
-      width: 3em;
-      padding: 0;
-      flex-shrink: 0;
-    }
-  }
-}
-
-.v-card-item__img-previous {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 4rem;
-  width: calc( 100% / 3 - 3rem);
-  height: auto;
-  z-index: 10;
-  pointer-events: none;
-
-  .is-projects & {
-    width: calc( 100% - 4rem);
-  }
-
-  .is-open & {
-    display: none !important;
+    padding-top: .5rem;
   }
 }
 
 .v-card-item__body {
   display: flex;
   flex-wrap: nowrap;
-  border-bottom: solid 1px;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
+  padding-top: .5rem;
   flex-direction: column;
-
-  .is-projects & {
-    flex-direction: column;
-
-    > * {
-      width: 100%;
-    }
-  }
 
   .device-small & {
     flex-direction: column;
@@ -309,24 +269,18 @@ export default defineComponent({
 }
 
 .v-card-item__body__top {
-  width: calc(100% / 3 * 2);
+  width: 100%;
   box-sizing: border-box;
-  padding-right: .5rem;
 
   img {
     display: block;
     width: 100%;
     height: auto;
   }
-
-  .is-projects & {
-    margin-bottom: 1rem;
-    padding-right: 0;
-  }
 }
 
 .v-card-item__body__bottom {
-  width: calc(100% / 3);
+  width: 100%;
   box-sizing: border-box;
   padding-left: .5rem;
 
@@ -337,14 +291,6 @@ export default defineComponent({
       display: block;
       padding: 0;
     }
-
-    .is-projects & {
-      display: none;
-    }
-  }
-
-  .is-projects & {
-    padding-left: 0;
   }
 }
 
@@ -364,8 +310,6 @@ export default defineComponent({
 }
 
 .v-card-item--id {
-  transition: width .5s 1s ease-in-out;
-
   @media (max-width: $break-width-reg) {
     width: 3rem !important;
   }
@@ -378,10 +322,6 @@ export default defineComponent({
   > iframe {
     width: 100%;
     height: auto;
-  }
-
-  .is-projects & {
-    display: none;
   }
 }
 
