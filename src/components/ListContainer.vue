@@ -77,7 +77,7 @@
             v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/3*0 ), Math.ceil( randomItemListSorted.length/3 ))"
             :dataTag="item"
             :key="item.id"
-            @vue:mounted="onListItemMounted"
+            @vue:mounted="onListCardMounted"
         ></card-item>
       </div>
       <div
@@ -87,7 +87,7 @@
             v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/3*1 ), Math.ceil( randomItemListSorted.length/3 ))"
             :dataTag="item"
             :key="item.id"
-            @vue:mounted="onListItemMounted"
+            @vue:mounted="onListCardMounted"
         ></card-item>
       </div>
       <div
@@ -97,7 +97,7 @@
             v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/3*2 ), Math.ceil( randomItemListSorted.length/3 ))"
             :dataTag="item"
             :key="item.id"
-            @vue:mounted="onListItemMounted"
+            @vue:mounted="onListCardMounted"
         ></card-item>
       </div>
     </div>
@@ -133,6 +133,23 @@
         </div>
       </div>
     </transition>
+
+    <transition name="transition-page" >
+      <div
+          v-if="!galleryMounted"
+          class="v-list-container__loader"
+      >
+        <div
+            class="v-list-container__loader__card"
+        >
+          <div class="v-list-container__grid" >
+            <div class="v-list-container__grid__coll" ></div>
+            <div class="v-list-container__grid__coll" ></div>
+            <div class="v-list-container__grid__coll" ></div>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -153,6 +170,10 @@ export default defineComponent({
       globalState: stateStore(),
       counterOfMountedItemList: 0,
       listMounted: false,
+
+      counterOfMountedItemCard: 0,
+      galleryMounted: true,
+
       listItemPresentationModeAbstraction: 'list' as 'list' | 'grid'
     }
   },
@@ -164,17 +185,29 @@ export default defineComponent({
         console.log('hello')
         this.listMounted = true
       }, 1_000)
+    },
+    onListCardMounted() {
+      this.counterOfMountedItemCard++
+      if(Object.keys( this.itemList).length > this.counterOfMountedItemList / 4 * 3) window.setTimeout(() => {
+        this.galleryMounted = true
+      }, 1_000)
     }
+
   },
 
   watch: {
     'listItemPresentationMode'(){
       this.counterOfMountedItemList = 0
+      this.counterOfMountedItemCard = 0
 
-      console.log( this.listItemPresentationMode )
-      console.log( this.listItemPresentationMode === 'list' )
-
-      if(this.listItemPresentationMode === 'list') this.listMounted = false
+      if(this.listItemPresentationMode === 'list') {
+        this.listMounted     = false
+        this.galleryMounted  = true
+      }
+      if(this.listItemPresentationMode === 'grid') {
+        this.listMounted     = true
+        this.galleryMounted  = false
+      }
 
       window.setTimeout(() => {
         this.listItemPresentationModeAbstraction = this.listItemPresentationMode
@@ -344,6 +377,31 @@ export default defineComponent({
         &:nth-child(#{$i}) {
           animation-delay: $i * .05s;
         }
+      }
+    }
+  }
+
+  .v-list-container__loader__card {
+    height: 60rem;
+
+    .v-list-container__grid__coll {
+      height: 10rem;
+      display: flex;
+      flex-direction: column;
+
+      &:before {
+        content: "";
+        display: block;
+        height: 5px;
+        background: var(--jd-color--main);
+        margin-bottom: 3rem;
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        height: 60rem;
+        background: var(--jd-color--main);
       }
     }
   }
