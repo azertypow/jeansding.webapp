@@ -70,12 +70,36 @@
         v-show="showItem"
         class="v-list-container__grid"
     >
-<!--      <list-item-->
-<!--          v-for="item of globalState.apiData"-->
-<!--          :dataTag="item"-->
-<!--          :key="item.id"-->
-<!--          @vue:mounted="onListItemMounted"-->
-<!--      ></list-item>-->
+      <div
+          class="v-list-container__grid__coll"
+      >
+        <card-item
+            v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/3*0 ), Math.ceil( randomItemListSorted.length/3 ))"
+            :dataTag="item"
+            :key="item.id"
+            @vue:mounted="onListItemMounted"
+        ></card-item>
+      </div>
+      <div
+          class="v-list-container__grid__coll"
+      >
+        <card-item
+            v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/3*1 ), Math.ceil( randomItemListSorted.length/3 ))"
+            :dataTag="item"
+            :key="item.id"
+            @vue:mounted="onListItemMounted"
+        ></card-item>
+      </div>
+      <div
+          class="v-list-container__grid__coll"
+      >
+        <card-item
+            v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/3*2 ), Math.ceil( randomItemListSorted.length/3 ))"
+            :dataTag="item"
+            :key="item.id"
+            @vue:mounted="onListItemMounted"
+        ></card-item>
+      </div>
     </div>
 
     <transition name="transition-page" >
@@ -117,12 +141,13 @@ import {defineComponent} from "vue"
 import {stateStore} from "@/stores/stateStore"
 import type {Api} from "@/Utils/api"
 import ListItem from "@/components/ListItem.vue"
-import SearchBar from "@/components/SearchBar.vue";
-import ToggleListItemViewButton from "@/components/ToggleListItemViewButton.vue";
-import ToggleListItemPresentationButton from "@/components/ToggleListItemPresentationButton.vue";
+import SearchBar from "@/components/SearchBar.vue"
+import ToggleListItemViewButton from "@/components/ToggleListItemViewButton.vue"
+import ToggleListItemPresentationButton from "@/components/ToggleListItemPresentationButton.vue"
+import CardItem from "@/components/CardItem.vue"
 
 export default defineComponent({
-  components: {ToggleListItemPresentationButton, ToggleListItemViewButton, SearchBar, ListItem},
+  components: {CardItem, ToggleListItemPresentationButton, ToggleListItemViewButton, SearchBar, ListItem},
   data() {
     return {
       globalState: stateStore(),
@@ -161,12 +186,28 @@ export default defineComponent({
     itemList(): Api.ItemList {
       return this.globalState.apiData
     },
+
+    randomItemListSorted(): Api.IItem[] {
+      const shuffleArray: Api.IItem[] = Object.values( this.globalState.apiData )
+
+      let m = shuffleArray.length, currentElement, pickRandomRemainingElement
+
+      while (m) {
+        pickRandomRemainingElement = Math.floor(Math.random() * m--)
+        currentElement = shuffleArray[m]
+        shuffleArray[m] = shuffleArray[pickRandomRemainingElement]
+        shuffleArray[pickRandomRemainingElement] = currentElement
+      }
+
+      return shuffleArray
+    },
+
     showItem(): boolean {
 
       if( this.$route.name === 'inventory' ) return true
       if( this.$route.name === ':projectSection' ) return true
 
-      return this.$route.name === ':projectSection/:articleUid' && this.globalState.activatedFilterTag.length > 0;
+      return this.$route.name === ':projectSection/:articleUid' && this.globalState.activatedFilterTag.length > 0
 
     },
 
@@ -261,8 +302,13 @@ export default defineComponent({
   GRID
    */
   .v-list-container__grid {
-    //height: 100vh;
+    display: flex;
+
+    .v-list-container__grid__coll {
+      width: calc( 100% / 3 );
+    }
   }
+
 
   /**
   LOADERS

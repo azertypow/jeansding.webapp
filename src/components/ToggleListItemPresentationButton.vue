@@ -3,19 +3,20 @@
       class="v-toggle-list-item-presentation-button jd-button"
       @click="toggleListPresentationMode"
   >
-    <span
-      class="v-toggle-list-item-presentation-button__text"
-    >{{buttonText}}</span>
+    <icon-gallery v-if="globalState.listItemPresentationMode === 'grid'" ></icon-gallery>
+    <icon-list    v-if="globalState.listItemPresentationMode === 'list'" ></icon-list>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue';
 import {stateStore} from "@/stores/stateStore";
+import IconGallery from "@/components/icons/IconGallery.vue";
+import IconList from "@/components/icons/IconList.vue";
 
 export default defineComponent({
   name: 'ToggleListItemPresentationButton',
-  components: {},
+  components: {IconList, IconGallery},
 
   data() {
     return {
@@ -31,11 +32,7 @@ export default defineComponent({
     }
   },
 
-  computed: {
-    buttonText(): string {
-      return this.globalState.listItemPresentationMode ? 'Switch to grid presentation' : 'Switch to list presentation'
-    },
-  },
+  computed: {},
 
 });
 </script>
@@ -45,7 +42,9 @@ export default defineComponent({
   box-sizing: border-box;
   user-select: none;
   position: relative;
-  text-align: center;
   cursor: pointer;
+  display: flex;
+  height: 2rem;
+  align-items: center;
 }
 </style>
