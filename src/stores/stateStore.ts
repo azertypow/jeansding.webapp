@@ -20,6 +20,8 @@ export const stateStore = defineStore('stateStore', {
 
     itemImageMode: false,
 
+    listItemPresentationMode: 'list' as 'list' | 'grid',
+
     footNotes: [] as {index: number, html: string}[],
     footNoteElements: [] as HTMLSpanElement[],
 

@@ -10,6 +10,11 @@
           class="v-list-container__header__box"
       >
         <search-bar></search-bar>
+        <div
+            class="v-list-container__header__box__toggle-mode"
+        >
+          <toggle-list-item-presentation-button></toggle-list-item-presentation-button>
+        </div>
       </div>
     </div>
 
@@ -49,6 +54,7 @@
     </transition>
 
     <div
+        v-if="listItemPresentationModeAbstraction === 'list'"
         v-show="showItem"
     >
       <list-item
@@ -57,6 +63,19 @@
           :key="item.id"
           @vue:mounted="onListItemMounted"
       ></list-item>
+    </div>
+
+    <div
+        v-if="listItemPresentationModeAbstraction === 'grid'"
+        v-show="showItem"
+        class="v-list-container__grid"
+    >
+<!--      <list-item-->
+<!--          v-for="item of globalState.apiData"-->
+<!--          :dataTag="item"-->
+<!--          :key="item.id"-->
+<!--          @vue:mounted="onListItemMounted"-->
+<!--      ></list-item>-->
     </div>
 
     <transition name="transition-page" >
@@ -70,11 +89,23 @@
           <div></div>
           <div></div>
           <div></div>
-        </div>
-        <div
-            class="v-list-container__loader__text"
-        >
-          Loading Items…
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
     </transition>
@@ -88,23 +119,42 @@ import type {Api} from "@/Utils/api"
 import ListItem from "@/components/ListItem.vue"
 import SearchBar from "@/components/SearchBar.vue";
 import ToggleListItemViewButton from "@/components/ToggleListItemViewButton.vue";
+import ToggleListItemPresentationButton from "@/components/ToggleListItemPresentationButton.vue";
 
 export default defineComponent({
-  components: {ToggleListItemViewButton, SearchBar, ListItem},
+  components: {ToggleListItemPresentationButton, ToggleListItemViewButton, SearchBar, ListItem},
   data() {
     return {
       globalState: stateStore(),
       counterOfMountedItemList: 0,
       listMounted: false,
+      listItemPresentationModeAbstraction: 'list' as 'list' | 'grid'
     }
   },
 
   methods: {
     onListItemMounted() {
       this.counterOfMountedItemList++
-      if(Object.keys( this.itemList).length === this.counterOfMountedItemList)
+      if(Object.keys( this.itemList).length > this.counterOfMountedItemList / 4 * 3) window.setTimeout(() => {
+        console.log('hello')
         this.listMounted = true
+      }, 1_000)
     }
+  },
+
+  watch: {
+    'listItemPresentationMode'(){
+      this.counterOfMountedItemList = 0
+
+      console.log( this.listItemPresentationMode )
+      console.log( this.listItemPresentationMode === 'list' )
+
+      if(this.listItemPresentationMode === 'list') this.listMounted = false
+
+      window.setTimeout(() => {
+        this.listItemPresentationModeAbstraction = this.listItemPresentationMode
+      }, 500)
+    },
   },
 
   computed: {
@@ -118,6 +168,10 @@ export default defineComponent({
 
       return this.$route.name === ':projectSection/:articleUid' && this.globalState.activatedFilterTag.length > 0;
 
+    },
+
+    listItemPresentationMode(): 'list' | 'grid' {
+      return this.globalState.listItemPresentationMode
     },
 
     activatedFilterTag(): string[] {
@@ -135,7 +189,12 @@ export default defineComponent({
   padding-bottom:  50vh;
   position: relative;
   padding-top: 5rem;
+  box-sizing: border-box;
+  min-height: 100vh;
 
+  /**
+  LIST
+   */
   .v-list-container__header {
     top: var(--v-app-header--title-height);
     left: 0;
@@ -167,12 +226,19 @@ export default defineComponent({
   .v-list-container__header__box {
     width: calc(100% / 6 * 4);
     margin: 1rem auto 0;
+    position: relative;
 
     &.v-list-container__header__box--small {
       width: auto;
       display: flex;
       justify-content: center;
     }
+  }
+
+  .v-list-container__header__box__toggle-mode {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   .v-list-container__coll-header {
@@ -191,6 +257,16 @@ export default defineComponent({
     }
   }
 
+  /**
+  GRID
+   */
+  .v-list-container__grid {
+    //height: 100vh;
+  }
+
+  /**
+  LOADERS
+   */
   .v-list-container__loader {
     position: absolute;
     background: white;
@@ -208,16 +284,17 @@ export default defineComponent({
       height: 1.9rem;
       box-sizing: content-box;
       border-bottom: solid 1px var(--jd-color--main);
-      animation: width-scale 3s ease-in-out;
+      animation: width-scale 2s ease-in-out;
       animation-iteration-count: 1;
+      animation-fill-mode: forwards;
       transform-origin: left;
       transform: scaleX(0);
 
-      &:nth-child(2n) {
-        animation-delay: .75s;
-      }
-      &:nth-child(3n) {
-        animation-delay: 1.5s;
+      @for $i from 0 through 20 {
+
+        &:nth-child(#{$i}) {
+          animation-delay: $i * .05s;
+        }
       }
     }
   }
@@ -231,12 +308,6 @@ export default defineComponent({
       transform: scaleX(100%);
     }
 
-  }
-
-  .v-list-container__loader__text {
-    line-height: 2rem;
-    padding-left: 1rem;
-    font-weight: 500;
   }
 
   .device-small & {
