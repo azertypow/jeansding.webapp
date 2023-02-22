@@ -26,9 +26,17 @@ export default defineComponent({
 
   methods: {
     toggleListPresentationMode() {
+
       this.globalState.listItemPresentationMode === 'list' ?
           this.globalState.listItemPresentationMode = 'grid'
           : this.globalState.listItemPresentationMode = 'list'
+
+      window.setTimeout(() => {
+        document.querySelector('.v-app__body__left')!.scroll({
+          top: 0,
+          behavior: undefined,
+        })
+      }, 0)
     }
   },
 
