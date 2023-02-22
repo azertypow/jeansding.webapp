@@ -1,27 +1,35 @@
 <template>
-  <img
+  <div
       class="v-image-lazy-load"
-      :src="imageUrl"
-      :alt="alt"
-      :class="{
-        'is-loaded': isLoaded,
-      }"
-  />
+  >
+    <image-zoom :src-of-img-zoom="imageZoomUrl">
+      <img
+          class="v-image-lazy-load__img"
+          :src="imageUrl"
+          :alt="alt"
+          :class="{
+            'is-loaded': isLoaded,
+          }"
+      />
+    </image-zoom>
+  </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue';
 import type {PropType} from 'vue';
 import type {Api} from "@/Utils/api";
+import ImageZoom from "@/components/ImageZoom.vue";
 
 export default defineComponent({
   name: 'ImageLazyLoad',
-  components: {},
+  components: {ImageZoom},
 
   data() {
     return {
       isLoaded: false,
       imageUrl: this.imageData.resize.tiny,
+      imageZoomUrl: this.imageData.resize.large,
     }
   },
 
@@ -50,12 +58,22 @@ export default defineComponent({
     imageWithWantedSize.src = this.imageData.resize[this.size]
   },
 
+  methods: {
+    zoomIn() {
+      console.log(this.imageData.resize.large)
+    }
+  },
+
 
 });
 </script>
 
 <style lang="scss" scoped>
 .v-image-lazy-load {
+  display: block;
+}
+
+.v-image-lazy-load__img {
   filter: blur(20px);
   overflow: hidden;
 
