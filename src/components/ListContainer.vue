@@ -355,7 +355,7 @@ export default defineComponent({
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     z-index: 1000;
     padding-top: 5rem;
     box-sizing: border-box;
@@ -370,7 +370,7 @@ export default defineComponent({
       animation-iteration-count: 1;
       animation-fill-mode: forwards;
       transform-origin: left;
-      transform: scaleX(0);
+      transform: scale3d(0, 1, 1);
 
       @for $i from 0 through 20 {
 
@@ -396,7 +396,7 @@ export default defineComponent({
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
         transform-origin: left;
-        transform: scaleX(0);
+        transform: scale3d(0, 1, 1);
 
         &:before {
           content: '';
@@ -408,43 +408,51 @@ export default defineComponent({
           animation-iteration-count: 1;
           animation-fill-mode: forwards;
           transform-origin: top;
-          transform: scaleX(0);
+          transform: scale3d(1, 0, 1);
         }
+      }
 
-        @for $i from 1 through 3 {
+      @for $i from 1 through 3 {
+        @for $j from 1 through 3 {
+
+          > div:nth-child(#{$i}) {
+            animation-delay: ($i * .05s) + ($j * .05s);
+          }
+
           &:nth-child(#{$i}) {
-            animation-delay: $i * .5s;
-
-            @for $j from 1 through 3 {
-              &:before {
-                animation-delay: ($i * .5s) + ($j * .5s);
-              }
+            > div:before {
+              animation-delay: ($i * .2s) + ($j * .2s);
             }
           }
         }
       }
-
     }
   }
 
   @keyframes width-scale {
     0% {
-      transform: scaleX(0);
+      transform: scale3d(0, 1, 1);
     }
 
     100% {
-      transform: scaleX(100%);
+      transform: scale3d(1, 1, 1);
     }
 
   }
 
   @keyframes height-scale {
     0% {
-      transform: scaleY(0);
+      transform: scale3d(1, 0, 1);
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
     }
 
     100% {
-      transform: scaleY(100%);
+      transform: scale3d(1, 1, 1);
+      opacity: 1;
     }
 
   }
