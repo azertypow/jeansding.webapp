@@ -48,7 +48,7 @@
             v-for="img of dataTag.img"
             :image-data="img"
             alt=""
-            size="small"
+            size="xs"
         />
       </div>
 
