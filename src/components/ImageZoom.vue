@@ -2,7 +2,7 @@
   <div
       class="v-image-zoom"
       @mouseenter="showZoom = true"
-      @mouseleave="showZoom = true"
+      @mouseleave="showZoom = false"
       ref="wrapper"
       @mousemove="onMouseMove"
   >
@@ -67,17 +67,22 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .v-image-zoom {
-  cursor: pointer;
+  cursor: crosshair;
   position: relative;
   overflow: hidden;
 }
 
 .v-image-zoom__img {
+  display: block;
   z-index: 10;
   position: absolute;
   top: 0;
   left: 0;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  transform: scale(3);
+  transition: transform .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform-origin: 50% 50%;
+  pointer-events: none;
 }
 </style>
