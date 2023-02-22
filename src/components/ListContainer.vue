@@ -45,7 +45,7 @@
     <transition name="transition-header" >
     <div
         class="v-list-container__coll-header"
-        v-if="$route.name === 'inventory' && globalState.itemImageMode === 'list'"
+        v-if="$route.name === 'inventory' && globalState.listItemPresentationMode === 'list'"
     >
       <div>NUMBER</div>
       <div>ITEM</div>
@@ -102,7 +102,7 @@
       </div>
     </div>
 
-    <transition name="transition-page" >
+    <transition name="transition-loader" >
       <div
           v-if="!listMounted"
           class="v-list-container__loader"
@@ -134,7 +134,7 @@
       </div>
     </transition>
 
-    <transition name="transition-page" >
+    <transition name="transition-loader" >
       <div
           v-if="!galleryMounted"
           class="v-list-container__loader"
@@ -143,9 +143,9 @@
             class="v-list-container__loader__card"
         >
           <div class="v-list-container__grid" >
-            <div class="v-list-container__grid__coll" ></div>
-            <div class="v-list-container__grid__coll" ></div>
-            <div class="v-list-container__grid__coll" ></div>
+            <div class="v-list-container__grid__coll" ><div></div><div></div><div></div></div>
+            <div class="v-list-container__grid__coll" ><div></div><div></div><div></div></div>
+            <div class="v-list-container__grid__coll" ><div></div><div></div><div></div></div>
           </div>
         </div>
       </div>
@@ -210,7 +210,7 @@ export default defineComponent({
       }
 
       window.setTimeout(() => {
-        this.listItemPresentationModeAbstraction = this.listItemPresentationMode
+        //this.listItemPresentationModeAbstraction = this.listItemPresentationMode
       }, 500)
     },
   },
@@ -385,24 +385,45 @@ export default defineComponent({
     height: 60rem;
 
     .v-list-container__grid__coll {
-      height: 10rem;
+      height: 100%;
       display: flex;
       flex-direction: column;
 
-      &:before {
-        content: "";
-        display: block;
-        height: 5px;
-        background: var(--jd-color--main);
-        margin-bottom: 3rem;
+      > div {
+        margin-bottom: 2rem;
+        border-top: solid 1px var(--jd-color--main);
+        animation: width-scale 1s ease-in-out;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        transform-origin: left;
+        transform: scaleX(0);
+
+        &:before {
+          content: '';
+          display: block;
+          margin-top: 3rem;
+          height: 10rem;
+          background: var(--jd-color--main);
+          animation: height-scale 1s ease-in-out;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
+          transform-origin: top;
+          transform: scaleX(0);
+        }
+
+        @for $i from 1 through 3 {
+          &:nth-child(#{$i}) {
+            animation-delay: $i * .5s;
+
+            @for $j from 1 through 3 {
+              &:before {
+                animation-delay: ($i * .5s) + ($j * .5s);
+              }
+            }
+          }
+        }
       }
 
-      &:after {
-        content: "";
-        display: block;
-        height: 60rem;
-        background: var(--jd-color--main);
-      }
     }
   }
 
@@ -413,6 +434,17 @@ export default defineComponent({
 
     100% {
       transform: scaleX(100%);
+    }
+
+  }
+
+  @keyframes height-scale {
+    0% {
+      transform: scaleY(0);
+    }
+
+    100% {
+      transform: scaleY(100%);
     }
 
   }

@@ -80,6 +80,21 @@ button,
   opacity: 0;
 }
 
+//// loader
+.transition-loader-leave-active {
+  transition: opacity .5s ease-in-out;
+}
+
+.transition-loader-enter-active {
+  transition: opacity .5s ease-in-out;
+}
+
+.transition-loader-enter-from,
+.transition-loader-leave-to {
+  opacity: 0;
+}
+
+
 //// page
 .transition-page-leave-active {
   transition: opacity .5s ease-in-out;
