@@ -3,8 +3,8 @@
       class="v-toggle-list-item-presentation-button jd-button"
       @click="toggleListPresentationMode"
   >
-    <icon-gallery v-if="globalState.listItemPresentationMode === 'grid'" ></icon-gallery>
-    <icon-list    v-if="globalState.listItemPresentationMode === 'list'" ></icon-list>
+    <icon-gallery v-if="globalState.listItemPresentationMode === 'list'" ></icon-gallery>
+    <icon-list    v-if="globalState.listItemPresentationMode === 'grid'" ></icon-list>
   </div>
 </template>
 
