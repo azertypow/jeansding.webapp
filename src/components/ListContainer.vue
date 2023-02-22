@@ -210,7 +210,7 @@ export default defineComponent({
       }
 
       window.setTimeout(() => {
-        //this.listItemPresentationModeAbstraction = this.listItemPresentationMode
+        this.listItemPresentationModeAbstraction = this.listItemPresentationMode
       }, 500)
     },
   },
