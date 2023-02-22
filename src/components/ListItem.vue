@@ -12,7 +12,7 @@
       <img
           v-for="img of dataTag.img"
           alt="item image previous"
-          :src="img.resize.small"
+          :src="img.resize.xs"
           class="v-list-item__img-previous"
       >
     </template>
