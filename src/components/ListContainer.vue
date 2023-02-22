@@ -181,13 +181,13 @@ export default defineComponent({
   methods: {
     onListItemMounted() {
       this.counterOfMountedItemList++
-      if(Object.keys( this.itemList).length > this.counterOfMountedItemList / 4 * 3) window.setTimeout(() => {
+      if(Object.keys( this.itemList).length > this.counterOfMountedItemList) window.setTimeout(() => {
         this.listMounted = true
       }, 1_000)
     },
     onListCardMounted() {
       this.counterOfMountedItemCard++
-      if(Object.keys( this.itemList).length > this.counterOfMountedItemList / 4 * 3) window.setTimeout(() => {
+      if(Object.keys( this.itemList).length > this.counterOfMountedItemList) window.setTimeout(() => {
         this.galleryMounted = true
       }, 1_000)
     }
