@@ -55,6 +55,7 @@ export namespace Api {
 
   export interface IImageResizes {
     "tiny":   string
+    "xs":     string
     "small":  string
     "reg":    string
     "large":  string
