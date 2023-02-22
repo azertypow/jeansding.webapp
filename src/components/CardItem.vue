@@ -49,6 +49,7 @@
             :image-data="img"
             alt=""
             size="xs"
+            :zoom-scale="2"
         />
       </div>
 
@@ -78,12 +79,16 @@
 
       <div
           class="v-card-item__coll"
-          v-show="$route.path === '/'"
       >
-        <tag
+        <div
+            class="v-card-item__tag"
             v-for="tagName of dataTag.category"
-            :name="tagName"
-        ></tag>
+        >
+          <tag
+              :name="tagName"
+              color-style="grey"
+          ></tag>
+        </div>
       </div>
 
     </div>
@@ -111,12 +116,6 @@ export default defineComponent({
 
   methods: {
     toggleOpenStatus() {
-
-      if (this.$route.name !== 'inventory') {
-        this.globalState.itemToScrollOnInventoryIsOpen = this
-        this.$router.push('/')
-        return
-      }
 
       this.globalState.currentOpenObject = this.isOpen ? null : this.dataTag;
 
@@ -218,19 +217,20 @@ export default defineComponent({
   display: flex;
   flex-wrap: nowrap;
   border-top: solid 1px;
-  align-items: flex-start;
+  align-items: baseline;
+  justify-content: flex-start;
   cursor: pointer;
   background: white;
   z-index: 1;
   position: relative;
-  flex-direction: column;
+  flex-direction: row;
 
   .v-card-item__icon-box {
     position: absolute;
     height: 1rem;
     width: auto;
     right: 0;
-    top: 1rem;
+    top: .5rem;
     display: flex;
 
     > * {
@@ -244,12 +244,18 @@ export default defineComponent({
   > .v-card-item__coll {
     box-sizing: border-box;
     width: 100%;
-    white-space: nowrap;
   }
 
   .v-card-item--id {
-    padding-top: .5rem;
+    width: auto;
+    padding-right: 1rem;
   }
+}
+
+.v-card-item__tag {
+  margin-top: 1rem;
+  margin-right: .5rem;
+  display: inline-block;
 }
 
 .v-card-item__body {
@@ -282,7 +288,6 @@ export default defineComponent({
 .v-card-item__body__bottom {
   width: 100%;
   box-sizing: border-box;
-  padding-left: .5rem;
 
   > ul {
     padding: 0;
@@ -295,6 +300,8 @@ export default defineComponent({
 }
 
 .v-card-item__body__bottom__text-content {
+  margin-top: 1rem;
+
   > *:first-child {
     margin-top: 0;
   }
@@ -307,6 +314,11 @@ export default defineComponent({
 .v-card-item--id,
 .v-card-item--title {
   font-weight: 500;
+  padding-top: .5rem;
+  white-space: break-spaces;
+}
+.v-card-item--title {
+  padding-right: 3rem;
 }
 
 .v-card-item--id {

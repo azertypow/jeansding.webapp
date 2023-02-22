@@ -13,6 +13,9 @@
         v-if="showZoom"
         alt=""
         :src="srcOfImgZoom"
+        :style="{
+          transform: `scale(${scale})`,
+        }"
     >
   </div>
 </template>
@@ -36,6 +39,11 @@ export default defineComponent({
     srcOfImgZoom: {
       required: true,
       type: String,
+    },
+    scale: {
+      required: false,
+      type: Number,
+      default: 3,
     },
   },
 
@@ -80,7 +88,6 @@ export default defineComponent({
   left: 0;
   width: 100%;
   height: 100%;
-  transform: scale(3);
   transition: transform .25s cubic-bezier(0.075, 0.82, 0.165, 1);
   transform-origin: 50% 50%;
   pointer-events: none;

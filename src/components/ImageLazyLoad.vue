@@ -2,7 +2,7 @@
   <div
       class="v-image-lazy-load"
   >
-    <image-zoom :src-of-img-zoom="imageZoomUrl">
+    <image-zoom :src-of-img-zoom="imageZoomUrl" :scale="zoomScale">
       <img
           class="v-image-lazy-load__img"
           :src="imageUrl"
@@ -46,7 +46,12 @@ export default defineComponent({
       required: false,
       type: String as PropType<keyof Api.IImageResizes>,
       default: 'small' as keyof Api.IImageResizes
-    }
+    },
+    zoomScale: {
+      required: false,
+      type: Number,
+      default: 3,
+    },
   },
 
   mounted() {

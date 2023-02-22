@@ -7,14 +7,14 @@
         class="v-list-container__header"
     >
       <div
+          class="v-list-container__header__box__toggle-mode"
+      >
+        <toggle-list-item-presentation-button></toggle-list-item-presentation-button>
+      </div>
+      <div
           class="v-list-container__header__box"
       >
         <search-bar></search-bar>
-        <div
-            class="v-list-container__header__box__toggle-mode"
-        >
-          <toggle-list-item-presentation-button></toggle-list-item-presentation-button>
-        </div>
       </div>
     </div>
 
@@ -182,7 +182,6 @@ export default defineComponent({
     onListItemMounted() {
       this.counterOfMountedItemList++
       if(Object.keys( this.itemList).length > this.counterOfMountedItemList / 4 * 3) window.setTimeout(() => {
-        console.log('hello')
         this.listMounted = true
       }, 1_000)
     },
@@ -311,8 +310,9 @@ export default defineComponent({
 
   .v-list-container__header__box__toggle-mode {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 1rem;
+    left: -.5rem;
+    transform: translateX(100%);
   }
 
   .v-list-container__coll-header {

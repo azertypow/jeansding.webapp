@@ -2,11 +2,13 @@
   <button
       class="v-tag"
       @click.stop="pushTag"
+      :class="{'is-grey': colorStyle === 'grey'}"
   >{{placeholder}}</button>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue"
+import type {PropType} from "vue"
 import {stateStore} from "@/stores/stateStore"
 
 export default defineComponent({
@@ -14,6 +16,10 @@ export default defineComponent({
     name: {
       type: String,
       required: true,
+    },
+    colorStyle: {
+      type: String as PropType<'default' | 'grey'>,
+      default: 'default',
     },
   },
 
@@ -58,6 +64,15 @@ export default defineComponent({
 
   &:hover {
     background-color: #ebebeb;
+  }
+
+  &.is-grey {
+    background-color: #ebebeb;
+
+    &:hover {
+      background-color: var(--jd-color--main);
+      color: white;
+    }
   }
 }
 </style>
