@@ -102,7 +102,7 @@
       </div>
 
       <template
-          v-if="stateStore.device === 'small'"
+          v-if="stateStore.device === 'mobile'"
       >
         <router-link
             class="v-app-footer__body__right__link"

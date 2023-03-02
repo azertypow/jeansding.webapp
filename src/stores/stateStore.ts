@@ -4,7 +4,7 @@ import type {Api} from "@/Utils/api"
 export const stateStore = defineStore('stateStore', {
 
   state: () => ({
-    device: window.innerWidth < 900 ? 'small' : 'reg' as 'small' | 'reg',
+    device: window.innerWidth < 900 ? 'mobile' : 'small' as 'mobile' | 'small',
 
     itemToScrollOnInventoryIsOpen: null as any,
 

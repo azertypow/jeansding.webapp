@@ -23,6 +23,9 @@ initData().then(() => {
   stateStore().updateFilteredArticles_bySection()
 })
 
+
+// see _scss-var.scss
 window.addEventListener('resize', () => {
-  stateStore().device = window.innerWidth < 900 ? 'small' : 'reg'
+
+  stateStore().device = window.innerWidth < 900 ? 'mobile' : 'small'
 })

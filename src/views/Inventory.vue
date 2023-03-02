@@ -1,7 +1,7 @@
 <template>
   <div class="v-inventory">
     <template
-        v-if="globalState.device === 'reg'"
+        v-if="globalState.device === 'small'"
     >
       <div
           style="margin-top: 0; padding-top: .5rem"
@@ -80,7 +80,7 @@
     </template>
 
     <template
-        v-if="globalState.device === 'small'"
+        v-if="globalState.device === 'mobile'"
     >
       <list-container></list-container>
     </template>

@@ -4,7 +4,7 @@
       :class="{
         'credit-is-open': creditIsOpen,
         'menu-is-open': menuIsOpen,
-        'device-small': stateSore.device === 'small'
+        'device-small': stateSore.device === 'mobile'
       }"
   >
     <header>
@@ -22,7 +22,7 @@
 
     <div class="v-app__body">
       <div
-          v-if="stateSore.device === 'reg'"
+          v-if="stateSore.device === 'small'"
           class="v-app__body__left"
       >
         <list-container></list-container>
