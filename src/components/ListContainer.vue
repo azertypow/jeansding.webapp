@@ -311,8 +311,7 @@ export default defineComponent({
   .v-list-container__header__box__toggle-mode {
     position: absolute;
     top: 1rem;
-    left: -.5rem;
-    transform: translateX(100%);
+    left: 1rem;
   }
 
   .v-list-container__coll-header {
