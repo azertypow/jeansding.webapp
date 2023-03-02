@@ -1,7 +1,7 @@
 <template>
   <div class="v-inventory">
     <template
-        v-if="globalState.device === 'small'"
+        v-if="globalState.device !== 'mobile'"
     >
       <div
           style="margin-top: 0; padding-top: .5rem"

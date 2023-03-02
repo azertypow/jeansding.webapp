@@ -4,7 +4,9 @@
       :class="{
         'credit-is-open': creditIsOpen,
         'menu-is-open': menuIsOpen,
-        'device-mobile': stateSore.device === 'mobile'
+        'device-mobile' : stateSore.device === 'mobile',
+        'device-small'  : stateSore.device === 'small',
+        'device-reg'    : stateSore.device === 'reg',
       }"
   >
     <header>

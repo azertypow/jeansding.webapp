@@ -71,30 +71,11 @@
         class="v-list-container__grid"
     >
       <div
+          v-for="index in numberOfColl"
           class="v-list-container__grid__coll"
       >
         <card-item
-            v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/3*0 ), Math.ceil( randomItemListSorted.length/3 ))"
-            :dataTag="item"
-            :key="item.id"
-            @vue:mounted="onListCardMounted"
-        ></card-item>
-      </div>
-      <div
-          class="v-list-container__grid__coll"
-      >
-        <card-item
-            v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/3*1 ), Math.ceil( randomItemListSorted.length/3 ))"
-            :dataTag="item"
-            :key="item.id"
-            @vue:mounted="onListCardMounted"
-        ></card-item>
-      </div>
-      <div
-          class="v-list-container__grid__coll"
-      >
-        <card-item
-            v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/3*2 ), Math.ceil( randomItemListSorted.length/3 ))"
+            v-for="item of randomItemListSorted.slice().splice(Math.ceil( randomItemListSorted.length/numberOfColl* (index - 1) ), Math.ceil( randomItemListSorted.length/numberOfColl ))"
             :dataTag="item"
             :key="item.id"
             @vue:mounted="onListCardMounted"
@@ -143,9 +124,14 @@
             class="v-list-container__loader__card"
         >
           <div class="v-list-container__grid" >
-            <div class="v-list-container__grid__coll" ><div></div><div></div><div></div></div>
-            <div class="v-list-container__grid__coll" ><div></div><div></div><div></div></div>
-            <div class="v-list-container__grid__coll" ><div></div><div></div><div></div></div>
+            <div
+                class="v-list-container__grid__coll"
+                v-for="index in numberOfColl"
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -215,6 +201,12 @@ export default defineComponent({
   },
 
   computed: {
+    numberOfColl(): number {
+      if (this.globalState.device === 'mobile') return 1
+      if (this.globalState.device === 'small') return 2
+      return 3
+    },
+
     itemList(): Api.ItemList {
       return this.globalState.apiData
     },
@@ -335,12 +327,14 @@ export default defineComponent({
    */
   .v-list-container__grid {
     display: flex;
+    flex-wrap: nowrap;
 
     .v-list-container__grid__coll {
-      width: calc( 100% / 3 );
+      width: 100%;
       padding-left: .5rem;
       padding-right: .5rem;
       box-sizing: border-box;
+      flex-shrink: 1;
     }
   }
 

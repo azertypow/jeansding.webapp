@@ -6,6 +6,7 @@ import router from './router'
 
 import './assets/main.scss'
 import {stateStore} from "@/stores/stateStore"
+import {getDeviceWidthSizeName} from "@/Utils/getDeviceWidthSizeName";
 
 const app = createApp(App)
 
@@ -26,6 +27,5 @@ initData().then(() => {
 
 // see _scss-var.scss
 window.addEventListener('resize', () => {
-
-  stateStore().device = window.innerWidth < 900 ? 'mobile' : 'small'
+  stateStore().device = getDeviceWidthSizeName()
 })

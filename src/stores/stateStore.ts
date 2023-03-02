@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
 import type {Api} from "@/Utils/api"
+import {getDeviceWidthSizeName} from "@/Utils/getDeviceWidthSizeName";
 
 export const stateStore = defineStore('stateStore', {
 
   state: () => ({
-    device: window.innerWidth < 900 ? 'mobile' : 'small' as 'mobile' | 'small',
+    device: getDeviceWidthSizeName(),
 
     itemToScrollOnInventoryIsOpen: null as any,
 
@@ -58,6 +59,7 @@ export const stateStore = defineStore('stateStore', {
       })
     }
   },
+
 
   actions: {
     pushFooterNoteElement(articleDocument: Document, articleFootNote: Element) {
