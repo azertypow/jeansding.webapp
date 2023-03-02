@@ -1,7 +1,6 @@
 <template>
   <div
       class="v-image-zoom"
-      @mouseenter="showZoom = true"
       @mouseleave="showZoom = false"
       ref="wrapper"
       @mousemove="onMouseMove"
@@ -49,7 +48,10 @@ export default defineComponent({
 
   methods: {
     onMouseMove(event: MouseEvent) {
+
       if (!(this.$refs.wrapper instanceof HTMLElement)) return
+
+      if(! this.showZoom) this.showZoom = true
 
       if (this.rafTimeout) window.cancelAnimationFrame(this.rafTimeout)
 
