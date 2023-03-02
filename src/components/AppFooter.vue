@@ -154,7 +154,7 @@ export default defineComponent({
   transition: background-color 1s ease-in-out;
   z-index: 1000;
 
-  .device-small & {
+  .device-mobile & {
     width: 100%;
     height: 100%;
     position: relative;
@@ -176,7 +176,7 @@ export default defineComponent({
   user-select: none;
   display: flex;
 
-  .device-small & {
+  .device-mobile & {
     height: 100%;
   }
 }
@@ -208,7 +208,7 @@ export default defineComponent({
     margin: 0;
   }
 
-  .device-small & {
+  .device-mobile & {
     margin-left: 0;
     width: 100%;
     padding-right: 2rem;
@@ -235,7 +235,7 @@ export default defineComponent({
   align-items: center;
   z-index: 100000;
 
-  .device-small & {
+  .device-mobile & {
     padding: 0;
     position: absolute;
     bottom: 0;

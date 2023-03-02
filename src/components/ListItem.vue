@@ -320,7 +320,7 @@ export default defineComponent({
     }
   }
 
-  .device-small & {
+  .device-mobile & {
     flex-direction: column;
 
     > * {

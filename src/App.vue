@@ -4,7 +4,7 @@
       :class="{
         'credit-is-open': creditIsOpen,
         'menu-is-open': menuIsOpen,
-        'device-small': stateSore.device === 'mobile'
+        'device-mobile': stateSore.device === 'mobile'
       }"
   >
     <header>
@@ -130,7 +130,7 @@ export default defineComponent({
     z-index: 99999;
   }
 
-  &.device-small {
+  &.device-mobile {
     > footer {
       top: 0;
       right: 0;
@@ -227,7 +227,7 @@ export default defineComponent({
     }
   }
 
-  .device-small & {
+  .device-mobile & {
     width: 100%;
     color: var(--jd-palette--blue-dark);
     padding-right: 1.5rem;

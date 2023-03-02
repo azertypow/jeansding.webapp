@@ -283,7 +283,7 @@ export default defineComponent({
       width: calc(100% / 4 * 1 - 1rem);
     }
 
-    .device-small & {
+    .device-mobile & {
       width: 100%;
     }
 
@@ -456,7 +456,7 @@ export default defineComponent({
 
   }
 
-  .device-small & {
+  .device-mobile & {
     width: 100%;
   }
 }

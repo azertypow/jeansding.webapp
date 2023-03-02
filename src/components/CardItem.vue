@@ -265,7 +265,7 @@ export default defineComponent({
   padding-top: .5rem;
   flex-direction: column;
 
-  .device-small & {
+  .device-mobile & {
     flex-direction: column;
 
     > * {

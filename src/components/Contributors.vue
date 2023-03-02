@@ -140,7 +140,7 @@ export default defineComponent({
     cursor: pointer;
   }
 
-  .device-small & {
+  .device-mobile & {
     margin-left: 0;
     width: 100%;
     padding-right: 2rem;
@@ -175,7 +175,7 @@ export default defineComponent({
     }
   }
 
-  .device-small & {
+  .device-mobile & {
     display: none;
   }
 }

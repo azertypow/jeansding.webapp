@@ -173,7 +173,7 @@ export default defineComponent({
       }
     }
 
-    .device-small & {
+    .device-mobile & {
       left: 0;
       width: 100%;
       padding-left: .5rem;
@@ -237,7 +237,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
 
-    .device-small & {
+    .device-mobile & {
       width: 100%;
       padding-left: 1rem;
     }
