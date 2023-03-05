@@ -170,10 +170,12 @@ export const stateStore = defineStore('stateStore', {
 
       allProjectsArticle = allProjectsArticle.concat(Object.values( this.apiProjects[sectionName]?.children || {} ))
 
+      // return all articles if any object is open on the left screen, on inventory view
       if(this.abstractActivatedFilterTagForArticle.length === 0) return allProjectsArticle
 
+      // filter article if they are linked with current open item
       return allProjectsArticle.filter(article => {
-        return this.abstractActivatedFilterTagForArticle.every(category=> article.category?.includes(category))
+        return article.Linkwith?.includes(this.currentOpenObject?.slug || '')
       })
     },
   },
