@@ -86,7 +86,7 @@
           ></div>
 
           <ul>
-            <li><strong>Date:</strong     > {{dataTag.infoDate}}</li>
+            <li><strong>Date:</strong     > {{new Date(dataTag.infoDate).getFullYear()}}</li>
             <li><strong>Object:</strong   > {{dataTag.infoObject}}</li>
             <li><strong>Dimension:</strong> {{dataTag.infoDimensions}}</li>
             <li><strong>Loan:</strong     > {{dataTag.infoLoan}}</li>
