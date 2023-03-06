@@ -90,6 +90,7 @@
     <div
         class="v-app-footer__body__left"
     >
+      <div class="jd-with-gutter jd-font-small" >HEAD&nbsp;–&nbsp;Genève</div>
     </div>
 
     <div
