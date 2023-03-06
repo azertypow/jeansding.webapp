@@ -1,7 +1,11 @@
 <template>
   <div class="v-contributors">
     <div class="v-contributors__header jd-font-xxl"
-    >Jeansdinge</div>
+    >
+      <div class="jd-font-xxl">Jeansdinge</div>
+
+      <h1>Contributors</h1>
+    </div>
       <div
           class="v-contributors__content"
       >
@@ -9,7 +13,6 @@
             class="v-contributors__content__left jd-with-gutter"
             @mouseleave="activityActiveByOver = []"
         >
-          <h1>Contributors</h1>
           <transition-group
               name="scale"
           >
@@ -106,16 +109,23 @@ export default defineComponent({
 }
 
 .v-contributors__header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   color: var(--jd-color--white);
   text-align: center;
   width: 100%;
   z-index: 20;
-  height: var(--v-app-header--title-height);
+  padding-top: 1rem;
   line-height: var(--v-app-header--title-height);
   background-color: var(--jd-color--varriable);
+
+  h1 {
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-weight: 400;
+  }
 }
 
 .v-contributors__content {
