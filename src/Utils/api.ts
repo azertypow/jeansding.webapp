@@ -24,6 +24,7 @@ export namespace Api {
     contributors: {
       name?:       string,
       first_name?: string,
+      description?: string,
       activity?: string[]
     }[]
   }
