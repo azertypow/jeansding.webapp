@@ -24,7 +24,7 @@
 
     <div class="v-app__body">
       <div
-          v-if="stateSore.device === 'small'"
+          v-if="stateSore.device === 'small' || stateSore.device === 'reg'"
           class="v-app__body__left"
       >
         <list-container></list-container>
