@@ -13,13 +13,23 @@
           <transition-group
               name="scale"
           >
-            <p
+            <div
                 v-for="(contributor, index) of stateStore().apiContributors.contributors"
                 :key="index"
-                class="jd-font-xl head-student"
-                @mouseenter="activityActiveByOver = contributor.activity || []"
+                ref="contributors"
                 v-show="activityActiveByClick === '' || (contributor.activity && contributor.activity.includes(activityActiveByClick))"
-            >{{contributor.first_name}} {{contributor.name}}</p>
+                @mouseenter="activityActiveByOver = contributor.activity || []"
+                @click="toggleDescription(index)"
+                class="v-contributors__description-box"
+            >
+              <p
+                  class="jd-font-xl head-student"
+              >{{ contributor.first_name }} {{ contributor.name }}</p>
+              <div
+                  class="v-contributors__description-box__text"
+                  v-html="contributor.description"
+              ></div>
+            </div>
           </transition-group>
         </div>
 
@@ -60,6 +70,13 @@ export default defineComponent({
   },
 
   methods: {
+    toggleDescription( index: number) {
+      if( !Array.isArray( this.$refs.contributors )) return
+      if( ! (this.$refs.contributors[index] instanceof HTMLElement) ) return
+
+      this.$refs.contributors[index].classList.toggle('description-is-open')
+    },
+
     addActivityFilterByOver(arrayOfActivityToAdd: string[]) {
       for(const activityToAdd of arrayOfActivityToAdd) {
         if( this.activityActiveByOver.includes( activityToAdd ) ) return
@@ -179,4 +196,34 @@ export default defineComponent({
     display: none;
   }
 }
+</style>
+
+<style lang="scss">
+.v-contributors__description-box {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
+  transition: margin-top 500ms ease-in-out;
+
+  .v-contributors__description-box__text {
+    display: none;
+
+    > *:fist-child {
+      margin-top: 1rem;
+    }
+    > *:last-child {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &.description-is-open {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    .v-contributors__description-box__text {
+      display: block;
+    }
+  }
+}
+
 </style>
