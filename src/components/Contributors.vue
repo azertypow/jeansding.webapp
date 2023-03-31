@@ -167,7 +167,6 @@ export default defineComponent({
 
   p {
     margin: 0;
-    cursor: pointer;
   }
 
   .device-mobile & {
@@ -217,6 +216,10 @@ export default defineComponent({
   margin-top: 0;
   margin-bottom: 0;
   transition: margin-top 500ms ease-in-out;
+
+  &:not(.is-empty) {
+    cursor: pointer;
+  }
 
   .v-contributors__description-box__text {
     display: none;
