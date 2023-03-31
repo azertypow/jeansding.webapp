@@ -32,6 +32,12 @@
   @media (min-width: $break-width-extra-xxl) {
     --js-max-width--reg: 48rem;
   }
+
+
+  --jd-icon-width: 30px;
+  @media (max-width: $break-width-xs) {
+    --jd-icon-width: 20px;
+  }
 }
 
 *,

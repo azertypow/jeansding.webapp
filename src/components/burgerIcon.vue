@@ -35,18 +35,17 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 $lineHeight: 2px;
-$iconWidth: 30px;
 
 .v-cross-icon {
   transition: transform 250ms ease-in-out;
   cursor: pointer;
-  width: $iconWidth;
+  width: var(--jd-icon-width);
   height: $lineHeight*8;
 }
 
 .v-cross-icon__center-line {
   background: white;
-  width: $iconWidth;
+  width: var(--jd-icon-width);
   height: $lineHeight;
   position: relative;
   transition: background 10ms 300ms ease;
@@ -57,7 +56,7 @@ $iconWidth: 30px;
     transform 300ms 50ms ease;
     position: absolute;
     background: white;
-    width: $iconWidth;
+    width: var(--jd-icon-width);
     height: $lineHeight;
     content: '';
   }
