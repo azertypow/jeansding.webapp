@@ -24,6 +24,9 @@
                 @mouseenter="activityActiveByOver = contributor.activity || []"
                 @click="toggleDescription(index)"
                 class="v-contributors__description-box"
+                :class="{
+                  'is-empty': !contributor.description
+                }"
             >
               <p
                   class="jd-font-xl head-student"
@@ -226,7 +229,7 @@ export default defineComponent({
     }
   }
 
-  &.description-is-open {
+  &.description-is-open:not(.is-empty) {
     margin-top: 1rem;
     margin-bottom: 2rem;
 
