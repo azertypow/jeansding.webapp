@@ -1,6 +1,8 @@
 <template>
   <div class="v-list-container">
-
+<div
+    class="v-list-container__scroll-box"
+>
     <transition name="transition-header" >
     <div
         v-if="$route.name === 'inventory'"
@@ -56,6 +58,7 @@
     <div
         v-if="listItemPresentationModeAbstraction === 'list'"
         v-show="showItem"
+        class="v-list-container__list v-list-container__list--list-view"
     >
       <list-item
           v-for="item of globalState.apiData"
@@ -68,7 +71,7 @@
     <div
         v-if="listItemPresentationModeAbstraction === 'grid'"
         v-show="showItem"
-        class="v-list-container__grid"
+        class="v-list-container__list v-list-container__list--grid-view"
     >
       <div
           v-for="index in numberOfColl"
@@ -82,6 +85,11 @@
         ></card-item>
       </div>
     </div>
+</div>
+
+<div
+    class="v-list-container__loader-animation"
+>
 
     <transition name="transition-loader" >
       <div
@@ -123,7 +131,7 @@
         <div
             class="v-list-container__loader__card"
         >
-          <div class="v-list-container__grid" >
+          <div class="v-list-container__list--grid-view" >
             <div
                 class="v-list-container__grid__coll"
                 v-for="index in numberOfColl"
@@ -136,6 +144,7 @@
         </div>
       </div>
     </transition>
+</div>
   </div>
 </template>
 
@@ -251,11 +260,11 @@ export default defineComponent({
 
 .v-list-container {
   overflow: hidden;
-  padding-bottom:  50vh;
   position: relative;
   padding-top: 5rem;
   box-sizing: border-box;
   min-height: 100vh;
+  height: 100%;
 
   /**
   LIST
@@ -323,9 +332,17 @@ export default defineComponent({
   }
 
   /**
+  GENERAL LIST
+  */
+  .v-list-container__list {
+
+  }
+
+
+  /**
   GRID
    */
-  .v-list-container__grid {
+  .v-list-container__list--grid-view {
     display: flex;
     flex-wrap: nowrap;
 
@@ -338,7 +355,24 @@ export default defineComponent({
     }
   }
 
+  /**
+  SCROLL CONTAINER
+   */
+  .v-list-container__scroll-box {
+    overflow: scroll;
+    height: 100%;
+    padding-right: .5rem;
 
+    &::-webkit-scrollbar {
+      background: var(--jd-color--white);
+      width: .5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--jd-color--main);
+      border-radius: 1rem;
+    }
+  }
   /**
   LOADERS
    */
@@ -454,4 +488,12 @@ export default defineComponent({
     width: 100%;
   }
 }
+
+.v-list-container__loader-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 </style>

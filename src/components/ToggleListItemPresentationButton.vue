@@ -32,11 +32,16 @@ export default defineComponent({
           : this.globalState.listItemPresentationMode = 'list'
 
       window.setTimeout(() => {
-        document.querySelector('.v-app__body__left')!.scroll({
+
+        const scrollElement = document.querySelector('.v-list-container__scroll-box')
+
+        if(! (scrollElement instanceof HTMLElement) ) return
+
+        scrollElement.scroll({
           top: 0,
           behavior: undefined,
         })
-      }, 0)
+      }, 500)
     }
   },
 

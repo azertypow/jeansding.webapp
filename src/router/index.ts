@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
   if( from.name === ':projectSection' || from.name === ':projectSection/:articleUid' ) {
 
     if (to.name === ':projectSection' || to.name === ':projectSection/:articleUid') {
-      document.querySelector('.v-app__body__left')!.scrollTo({
+      document.querySelector('.v-list-container__scroll-box')!.scrollTo({
         top: 0,
         behavior: undefined,
       })
@@ -60,7 +60,7 @@ router.beforeEach((to, from, next) => {
       behavior: undefined,
     })
 
-    const leftElement = document.querySelector('.v-app__body__left')
+    const leftElement = document.querySelector('.v-list-container__scroll-box')
     if( leftElement instanceof HTMLElement) leftElement.scrollTo({
       top: 0,
       behavior: "smooth",

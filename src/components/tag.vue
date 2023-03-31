@@ -37,7 +37,7 @@ export default defineComponent({
   methods: {
     pushTag() {
 
-      document.querySelector('.v-app__body__left')?.scrollTo({
+      document.querySelector('.v-list-container__scroll-box')?.scrollTo({
         behavior: 'smooth',
         top: 0,
       })

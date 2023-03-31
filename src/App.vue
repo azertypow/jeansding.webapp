@@ -164,22 +164,12 @@ export default defineComponent({
   transition: width .5s 1s ease-in-out;
   box-sizing: border-box;
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
   background: var(--jd-color--white);
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
-
-  &::-webkit-scrollbar {
-    background: var(--jd-color--white);
-    width: .5rem;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--jd-color--main);
-    border-radius: 1rem;
-  }
 
   .is-projects & {
     width: calc( 100% / 3 * 1);
