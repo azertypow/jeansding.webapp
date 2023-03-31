@@ -91,8 +91,7 @@
         class="v-app-footer__body__left"
     >
       <div
-          class="jd-with-gutter jd-font-small"
-          style="font-size: .85rem"
+          class="jd-with-gutter jd-font-small v-app-footer__logo-head"
       >HEAD&nbsp;–&nbsp;Genève</div>
     </div>
 
@@ -147,6 +146,8 @@ export default defineComponent({
 })</script>
 
 <style lang="scss">
+@import "../assets/scss-var";
+
 .v-app-footer {
   height: var(--jd-height-of-header);
   color: var(--jd-color--white);
@@ -293,6 +294,14 @@ export default defineComponent({
     width: 100%;
     height: auto;
     margin-top: 3rem;
+  }
+}
+
+.v-app-footer__logo-head {
+  font-size: .85rem;
+
+  @media (max-width: $break-width-xs) {
+    display: none;
   }
 }
 </style>
