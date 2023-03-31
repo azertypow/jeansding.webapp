@@ -56,7 +56,7 @@
           <h3>Head of Research: Anthony Masure</h3>
           <p>Financial advisor: Christelle Granite-Noble</p>
           <p>Financing: HES-SO, HEAD–Genève, SNF, ZHdK (translations)</p>
-          
+
           <div
               class="v-app-footer__logo"
           >
@@ -73,7 +73,7 @@
 
 
           </div>
-          
+
         </div>
 
         <div
@@ -90,13 +90,16 @@
     <div
         class="v-app-footer__body__left"
     >
-      <div class="jd-with-gutter jd-font-small" >HEAD&nbsp;–&nbsp;Genève</div>
+      <div
+          class="jd-with-gutter jd-font-small"
+          style="font-size: .85rem"
+      >HEAD&nbsp;–&nbsp;Genève</div>
     </div>
 
     <div
         class="v-app-footer__body__right"
     >
-      <div class="jd-with-gutter" style="white-space: nowrap">
+      <div class="jd-with-gutter" style="white-space: nowrap; position: relative; top: -1px">
         <burger-icon
             @iconClicked="toggleMenu"
         ></burger-icon>

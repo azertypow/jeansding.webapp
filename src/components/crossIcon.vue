@@ -17,7 +17,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 $lineHeight: 2px;
-$iconWidth: 20px;
+$iconWidth: 30px;
 
 .v-cross-icon {
   cursor: pointer;
