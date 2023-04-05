@@ -84,6 +84,7 @@
             :key="item.id"
             @vue:mounted="onListCardMounted"
         ></card-item>
+        <div style="height: 50vh" ></div>
       </div>
     </div>
 </div>
