@@ -66,6 +66,7 @@
           :key="item.id"
           @vue:mounted="onListItemMounted"
       ></list-item>
+      <div style="height: 50vh" ></div>
     </div>
 
     <div
