@@ -90,9 +90,11 @@
     <div
         class="v-app-footer__body__left"
     >
-      <div
+      <a
+          href="https://www.hesge.ch/head/en/project/jeansdinge-focus-collection-archive-450-denimeries"
+          target="_blank"
           class="jd-with-gutter jd-font-small v-app-footer__logo-head"
-      >HEAD&nbsp;–&nbsp;Genève</div>
+      >HEAD&nbsp;–&nbsp;Genève</a>
     </div>
 
     <div
@@ -299,6 +301,7 @@ export default defineComponent({
 
 .v-app-footer__logo-head {
   font-size: .85rem;
+  text-decoration: none;
 
   @media (max-width: $break-width-xs) {
     display: none;
