@@ -34,10 +34,38 @@ export default defineComponent({
     stateStore().clearFootNoteListAndRemoveScrollListener()
   },
 
+  computed: {
+    htmlCleanGallery(): string {
+
+      const htmlContent = document.createElement('div')
+      htmlContent.innerHTML = this.html
+
+      if( ! (htmlContent instanceof HTMLElement) ) return ''
+
+      const allFigures = htmlContent.querySelectorAll('figure')
+
+      for (const figure of allFigures) {
+        const divGalleryContainer = document.createElement('div')
+        divGalleryContainer.className = 'jd-gallery-img'
+
+        figure.querySelectorAll('img').forEach(imgElement => {
+          divGalleryContainer.appendChild( imgElement.cloneNode(true) )
+        })
+
+        htmlContent
+            .insertBefore( divGalleryContainer, figure )
+        figure.remove()
+      }
+
+
+      return htmlContent.innerHTML
+    }
+  },
+
   methods: {
     async getArticleContentHtmlElement(): Promise<HTMLElement> {
       const domparser = new DOMParser()
-      const articleDocument = domparser.parseFromString(`<div class="v-article-block__html"  >${this.html}</div>`, 'text/html')
+      const articleDocument = domparser.parseFromString(`<div class="v-article-block__html"  >${this.htmlCleanGallery}</div>`, 'text/html')
 
       // footnote
       articleDocument.querySelectorAll('article-footnote').forEach((articleFootNote) => {
@@ -129,21 +157,43 @@ export default defineComponent({
         }
       }
     }
+  }
+}
 
-    figure > ul > li > img:only-child {
-      display: block;
+.jd-gallery-img {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  padding-right: 100%;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > img {
+    scroll-snap-align: start;
+    display: block;
+    width: auto;
+    height: calc(100vh - 15rem);
+    min-height: 20rem;
+    padding-right: 1rem;
+
+    &.is-loading{
+      filter: blur(20px);
+    }
+    &.is-load {
+      transition: filter .25s linear;
+      filter: blur(0);
     }
 
-    img {
-      &.is-loading{
-        filter: blur(20px);
-      }
-      &.is-load {
-        transition: filter .25s linear;
-        filter: blur(0);
-      }
+    &:only-child {
+      margin: auto;
     }
-
   }
 }
 
