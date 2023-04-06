@@ -98,6 +98,8 @@ router.afterEach(() => {
     stateStore().itemToScrollOnInventoryIsOpen.toggleOpenStatus()
     stateStore().itemToScrollOnInventoryIsOpen = null
   }
+
+  stateStore().vimeoPlayerForRightPanelInInventoryPage = null
 })
 
 export default router
