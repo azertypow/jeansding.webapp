@@ -78,7 +78,7 @@ export default defineComponent({
     },
 
     async mouseClickGallery( e: MouseEvent, gallery: HTMLElement ) {
-      if(this.getMousePositionRelativeToTheGallery(e, gallery) === 'left' )
+      if(this.getMousePositionRelativeToTheGallery(e, gallery) === 'right' )
         this.galleryScrollToLeft(gallery)
       else
         this.galleryScrollToRight(gallery)
