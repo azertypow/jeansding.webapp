@@ -20,30 +20,25 @@
         </div>
       </div>
 
+
+      <div
+          style="margin-top: 0; padding-top: .5rem"
+          class="v-inventory__section-title"
+          v-if="globalState.vimeoPlayerForRightPanelInInventoryPage"
+      >
+        <div class="v-inventory__section-title">
+          <router-link
+              to="projects/artist-videos"
+              class="jd-button"
+          >Videos</router-link>
+        </div>
+      </div>
       <div
           class="v-list-item__vimeo"
           v-if="globalState.vimeoPlayerForRightPanelInInventoryPage"
           v-html="globalState.vimeoPlayerForRightPanelInInventoryPage"
       >
       </div>
-
-      <template
-          v-if="globalState.abstractActivatedFilterTagForArticle.length === 0"
-      >
-        <div class="v-inventory__section-title">
-          <router-link
-              to="projects/symposium"
-              class="jd-button"
-          >Symposium</router-link>
-        </div>
-        <div
-          v-for="article of globalState.filteredArticleBySections.symposium"
-        >
-          <article-container
-              :article-data="article"
-          ></article-container>
-        </div>
-      </template>
 
       <div class="v-inventory__section-title" v-if="globalState.filteredArticleBySections.denimpop.length > 0"
       >
@@ -60,23 +55,6 @@
         ></article-container>
       </div>
 
-      <template
-          v-if="globalState.abstractActivatedFilterTagForArticle.length === 0"
-      >
-        <div class="v-inventory__section-title">
-          <router-link
-              to="projects/exhibitions"
-              class="jd-button"
-          >Exhibitions</router-link>
-        </div>
-        <div
-            v-for="article of globalState.filteredArticleBySections.exhibitions"
-        >
-          <article-container
-              :article-data="article"
-          ></article-container>
-        </div>
-      </template>
     </template>
 
     <template
