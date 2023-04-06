@@ -55,6 +55,8 @@ export default defineComponent({
           divGalleryContainer.appendChild( imgElement.cloneNode(true) )
         })
 
+        if([... figure.querySelectorAll('img')].length === 1)  divGalleryContainer.classList.add('not-gallery')
+
         htmlContent
             .insertBefore( divGalleryContainer, figure )
         figure.remove()
@@ -285,6 +287,16 @@ export default defineComponent({
 
     &:only-child {
       margin: auto;
+    }
+  }
+
+  &.not-gallery {
+    justify-content: center;
+    padding: 0;
+    cursor: default;
+
+    .jd-gallery-img__cursor {
+      display: none !important;
     }
   }
 }
