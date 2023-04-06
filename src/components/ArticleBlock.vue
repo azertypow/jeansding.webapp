@@ -47,6 +47,9 @@ export default defineComponent({
       for (const figure of allFigures) {
         const divGalleryContainer = document.createElement('div')
         divGalleryContainer.className = 'jd-gallery-img'
+        const divForCursor = document.createElement('div')
+        divForCursor.className = 'jd-gallery-img__cursor'
+        divGalleryContainer.appendChild(divForCursor)
 
         figure.querySelectorAll('img').forEach(imgElement => {
           divGalleryContainer.appendChild( imgElement.cloneNode(true) )
@@ -63,6 +66,62 @@ export default defineComponent({
   },
 
   methods: {
+    getMousePositionRelativeToTheGallery(e: MouseEvent, gallery: HTMLElement): 'left' | 'right' {
+      const xPosition = e.clientX - gallery.getBoundingClientRect().x
+
+      if( xPosition * 100 / gallery.getBoundingClientRect().width < 50 )
+        return  'left'
+
+      return 'right'
+    },
+
+    async mouseClickGallery( e: MouseEvent, gallery: HTMLElement ) {
+      if(this.getMousePositionRelativeToTheGallery(e, gallery) === 'left' )
+        this.galleryScrollToLeft(gallery)
+      else
+        this.galleryScrollToRight(gallery)
+    },
+
+    galleryScrollToLeft(gallery: HTMLElement) {
+      const listOfImage = gallery.querySelectorAll('img')
+      for(const img of listOfImage) {
+        if (img.getBoundingClientRect().x > gallery.getBoundingClientRect().x + 10) {
+          gallery.scrollTo({
+            left: img.offsetLeft,
+            behavior: 'smooth'
+          })
+          break
+        }
+      }
+    },
+
+    galleryScrollToRight(gallery: HTMLElement) {
+      const listOfImage = [...gallery.querySelectorAll('img')].reverse()
+      for(const img of listOfImage) {
+        if (img.getBoundingClientRect().x < gallery.getBoundingClientRect().x - 10) {
+          gallery.scrollTo({
+            left: img.offsetLeft,
+            behavior: 'smooth'
+          })
+          break
+        }
+      }
+    },
+
+    async mouseOverGallery(e: MouseEvent, gallery: HTMLElement) {
+
+      const cursorContainer = gallery.querySelector('.jd-gallery-img__cursor')
+      if( !(cursorContainer instanceof HTMLElement) ) return
+
+      if( this.getMousePositionRelativeToTheGallery(e, gallery) === 'left' )
+        cursorContainer.innerHTML = "&larr;"
+
+      else cursorContainer.innerHTML = "&rarr;"
+
+      cursorContainer.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
+
+    },
+
     async getArticleContentHtmlElement(): Promise<HTMLElement> {
       const domparser = new DOMParser()
       const articleDocument = domparser.parseFromString(`<div class="v-article-block__html"  >${this.htmlCleanGallery}</div>`, 'text/html')
@@ -106,6 +165,24 @@ export default defineComponent({
 
       Object.values( allFigureElementsInArticle ).forEach( figureElement => {
         if( figureElement.querySelectorAll('ul > li > img').length === 1 ) figureElement.classList.add('ts-article-block-has-only-one-image')
+      })
+
+
+      // gallery navigation
+      articleDocument.querySelectorAll('.jd-gallery-img').forEach(value => {
+        if (!(value instanceof HTMLElement)) return
+        value.addEventListener('mousemove', e => this.mouseOverGallery(e, value) )
+        value.addEventListener('mouseenter', () =>{
+          const cursorElement = value.querySelector('.jd-gallery-img__cursor')
+          if ( cursorElement instanceof HTMLElement)
+            cursorElement.style.display = 'block'
+        })
+        value.addEventListener('mouseleave', () =>{
+          const cursorElement = value.querySelector('.jd-gallery-img__cursor')
+          if ( cursorElement instanceof HTMLElement)
+            cursorElement.style.display = 'none'
+        } )
+        value.addEventListener('click',     e => this.mouseClickGallery(e, value) )
       })
 
 
@@ -161,6 +238,7 @@ export default defineComponent({
 }
 
 .jd-gallery-img {
+  user-select: none;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -170,6 +248,20 @@ export default defineComponent({
   scroll-snap-type: x mandatory;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+
+  cursor: none;
+
+  .jd-gallery-img__cursor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+    user-select: none;
+    //mix-blend-mode: difference;
+    font-size: calc( 1vh + 4rem);
+  }
 
   &::-webkit-scrollbar {
     display: none;
