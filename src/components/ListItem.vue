@@ -71,7 +71,8 @@
             class="v-list-item__body__left"
         >
           <image-lazy-load
-              v-for="img of dataTag.img"
+              v-for="(img, index) of dataTag.img"
+              :key="index"
               :image-data="img"
               alt=""
               size="reg"
