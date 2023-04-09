@@ -53,7 +53,4 @@ export function setStateOnNavigation(toName: RouteRecordName, toParams: RoutePar
   } else {
     stateStore().setActivatedFilterBySlug([])
   }
-
-  stateStore().currentOpenObject = null
-  stateStore().clearFootNoteListAndRemoveScrollListener()
 }

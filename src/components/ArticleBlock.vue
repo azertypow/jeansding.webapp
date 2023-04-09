@@ -130,7 +130,6 @@ export default defineComponent({
 
       // footnote
       articleDocument.querySelectorAll('article-footnote').forEach((articleFootNote) => {
-
         stateStore().pushFooterNoteElement( articleDocument, articleFootNote )
 
         articleFootNote.remove()

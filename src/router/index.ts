@@ -38,6 +38,9 @@ router.beforeEach((to, from, next) => {
   if(to.name !== undefined && to.name !== null)
     setStateOnNavigation(to.name, to.params, from.name)
 
+  stateStore().currentOpenObject = null
+  stateStore().clearFootNoteListAndRemoveScrollListener()
+
   next()
 })
 
