@@ -63,13 +63,6 @@ export default defineComponent({
     imageWithWantedSize.src = this.imageData.resize[this.size]
   },
 
-  methods: {
-    zoomIn() {
-      console.log(this.imageData.resize.large)
-    }
-  },
-
-
 });
 </script>
 

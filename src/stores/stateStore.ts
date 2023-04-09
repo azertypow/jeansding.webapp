@@ -128,7 +128,7 @@ export const stateStore = defineStore('stateStore', {
       this.activatedFilterTag.push(value)
       this.abstractActivatedFilterTagForArticle = this.activatedFilterTag
 
-      this.updateFilteredArticles_bySection().then(() => console.log('push category filter update'))
+      this.updateFilteredArticles_bySection()
     },
     removeTag(value: string) {
       const indexOfMatchedTag = this.activatedFilterTag.findIndex((arrayValue) => {
@@ -139,7 +139,7 @@ export const stateStore = defineStore('stateStore', {
 
       this.abstractActivatedFilterTagForArticle = this.activatedFilterTag
 
-      this.updateFilteredArticles_bySection().then(() => console.log('remove category filter update'))
+      this.updateFilteredArticles_bySection()
     },
 
     clearAllTag() {

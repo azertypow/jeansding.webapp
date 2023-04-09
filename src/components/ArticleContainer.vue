@@ -46,7 +46,6 @@ export default defineComponent({
   updated() {
     this.$nextTick(() => {
       this.setThumbnail_url()
-      console.log('up date')
     })
   },
 

@@ -43,9 +43,6 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(() => {
   if(stateStore().itemToScrollOnInventoryIsOpen !== null) {
-    console.log(
-        stateStore().itemToScrollOnInventoryIsOpen
-    )
     stateStore().itemToScrollOnInventoryIsOpen.toggleOpenStatus()
     stateStore().itemToScrollOnInventoryIsOpen = null
   }
