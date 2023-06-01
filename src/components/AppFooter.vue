@@ -100,6 +100,63 @@
     <div
         class="v-app-footer__body__right"
     >
+        <div
+                class="jd-with-gutter"
+                style="cursor: pointer"
+                @click="togglePlayerState"
+        >
+            <svg
+                    v-if="this.playerState === 'is-paused'"
+                    class="v-app-footer__player"
+                    width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+            >
+                <g clip-path="url(#clip0_163_281)">
+                    <path d="M20 2C29.9 2 38 10.1 38 20C38 29.9 29.9 38 20 38C10.1 38 2 29.9 2 20C2 10.1 10.1 2 20 2ZM20 0C9 0 0 9 0 20C0 31 9 40 20 40C31 40 40 31 40 20C40 9 31 0 20 0Z"/>
+                    <path d="M31 20L14 11V29L31 20Z" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_163_281">
+                        <rect width="40" height="40" fill="white"/>
+                    </clipPath>
+                </defs>
+            </svg>
+
+            <svg
+                    v-else-if="this.playerState === 'is-loading'"
+                    class="v-app-footer__player"
+                    width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+            >
+                <g clip-path="url(#clip0_163_273)">
+                    <path
+                            class="v-app-footer__player__loader"
+                            d="M20 38C29.9 38 38 29.9 38 20H40C40 31 31 40 20 40C9 40 0 31 0 20C0 9 9 0 20 0V2C10.1 2 2 10.1 2 20C2 29.9 10.1 38 20 38Z"
+                    />
+                    <path d="M31 20L14 11V29L31 20Z"/>
+                </g>
+                <defs>
+                    <clipPath id="clip0_163_273">
+                        <rect width="40" height="40"/>
+                    </clipPath>
+                </defs>
+            </svg>
+
+            <svg
+                    v-else
+                    class="v-app-footer__player"
+                    width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+            >
+                <g clip-path="url(#clip0_164_285)">
+                    <path d="M20 2C29.9 2 38 10.1 38 20C38 29.9 29.9 38 20 38C10.1 38 2 29.9 2 20C2 10.1 10.1 2 20 2ZM20 0C9 0 0 9 0 20C0 31 9 40 20 40C31 40 40 31 40 20C40 9 31 0 20 0Z"/>
+                    <rect x="14" y="10" width="4" height="19"/>
+                    <rect x="22" y="10" width="4" height="19"/>
+                </g>
+                <defs>
+                    <clipPath id="clip0_164_285">
+                        <rect width="40" height="40" fill="white"/>
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
       <div class="jd-with-gutter" style="white-space: nowrap; position: relative; top: -1px">
         <burger-icon
             @iconClicked="toggleMenu"
@@ -136,14 +193,72 @@ export default defineComponent({
   data() {
     return {
       searchIsOpen: false,
-      stateStore: stateStore()
+      stateStore: stateStore(),
+      playerState: 'is-paused' as 'is-playing' | 'is-loading' | 'is-paused',
+      audioFile: null as null | string,
+      audio: null as null | HTMLAudioElement,
     }
   },
 
   methods: {
-    toggleMenu(isOpen: boolean) {
-      this.stateStore.menuIsOpen = isOpen
-    },
+      toggleMenu(isOpen: boolean) {
+          this.stateStore.menuIsOpen = isOpen
+      },
+      async togglePlayerState() {
+
+          if (this.audioFile && this.audio) {
+
+              if(this.playerState === "is-loading") return
+              if (this.playerState === "is-paused") this.audio.play()
+              else this.audio.pause()
+
+          } else {
+
+              this.playerState = 'is-loading'
+
+              this.audioFile = (await import('../assets/20230601-Jeans_dinge_mix-converted-medium.mp3')).default
+
+              if (typeof this.audioFile !== 'string') {
+                  console.error('audio module import. typeof this.audioFile !== \'string\'')
+                  return
+              }
+
+              this.audio = new Audio(this.audioFile)
+
+              const onCanplaythrough = () => {
+                  this.audio?.play()
+
+                  this.audio?.removeEventListener('canplaythrough', onCanplaythrough)
+
+
+                  this.audio?.addEventListener('play', () => {
+                      this.playerState = 'is-playing'
+                  })
+
+                  this.audio?.addEventListener('playing', () => {
+                      this.playerState = 'is-playing'
+                  })
+
+                  this.audio?.addEventListener('pause', () => {
+                      this.playerState = 'is-paused'
+                  })
+
+                  this.audio?.addEventListener('ended', () => {
+                      this.playerState = "is-paused"
+                  })
+
+                  this.audio?.addEventListener('waiting', () => {
+                      this.playerState = "is-loading"
+                  })
+
+                  this.audio?.addEventListener('loadeddata', (e) => {
+                      console.log("load data")
+                  })
+              }
+              this.audio?.addEventListener('canplaythrough', onCanplaythrough)
+
+          }
+      },
   },
 })</script>
 
@@ -241,6 +356,32 @@ export default defineComponent({
   display: flex;
   align-items: center;
   z-index: 100000;
+
+  .v-app-footer__player {
+    display: block;
+    width: 20px;
+    height: auto;
+    fill: white;
+
+    .v-app-footer__player__loader {
+      animation-name: loader-rotation;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      transform-origin: center;
+      position: relative;
+    }
+
+    @keyframes loader-rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+  }
 
   .device-mobile & {
     padding: 0;
