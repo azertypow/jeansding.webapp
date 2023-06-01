@@ -29,7 +29,7 @@
         <div
             v-for="block of globalState.apiProjects[currentSectionUID].text"
             v-html="block"
-            class="v-media__intro-text jd-text-max-width-reg"
+            class="v-media__intro-text"
         >
         </div>
       </div>
@@ -210,6 +210,11 @@ export default defineComponent({
   }
 
   .v-media__intro-text {
+
+    > *:not(figure) {
+      max-width: var(--js-max-width--reg);
+    }
+
     > {
       h1, h2 {
         text-align: center;
@@ -220,6 +225,39 @@ export default defineComponent({
     p {
       font-size: .9rem;
       line-height: 1.2em;
+    }
+
+    figure {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      > ul {
+        display: flex;
+        box-sizing: border-box;
+        width: calc(100% + .5rem);
+        height: calc(100vh - 15rem);
+        overflow: auto;
+        padding: 0;
+        margin-left: -.5rem;
+        min-height: 20rem;
+        justify-content: center;
+
+        li {
+          display: block;
+          box-sizing: border-box;
+          height: 100%;
+          padding: 0 .5rem;
+
+          > img {
+            display: block;
+            width: auto;
+            height: 100%;
+          }
+        }
+      }
     }
   }
 
