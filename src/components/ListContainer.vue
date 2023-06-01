@@ -275,7 +275,7 @@ export default defineComponent({
     top: var(--v-app-header--title-height);
     left: 0;
     position: fixed;
-    width: calc( (100% / 3 * 2) - 1rem);
+    width: calc( (100% / 3 * 2));
     box-sizing: border-box;
     z-index: 100;
     background: var(--jd-color--white);
@@ -283,7 +283,7 @@ export default defineComponent({
 
     .is-projects & {
       padding-left: 1rem;
-      width: calc(100% / 4 * 1 - 1rem);
+      width: calc(100% / 4 * 1 );
     }
 
     .device-mobile & {
@@ -291,7 +291,7 @@ export default defineComponent({
     }
 
     @media (min-width: $break-width-reg) {
-      width: calc( (100% / 4 * 3) - 1rem);
+      width: calc( (100% / 4 * 3));
     }
   }
 
