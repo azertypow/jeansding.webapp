@@ -369,6 +369,7 @@ export default defineComponent({
     width: 20px;
     height: auto;
     fill: white;
+    transition: opacity 1s ease-in-out;
 
     .v-app-footer__player__loader {
       animation-name: loader-rotation;
@@ -386,6 +387,13 @@ export default defineComponent({
       100% {
         transform: rotate(360deg);
       }
+    }
+
+    .menu-is-open & {
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+      transition-duration: .25s;
     }
 
   }
