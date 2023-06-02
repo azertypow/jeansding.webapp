@@ -57,6 +57,11 @@
           <p>Financial advisor: Christelle Granite-Noble</p>
           <p>Financing: HES-SO, HEAD–Genève, SNF, ZHdK (translations)</p>
 
+
+          <h3>Contact us</h3>
+          <p><a href="mailto:katharina.hohmann@hesge.ch" >Katharina Hohmann</a></p>
+          <p><a href="mailto:katharina.tietze@zhdk.ch" >Katharina Tietze</a></p>
+
           <div
               class="v-app-footer__logo"
           >
