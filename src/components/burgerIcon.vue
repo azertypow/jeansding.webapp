@@ -87,5 +87,9 @@ $lineHeight: 2px;
       transform: rotate(-45deg);
     }
   }
+
+  .device-mobile & {
+    transform: none;
+  }
 }
 </style>

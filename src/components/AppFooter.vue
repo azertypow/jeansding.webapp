@@ -351,6 +351,8 @@ export default defineComponent({
   }
 }
 
+
+
 .v-app-footer__body__left,
 .v-app-footer__body__right {
   display: flex;
@@ -394,6 +396,20 @@ export default defineComponent({
       padding: .5rem;
       margin: auto;
     }
+  }
+}
+
+.v-app-footer__body__right {
+
+  .device-mobile & {
+    flex-direction: column;
+  }
+}
+
+.v-app-footer__body__left {
+
+  .device-mobile & {
+    display: none;
   }
 }
 
