@@ -325,11 +325,34 @@ export default defineComponent({
     top: 7rem;
     z-index: 20;
     background: white;
-    width: calc(75% - 2.25rem);
+    width: calc(66.66666% - 2.25rem);
 
     > * {
       padding: 0 1rem;
       width: calc(100% / 3);
+      box-sizing: border-box;
+      pointer-events: none;
+      user-select: none;
+
+      &:first-child {
+        opacity: 0;
+        width: 3rem;
+      }
+    }
+
+    @media (min-width: $break-width-reg) {
+      width: calc(75% - 2.25rem);
+
+      > *,
+      > *:first-child {
+        opacity: 1;
+        width: calc(100% / 3);
+      }
+    }
+
+    .device-mobile & {
+      width: calc( 100% - 4.5rem);
+      left: .5rem;
     }
   }
 
