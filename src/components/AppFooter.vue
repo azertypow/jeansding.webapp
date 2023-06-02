@@ -440,6 +440,7 @@ export default defineComponent({
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
+  padding-bottom: 5rem;
 
   > div {
     width: calc(100% / 3);
