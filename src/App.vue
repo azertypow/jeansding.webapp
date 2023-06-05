@@ -188,7 +188,7 @@ export default defineComponent({
   color: var(--jd-color--secondary);
   width: calc( 100% / 3 * 1);
   box-sizing: border-box;
-  padding-bottom:  50vh;
+  padding-bottom:  0;
   height: 100%;
   overflow: scroll;
   position: absolute;
@@ -209,6 +209,10 @@ export default defineComponent({
   &::-webkit-scrollbar-thumb {
     background: var(--jd-color--secondary);
     border-radius: 1rem;
+  }
+
+  @media (min-width: $break-width-xs) {
+    padding-bottom:  50vh;
   }
 
   @media (min-width: $break-width-reg) {
