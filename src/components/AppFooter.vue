@@ -221,7 +221,7 @@ export default defineComponent({
 
               this.playerState = 'is-loading'
 
-              this.audioFile = (await import('../assets/20230601-Jeans_dinge_mix-converted-medium.mp3')).default
+              this.audioFile = (await import('https://api.jeansdinge.com/20230601-Jeans_dinge_mix-converted-medium.mp3')).default
 
               if (typeof this.audioFile !== 'string') {
                   console.error('audio module import. typeof this.audioFile !== \'string\'')
