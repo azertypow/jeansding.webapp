@@ -51,7 +51,7 @@
 
 <!--      <transition name="slide-fade">-->
         <div
-            class="v-list-item__coll jd-with-gutter"
+            class="v-list-item__coll v-list-item__coll--tags jd-with-gutter"
             v-show="$route.path === '/'"
         >
           <tag
@@ -250,10 +250,12 @@ export default defineComponent({
 
   .v-list-item__icon-box {
     position: absolute;
-    height: 1rem;
     width: auto;
     right: 0;
     display: flex;
+    height: 100%;
+    background: white;
+    align-items: center;
 
     > * {
       display: block;
@@ -271,6 +273,23 @@ export default defineComponent({
     box-sizing: border-box;
     width: calc(100% / 3);
     white-space: nowrap;
+
+    @media (max-width: $break-width-xxs - 1) {
+      padding: 0;
+
+      &.v-list-item__coll--tags {
+        overflow: auto;
+        width: calc(100% / 3 * 2);
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        padding-right: 2rem;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
   }
 
   .v-list-item--id {
