@@ -200,7 +200,7 @@ export default defineComponent({
       searchIsOpen: false,
       stateStore: stateStore(),
       playerState: 'is-paused' as 'is-playing' | 'is-loading' | 'is-paused',
-      audioFile: null as null | string,
+      audioFileSrc: "https://api.jeansdinge.com/20230601-Jeans_dinge_mix-converted-medium.mp3",
       audio: null as null | HTMLAudioElement,
     }
   },
@@ -211,7 +211,7 @@ export default defineComponent({
       },
       async togglePlayerState() {
 
-          if (this.audioFile && this.audio) {
+          if (this.audio) {
 
               if(this.playerState === "is-loading") return
               if (this.playerState === "is-paused") this.audio.play()
@@ -221,14 +221,7 @@ export default defineComponent({
 
               this.playerState = 'is-loading'
 
-              this.audioFile = (await import('https://api.jeansdinge.com/20230601-Jeans_dinge_mix-converted-medium.mp3')).default
-
-              if (typeof this.audioFile !== 'string') {
-                  console.error('audio module import. typeof this.audioFile !== \'string\'')
-                  return
-              }
-
-              this.audio = new Audio(this.audioFile)
+              this.audio = new Audio(this.audioFileSrc)
 
               const onCanplaythrough = () => {
                   this.audio?.play()
