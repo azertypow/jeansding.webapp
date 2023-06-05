@@ -335,8 +335,17 @@ export default defineComponent({
       user-select: none;
 
       &:first-child {
+        display: none;
         opacity: 0;
         width: 3rem;
+      }
+    }
+
+    @media (min-width: $break-width-xxs) {
+      > * {
+        &:first-child {
+          display: block;
+        }
       }
     }
 
