@@ -344,6 +344,14 @@ export default defineComponent({
         opacity: 0;
         width: 3rem;
       }
+
+      @media (max-width: $break-width-xxs - 1) {
+        padding: 0;
+
+        &:last-child {
+          padding-left: .5rem;
+        }
+      }
     }
 
     @media (min-width: $break-width-xxs) {
