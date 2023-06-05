@@ -410,6 +410,10 @@ export default defineComponent({
     height: 100%;
     padding-right: .5rem;
 
+    @media (min-width: $break-width-xxs) {
+      padding-right: 0;
+    }
+
     &::-webkit-scrollbar {
       background: var(--jd-color--white);
       width: .5rem;
