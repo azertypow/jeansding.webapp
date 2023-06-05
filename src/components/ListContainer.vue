@@ -300,9 +300,14 @@ export default defineComponent({
   }
 
   .v-list-container__header__box {
-    width: calc(100% / 6 * 4);
-    margin: 1rem auto 0;
+    width: calc(100% - 8rem);
+    margin: 1rem auto 0 5rem;
     position: relative;
+
+    @media (min-width: $break-width-xxs) {
+      margin: 1rem auto 0;
+      width: calc(100% / 6 * 4);
+    }
 
     &.v-list-container__header__box--small {
       width: auto;
