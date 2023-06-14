@@ -265,7 +265,6 @@ export default defineComponent({
     display: flex;
     flex-wrap: wrap;
     margin-top: 4rem;
-    background: red;
   }
 
   .v-media__item__coll {
